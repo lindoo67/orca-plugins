@@ -20,5 +20,21 @@
       }
     ]
   },
-  "capabilities": []
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "A terminal in Solarized Dark colours with git, ls and test output, and its 16-colour palette"
+  },
+  "screenshots": [
+    {
+      "path": "images/terminal.png",
+      "alt": "A Solarized Dark terminal beside the worktree list",
+      "caption": "Terminal"
+    },
+    {
+      "path": "images/palette.png",
+      "alt": "The 16 Solarized Dark terminal colours",
+      "caption": "Palette"
+    }
+  ]
 }

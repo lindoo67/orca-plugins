@@ -20,5 +20,16 @@
       }
     ]
   },
-  "capabilities": []
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "The Minimal icons in the file explorer and the eight icons the theme provides"
+  },
+  "screenshots": [
+    {
+      "path": "images/explorer.png",
+      "alt": "Minimal icons in the explorer and editor tabs",
+      "caption": "Explorer and tabs"
+    }
+  ]
 }

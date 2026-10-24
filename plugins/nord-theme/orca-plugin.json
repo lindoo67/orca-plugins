@@ -20,5 +20,21 @@
       }
     ]
   },
-  "capabilities": []
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "The Nord theme on an editor with a file tree and a TypeScript file"
+  },
+  "screenshots": [
+    {
+      "path": "images/editor.png",
+      "alt": "Nord on the editor and terminal",
+      "caption": "Editor and terminal"
+    },
+    {
+      "path": "images/settings.png",
+      "alt": "Nord selected in Appearance settings",
+      "caption": "Appearance settings"
+    }
+  ]
 }

@@ -20,5 +20,21 @@
       }
     ]
   },
-  "capabilities": []
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "The Orca Midnight theme on an editor with a file tree and a TypeScript file"
+  },
+  "screenshots": [
+    {
+      "path": "images/editor.png",
+      "alt": "Orca Midnight on the editor and terminal",
+      "caption": "Editor and terminal"
+    },
+    {
+      "path": "images/settings.png",
+      "alt": "Orca Midnight selected in Appearance settings",
+      "caption": "Appearance settings"
+    }
+  ]
 }

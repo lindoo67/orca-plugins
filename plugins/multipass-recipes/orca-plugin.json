@@ -18,5 +18,16 @@
       }
     ]
   },
-  "capabilities": []
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "The Multipass Ubuntu LTS recipe with its create, suspend, resume and destroy commands"
+  },
+  "screenshots": [
+    {
+      "path": "images/session.png",
+      "alt": "A terminal on a Multipass machine created by the recipe",
+      "caption": "Machine terminal"
+    }
+  ]
 }

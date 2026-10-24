@@ -50,5 +50,16 @@
       }
     ]
   },
-  "capabilities": []
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "Shortcuts Mod+Alt+T for Open Tasks, Mod+Alt+F for Toggle Search and Mod+Alt+G for Toggle Source Control"
+  },
+  "screenshots": [
+    {
+      "path": "images/palette.png",
+      "alt": "The command palette listing the three commands with their shortcuts",
+      "caption": "Command palette"
+    }
+  ]
 }
