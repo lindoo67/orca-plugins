@@ -20,8 +20,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "b3b95d9543bf4f627df5ef6fc9d352e8b447d888",
-          "contentHash": "dcec45bfa48d954fe3989e0a0cb095fac37d0fd2b167f0b74787d97ef389064c",
+          "commit": "95ea192af54f2188ca8deeba00fd7eafd5b5fe39",
+          "contentHash": "1a64cd8b0eac6572beca9c69b7b9a436062964482f14cace63527c105b1c3a84",
           "execution": "data",
           "minimumOrca": "1.4.240",
           "types": [
@@ -34,7 +34,32 @@
               "name": "Orca Midnight"
             }
           ],
-          "license": "MIT"
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/midnight-theme/images/cover.png",
+              "alt": "The Orca Midnight theme on an editor with a file tree and a TypeScript file",
+              "sha256": "5511598eff0cb4ee0986cac1682402f0d2d8dcdef40a288e2e521d84ae64434f",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/midnight-theme/images/editor.png",
+                "alt": "Orca Midnight on the editor and terminal",
+                "sha256": "99949fc97caa4d644a8fa6759f775963362885c4411f688d0d4be95aceb6e916",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/midnight-theme/images/settings.png",
+                "alt": "Orca Midnight selected in Appearance settings",
+                "sha256": "91fea1694d407b6ccfc6473f68ccfb0a895b7be23cd663c9a2ba8d1d4d934aa7",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     },
@@ -54,8 +79,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "b3b95d9543bf4f627df5ef6fc9d352e8b447d888",
-          "contentHash": "85f9b14d5774e4ec1272910151a83549bfecdcf934354b1ce066434cc8316273",
+          "commit": "95ea192af54f2188ca8deeba00fd7eafd5b5fe39",
+          "contentHash": "eaf0fd302d800081302122fc65b969df8afd4a9279ec278f51c91df3b115d814",
           "execution": "data",
           "minimumOrca": "1.4.240",
           "types": [
@@ -68,7 +93,32 @@
               "name": "Nord"
             }
           ],
-          "license": "MIT"
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/nord-theme/images/cover.png",
+              "alt": "The Nord theme on an editor with a file tree and a TypeScript file",
+              "sha256": "60d2086e65f07b2e847b51e5a5cafca100593cda97cd92f2a8e438d93e2dda93",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/nord-theme/images/editor.png",
+                "alt": "Nord on the editor and terminal",
+                "sha256": "c5e3b80607b41773c98adf5adbb5eb98dd7233b8812d3b3fce67f0ea94d410be",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/nord-theme/images/settings.png",
+                "alt": "Nord selected in Appearance settings",
+                "sha256": "314f09e5e0b69249efe8028c7186c00b4ee4d0ff52481fea18acfa722025ee63",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     },
@@ -88,8 +138,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "b3b95d9543bf4f627df5ef6fc9d352e8b447d888",
-          "contentHash": "50fa188ba2dbcc40e1951a78b6fd10bd2712d7d3380d5de23efec2ae625bef58",
+          "commit": "95ea192af54f2188ca8deeba00fd7eafd5b5fe39",
+          "contentHash": "54232dc35e99e2e12808594e154d2afd41ee130827ae6f5377d5e6242e58ee65",
           "execution": "data",
           "minimumOrca": "1.4.240",
           "types": [
@@ -102,7 +152,25 @@
               "name": "Minimal"
             }
           ],
-          "license": "MIT"
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/minimal-icons/images/cover.png",
+              "alt": "The Minimal icons in the file explorer and the eight icons the theme provides",
+              "sha256": "60565d006e8dd868eae755fa131195ec62cab829135ad0d8c866b3ec61f1b311",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/minimal-icons/images/explorer.png",
+                "alt": "Minimal icons in the explorer and editor tabs",
+                "sha256": "a485fd14f4e0950e90a5ac31faf9793442723553679fc7acccc78d78f66d2fcf",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     },
@@ -122,8 +190,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "b3b95d9543bf4f627df5ef6fc9d352e8b447d888",
-          "contentHash": "6fa4178b60226159c942cf3262b4a23165b88a12e67fdb2dabf9df83f925f8e2",
+          "commit": "95ea192af54f2188ca8deeba00fd7eafd5b5fe39",
+          "contentHash": "cbc6e234450766f6d9e8295bb607f2b139eeda5343ed89c80f86fad526faf9f1",
           "execution": "data",
           "minimumOrca": "1.4.240",
           "types": [
@@ -136,7 +204,32 @@
               "name": "Solarized Dark"
             }
           ],
-          "license": "MIT"
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/solarized-terminal/images/cover.png",
+              "alt": "A terminal in Solarized Dark colours with git, ls and test output, and its 16-colour palette",
+              "sha256": "5b73a5d6ff662f69a3a05a042089e4bc0918dc535726cb2d43352c16099f42b7",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/solarized-terminal/images/terminal.png",
+                "alt": "A Solarized Dark terminal beside the worktree list",
+                "sha256": "a7526bf00fb227d86e22a43508372a016375d1072203384c1d2a8d46cf6cdb96",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/solarized-terminal/images/palette.png",
+                "alt": "The 16 Solarized Dark terminal colours",
+                "sha256": "be7b3869c14370b25cc3d1d5dcfd4cfb188709eb5ab67ba516dbaf2928e58255",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     },
@@ -156,8 +249,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "b3b95d9543bf4f627df5ef6fc9d352e8b447d888",
-          "contentHash": "8b28cbb50a626206f4b2054cc5cec520cebf22d2eeeefcc6b1ce916d9f70d3fc",
+          "commit": "95ea192af54f2188ca8deeba00fd7eafd5b5fe39",
+          "contentHash": "f59aae7b2b7c9e1cc94c373a9dc88341b038013affc230216bc5a33dfa7bd326",
           "execution": "declarative",
           "minimumOrca": "1.4.240",
           "types": [
@@ -170,7 +263,25 @@
               "name": "recipes/ubuntu-lts.json"
             }
           ],
-          "license": "MIT"
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/multipass-recipes/images/cover.png",
+              "alt": "The Multipass Ubuntu LTS recipe with its create, suspend, resume and destroy commands",
+              "sha256": "9490fccc49dba758e9e0fc190922919601c67688da8265cf9f5384dce5680cd1",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/multipass-recipes/images/session.png",
+                "alt": "A terminal on a Multipass machine created by the recipe",
+                "sha256": "055488d690f6626493a2adb9deef8a0a687671300f43d4be4ffdbdb7f10edacf",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     },
@@ -190,8 +301,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "b3b95d9543bf4f627df5ef6fc9d352e8b447d888",
-          "contentHash": "266c2311866cffb916b750991d38d0977e713ba156d1e34fdd7c62cc382e5f93",
+          "commit": "95ea192af54f2188ca8deeba00fd7eafd5b5fe39",
+          "contentHash": "b1e01e076c28dca2d71529a5edd7f2d582ca6d8dfa590f9de5dbf4b3e43d12d1",
           "execution": "declarative",
           "minimumOrca": "1.4.240",
           "types": [
@@ -227,7 +338,25 @@
               "detail": "toggle-source-control"
             }
           ],
-          "license": "MIT"
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/navigation-shortcuts/images/cover.png",
+              "alt": "Shortcuts Mod+Alt+T for Open Tasks, Mod+Alt+F for Toggle Search and Mod+Alt+G for Toggle Source Control",
+              "sha256": "ea0700721a25819fc0596127cb71dfb0b6b9130555da7caecf0ba84a213c67f0",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/navigation-shortcuts/images/palette.png",
+                "alt": "The command palette listing the three commands with their shortcuts",
+                "sha256": "f0976e701c2c032139df08f0d34ec61de8376337ccf2f6527dd95d4367c914be",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     }
