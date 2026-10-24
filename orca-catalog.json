@@ -19,8 +19,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "ac2eacab0407f5f324e084f1552c6cabe8f99c88",
-          "contentHash": "a99cd01baf065a213db0a04fae0ba12c400a099c12d984ccba2421a47c8bbd46",
+          "commit": "8605e57848df7164d45dbe1db3b28220e52aaa97",
+          "contentHash": "06d8424e090014fe0120b6ecd33c95c4ad139a504807fe9252b61a585dd01fdd",
           "execution": "data",
           "minimumOrca": "1.4.233",
           "types": [
@@ -32,7 +32,8 @@
               "kind": "themes",
               "name": "Orca Midnight"
             }
-          ]
+          ],
+          "license": "MIT"
         }
       ]
     },
@@ -51,8 +52,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "ebca4927ec802b8d8a34389c55d9e4e185d5ff4a",
-          "contentHash": "e99a59fd0ac3adc13bfffda058fe1a0b3f73252b4ba1ed45b869c880e8718c82",
+          "commit": "56aa73f37a6127074f2420561f84e8ba2dc6b552",
+          "contentHash": "59fb733e04d61f3bb4d8bf7738fc73ef201dc647cf765db72302f9dfe564a4cf",
           "execution": "data",
           "minimumOrca": "1.4.233",
           "types": [
@@ -64,7 +65,8 @@
               "kind": "themes",
               "name": "Nord"
             }
-          ]
+          ],
+          "license": "MIT"
         }
       ]
     },
@@ -83,8 +85,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "e6059d2741e5b51d2a7e8b981a9d0c449d374450",
-          "contentHash": "bd132dd3b63d6678f2dc4aa07790ce7bd0673e4675165738982198225ae1a36c",
+          "commit": "27c37ff46505117acca88e00f26ded0bf663fee6",
+          "contentHash": "55a4d94ebaa4ba71025311c98e543df8c7988f59936590f6a74ca4e4175aad07",
           "execution": "data",
           "minimumOrca": "1.4.233",
           "types": [
@@ -96,7 +98,8 @@
               "kind": "iconThemes",
               "name": "Minimal"
             }
-          ]
+          ],
+          "license": "MIT"
         }
       ]
     },
@@ -115,8 +118,8 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "f5bac52db2a16381d768a70f72599f75d4656d56",
-          "contentHash": "12fc750cf48bb03b6204ce4c89d9e3e1dcd4d792f929865ce5225dd84fedb39a",
+          "commit": "9883463cc34c20ee41f0b20823ce12a26a455c95",
+          "contentHash": "9230249241bbb25c0bf75459ce1631737e7a519f7fd14cd21bd4c221474d5b2f",
           "execution": "data",
           "minimumOrca": "1.4.233",
           "types": [
@@ -128,7 +131,8 @@
               "kind": "terminalThemes",
               "name": "Solarized Dark"
             }
-          ]
+          ],
+          "license": "MIT"
         }
       ]
     },
@@ -147,9 +151,9 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "c42c3e14509cf290262584d46547c3e21d9f03e7",
-          "contentHash": "90984b26e845a226a1a398fb5ec61d2f6213af510150b851012d336ee20e9b70",
-          "execution": "instructional",
+          "commit": "fc902a2550279df1010f373f4a5c1240b5c1f964",
+          "contentHash": "82db80d4d5be1acbb6af175fbf056737ff8d65531f108d0f9ec689576df3cbda",
+          "execution": "declarative",
           "minimumOrca": "1.4.233",
           "types": [
             "instructions"
@@ -160,7 +164,8 @@
               "kind": "vmRecipes",
               "name": "recipes/ubuntu-lts.json"
             }
-          ]
+          ],
+          "license": "MIT"
         }
       ]
     },
@@ -179,9 +184,9 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "0d0cbd61eef3154ec0c939e3d17f1aa07ba3f3f9",
-          "contentHash": "90fef6107bec47203f1b82e1ca6ebef916b682650ff5def9240ccf9a7733f6eb",
-          "execution": "instructional",
+          "commit": "2bad3432ee5ab514892d7d59e8f7c436e7d40883",
+          "contentHash": "48ff13b8523ae6d7be23d46719b88074cbbf28ba3fb31d5c4880959cb9606944",
+          "execution": "declarative",
           "minimumOrca": "1.4.233",
           "types": [
             "instructions"
@@ -215,7 +220,8 @@
               "name": "Mod+Alt+G",
               "detail": "toggle-source-control"
             }
-          ]
+          ],
+          "license": "MIT"
         }
       ]
     }
