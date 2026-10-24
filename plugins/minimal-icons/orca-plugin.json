@@ -1,0 +1,24 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-minimal-icons",
+  "publisher": "stablyai",
+  "name": "Orca Minimal Icons",
+  "version": "2.0.0",
+  "execution": "data",
+  "description": "A compact monochrome icon theme for common source files.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/minimal-icons",
+  "engines": {
+    "orca": ">=1.4.240"
+  },
+  "contributes": {
+    "iconThemes": [
+      {
+        "id": "minimal",
+        "label": "Minimal",
+        "path": "icons/theme.json"
+      }
+    ]
+  },
+  "capabilities": []
+}

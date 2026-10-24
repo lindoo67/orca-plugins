@@ -1,0 +1,24 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-midnight-theme",
+  "publisher": "stablyai",
+  "name": "Orca Midnight",
+  "version": "2.0.0",
+  "execution": "data",
+  "description": "A quiet dark theme tuned for long coding sessions.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/midnight-theme",
+  "engines": {
+    "orca": ">=1.4.240"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "midnight",
+        "label": "Orca Midnight",
+        "path": "themes/midnight.json"
+      }
+    ]
+  },
+  "capabilities": []
+}
