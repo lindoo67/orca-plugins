@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/stablyai/orca/main/schemas/plugins/orca-catalog.v2.schema.json",
+  "$schema": "https://raw.githubusercontent.com/stablyai/orca/main/docs/schemas/plugins/orca-catalog.v2.schema.json",
   "catalogVersion": 2,
   "name": "Orca Official Plugins",
   "owner": "stablyai",
@@ -19,10 +19,10 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "8605e57848df7164d45dbe1db3b28220e52aaa97",
-          "contentHash": "06d8424e090014fe0120b6ecd33c95c4ad139a504807fe9252b61a585dd01fdd",
+          "commit": "febba189b41a7ffbdf9cbc2c61fd0c0c18810c5b",
+          "contentHash": "199231f3c3f379d1fa15f07c63cabc662984eb4f9f8cfded9e0e2672360946e0",
           "execution": "data",
-          "minimumOrca": "1.4.233",
+          "minimumOrca": "1.4.240",
           "types": [
             "app-theme"
           ],
@@ -52,10 +52,10 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "56aa73f37a6127074f2420561f84e8ba2dc6b552",
-          "contentHash": "59fb733e04d61f3bb4d8bf7738fc73ef201dc647cf765db72302f9dfe564a4cf",
+          "commit": "829d1569f56b61d5b3dcd34347dc3731a1b4b428",
+          "contentHash": "7f774e4a8fa98caeeec5223ccc87609a51219f721bff80a6293ba99433cc78ff",
           "execution": "data",
-          "minimumOrca": "1.4.233",
+          "minimumOrca": "1.4.240",
           "types": [
             "app-theme"
           ],
@@ -85,10 +85,10 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "27c37ff46505117acca88e00f26ded0bf663fee6",
-          "contentHash": "55a4d94ebaa4ba71025311c98e543df8c7988f59936590f6a74ca4e4175aad07",
+          "commit": "ed3de3fb915696750fabcc9349217b86e41752e7",
+          "contentHash": "8071c37b42e3e951dcb84f6142ecea56e064cbcd2298c0c99aa182c75978a761",
           "execution": "data",
-          "minimumOrca": "1.4.233",
+          "minimumOrca": "1.4.240",
           "types": [
             "icon-theme"
           ],
@@ -118,10 +118,10 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "9883463cc34c20ee41f0b20823ce12a26a455c95",
-          "contentHash": "9230249241bbb25c0bf75459ce1631737e7a519f7fd14cd21bd4c221474d5b2f",
+          "commit": "03a1526604eee3b367708d02182224e7826703d5",
+          "contentHash": "aee7be2f20e45c1a88dc8557bf0cc1e7315c3ddad6994b58eae9f4915f6e7f96",
           "execution": "data",
-          "minimumOrca": "1.4.233",
+          "minimumOrca": "1.4.240",
           "types": [
             "terminal-theme"
           ],
@@ -151,10 +151,10 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "fc902a2550279df1010f373f4a5c1240b5c1f964",
-          "contentHash": "82db80d4d5be1acbb6af175fbf056737ff8d65531f108d0f9ec689576df3cbda",
+          "commit": "7ebab071b15ce26b87fe9a097e4a71a1387a3287",
+          "contentHash": "d45530e4e7ad78c7e900fd90763d65d14a4c3cbceddf267f149d028d5229049f",
           "execution": "declarative",
-          "minimumOrca": "1.4.233",
+          "minimumOrca": "1.4.240",
           "types": [
             "instructions"
           ],
@@ -184,10 +184,10 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "2bad3432ee5ab514892d7d59e8f7c436e7d40883",
-          "contentHash": "48ff13b8523ae6d7be23d46719b88074cbbf28ba3fb31d5c4880959cb9606944",
+          "commit": "a532559e23916b40c04b55ef50b8543cf00c4d34",
+          "contentHash": "3d8f49e9dadb4e77a3354617ec8b9da2fba8325e93f9b21ad50a27c0614f17a3",
           "execution": "declarative",
-          "minimumOrca": "1.4.233",
+          "minimumOrca": "1.4.240",
           "types": [
             "instructions"
           ],
