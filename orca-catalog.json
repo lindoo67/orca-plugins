@@ -8,8 +8,9 @@
       "id": "stablyai.orca-midnight-theme",
       "source": {
         "kind": "git",
-        "url": "https://github.com/stablyai/orca-midnight-theme.git",
-        "ref": "v1.0.0"
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/midnight-theme"
       },
       "description": "A quiet dark theme tuned for long coding sessions.",
       "categories": [
@@ -41,8 +42,9 @@
       "id": "stablyai.orca-nord-theme",
       "source": {
         "kind": "git",
-        "url": "https://github.com/stablyai/orca-nord-theme.git",
-        "ref": "v1.0.0"
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/nord-theme"
       },
       "description": "A cool, low-contrast application theme inspired by arctic colors.",
       "categories": [
@@ -74,8 +76,9 @@
       "id": "stablyai.orca-minimal-icons",
       "source": {
         "kind": "git",
-        "url": "https://github.com/stablyai/orca-minimal-icons.git",
-        "ref": "v1.0.0"
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/minimal-icons"
       },
       "description": "A compact monochrome icon theme for common source files.",
       "categories": [
@@ -107,8 +110,9 @@
       "id": "stablyai.orca-solarized-terminal",
       "source": {
         "kind": "git",
-        "url": "https://github.com/stablyai/orca-solarized-terminal.git",
-        "ref": "v1.0.0"
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/solarized-terminal"
       },
       "description": "Solarized Dark terminal colors packaged for Orca.",
       "categories": [
@@ -140,8 +144,9 @@
       "id": "stablyai.orca-multipass-recipes",
       "source": {
         "kind": "git",
-        "url": "https://github.com/stablyai/orca-multipass-recipes.git",
-        "ref": "v1.0.0"
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/multipass-recipes"
       },
       "description": "A reviewed starter lifecycle for disposable Multipass workspaces.",
       "categories": [
@@ -173,8 +178,9 @@
       "id": "stablyai.orca-navigation-shortcuts",
       "source": {
         "kind": "git",
-        "url": "https://github.com/stablyai/orca-navigation-shortcuts.git",
-        "ref": "v1.0.0"
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/navigation-shortcuts"
       },
       "description": "Command aliases and optional shortcuts for frequent Orca views.",
       "categories": [

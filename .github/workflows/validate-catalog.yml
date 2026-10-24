@@ -10,7 +10,7 @@ permissions:
 
 env:
   # Orca commit whose validator and legacy export the catalog is checked with. Bump it deliberately.
-  ORCA_REF: d4473fbcf9e2eb951eec655c26304e703e7cc979
+  ORCA_REF: 77e66a707d3faa9421e4430e571515b0c938152e
 
 jobs:
   validate:
@@ -21,6 +21,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: catalog
+          # Why full history: releases pin the last commit that changed each plugin directory.
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Check out Orca
@@ -47,6 +49,12 @@ jobs:
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm run build:packages
+
+      - name: Check plugins/ release entries are current
+        working-directory: catalog
+        env:
+          ORCA_DIR: ${{ github.workspace }}/orca
+        run: node scripts/release-entry.mjs
 
       - name: Validate catalog, releases, images and orca-marketplace.json
         working-directory: catalog

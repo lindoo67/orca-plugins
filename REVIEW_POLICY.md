@@ -5,21 +5,28 @@
 At launch, only Orca maintainers merge into this repository. Every new plugin and every new
 release needs a maintainer's review and a green CI run. No release is merged on CI alone.
 
+This repository holds only official plugins, in `plugins/<name>/`, published under `stablyai`.
+Community plugins stay in their authors' own repositories and are listed in the community
+directory, not copied here.
+
 ## Checklist
 
-CI proves that a release is the exact commit its author published and that the listing matches
-the manifest. A reviewer checks what CI cannot:
+CI proves that each release in `plugins/` is current, that every release is the exact bytes at
+its pinned commit, and that the listing matches the manifest. A reviewer checks what CI cannot:
 
 - [ ] **Lowest execution profile that fits.** `data` for themes, syntaxes and translations;
-      `instructional` for commands, shortcuts and recipes; `sandboxed-ui` only for panels;
+      `declarative` for commands, shortcuts and recipes; `sandboxed-ui` only for panels;
       `trusted-worker` only when the plugin needs code running in Orca. Ask for a lower profile
       when the contributions allow it.
 - [ ] **Capabilities are justified.** Each requested capability is explained and used.
 - [ ] **No impersonation.** The name, publisher, description and images don't pose as Orca, as
       an "official" or "verified" plugin, or as another project or company the author doesn't
       represent. Only Orca maintainers publish under `stablyai` or use the `official` category.
-- [ ] **Licence present.** The plugin repository has a licence file, and the manifest's
+- [ ] **Licence present.** The plugin directory has its own `LICENSE` file, and the manifest's
       `license` matches it.
+- [ ] **Version bumped.** A change to a plugin that is already merged raises its `version`, so a
+      released version never gets different bytes. `release-entry.mjs --write` updates a release
+      in place when the version is unchanged, which is only right before first merge.
 - [ ] **Honest images.** Icons, covers and screenshots show the real plugin, with accurate alt
       text. No fake trust badges, ratings, download counts or Orca interface chrome that suggests
       endorsement.

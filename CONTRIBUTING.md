@@ -1,51 +1,61 @@
 # Adding or updating a plugin
 
-This repository is Orca's official plugin catalog. It does not hold plugin code. Each plugin
-lives in its author's own Git repository, and `orca-catalog.json` pins every release to an exact
-commit and a hash of its files. Orca refuses to install bytes that differ from what is listed.
+This repository holds Orca's official plugin catalog and the official plugins themselves.
+`orca-catalog.json` pins every release to an exact commit and a hash of the plugin's files. Orca
+refuses to install bytes that differ from what is listed.
+
+- **Official plugins** (published by `stablyai`) live in `plugins/<name>/`, one directory each.
+  Orca installs only that directory, so changing one plugin never changes another's hash.
+- **Community plugins** stay in their authors' own repositories. List them in the community
+  directory; don't copy their code here.
 
 The field reference is in Orca's
 [catalog reference](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-catalog.md)
 and the
 [plugin author guide](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-authoring.md).
 
-## 1. Build and commit the plugin in your own repository
+You need a checkout of [Orca](https://github.com/stablyai/orca) with dependencies installed
+(`pnpm install`, then `pnpm run build:packages`). Below, `ORCA_DIR` is its path. CI uses the Orca
+commit in `ORCA_REF` of `.github/workflows/validate-catalog.yml`.
+
+## 1. Change the plugin and commit it
 
 Use manifest format 2 (`"manifestVersion": 2`) and choose the lowest `execution` profile that
-fits: `data` for themes, syntaxes and translations; `instructional` for commands, shortcuts and
+fits: `data` for themes, syntaxes and translations; `declarative` for commands, shortcuts and
 recipes; `sandboxed-ui` for panels; `trusted-worker` only when you need code running in Orca.
-Include a licence. Commit and push. The catalog lists a commit, not a working copy.
+Keep a `LICENSE` file in the plugin directory and set `license` in the manifest to match.
 
-## 2. Run the validator on your plugin
+Bump `version` in `orca-plugin.json` for any change to a plugin that has already been merged:
+a released version is never rebuilt with different bytes.
 
-From a checkout of [Orca](https://github.com/stablyai/orca) with dependencies installed
-(`pnpm install`, then `pnpm run build:packages`):
+- **New official plugin:** create `plugins/<name>/` and add an entry to `orca-catalog.json` with
+  `id` (`<publisher>.<id>` from the manifest), `source`
+  (`{"kind": "git", "url": "https://github.com/stablyai/orca-plugins.git", "ref": "main", "path": "plugins/<name>"}`),
+  a `description`, `categories` and `"releases": []`.
+
+Commit the plugin change on its own. The release pins the last commit that changed the plugin's
+directory, and a commit cannot name itself.
+
+## 2. Write the release entry
 
 ```sh
-pnpm validate:plugin /path/to/your-plugin
+ORCA_DIR=/path/to/orca node scripts/release-entry.mjs --write
 ```
 
-It checks the manifest and prints a catalog release entry for your committed `HEAD`: version,
-full commit SHA, `contentHash`, execution profile, minimum Orca version, contribution types and
-summary, capabilities and file types. Fix any error before going further.
+For every directory in `plugins/`, this runs Orca's validator and writes the release it prints
+(version, commit, `contentHash`, execution profile, minimum Orca, contributions, capabilities,
+file types) into `orca-catalog.json`. A new version goes **first** in `releases`; an unchanged
+version is updated in place. Don't edit these fields by hand: CI recomputes them and fails when
+they are stale. Commit `orca-catalog.json`.
 
-## 3. Paste the printed release entry into `orca-catalog.json`
-
-Paste the entry as printed. Don't write or edit these fields by hand: CI fetches your commit and
-compares every field.
-
-- **New plugin:** add an entry with `id` (`<publisher>.<id>` from your manifest), `source`
-  (`kind: "git"`, an HTTPS or SSH `url`, and the `ref` you publish from), a `description`,
-  `categories`, and `releases: [<printed entry>]`.
-- **Update:** put the new release **first** in `releases` (newest first).
-- **Raising `engines.orca`:** keep the previous release listed beneath the new one. Older Orca
-  installs the first release it supports, so removing the old one leaves those users with
-  nothing to install.
+When a release raises `engines.orca`, keep the previous release listed beneath it. Older Orca
+installs the first release it supports, so removing the old one leaves those users with nothing
+to install.
 
 You may add display-only fields to a release: `changelog`, `updatedAt`, `license`, `homepage`,
-`themePreview`, `images`.
+`themePreview`, `images`. The script keeps them.
 
-## 4. Add a cover image (recommended)
+## 3. Add a cover image (recommended)
 
 Put images under `assets/<plugin id>/` and reference them from the release's `images`, with
 `path`, `alt` text, `sha256`, `width` and `height`. Limits:
@@ -59,19 +69,24 @@ Put images under `assets/<plugin id>/` and reference them from the release's `im
 Images must be static, show the real plugin, and not imitate Orca's trust badges. CI fails on any
 file under `assets/` that no release references.
 
-## 5. Regenerate `orca-marketplace.json` and check locally
+## 4. Check locally
 
-Orca builds released before catalog format 2 read only `orca-marketplace.json`. Don't edit it by
-hand. Generate it, and run the same checks CI runs:
+Orca builds released before catalog format 2 read only `orca-marketplace.json`. Don't edit it.
+Plugins in `plugins/` are left out of it, because those builds cannot install a subdirectory;
+older builds keep the original listings. Run the same checks CI runs:
 
 ```sh
-ORCA_DIR=/path/to/orca node scripts/check-catalog.mjs --write-legacy
+ORCA_DIR=/path/to/orca node scripts/release-entry.mjs
 ORCA_DIR=/path/to/orca node scripts/check-catalog.mjs
 ```
 
-## 6. Open a pull request
+If `check-catalog.mjs` says `orca-marketplace.json` is out of date, regenerate it with
+`--write-legacy` rather than editing it.
 
-CI validates the catalog with Orca's own validator and fetches every listed commit to recompute
-its `contentHash`. It also checks images and that `orca-marketplace.json` is up to date. An
+## 5. Open a pull request
+
+CI checks that every release in `plugins/` is current, validates the catalog with Orca's own
+validator and fetches every listed commit to recompute its `contentHash`. It also checks images
+and that `orca-marketplace.json` matches the export. An
 Orca maintainer then reviews the plugin against [REVIEW_POLICY.md](REVIEW_POLICY.md). Say in
 the PR what the plugin does and, for anything above `data`, why it needs that profile.

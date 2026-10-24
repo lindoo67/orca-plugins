@@ -66,11 +66,12 @@ for (const entry of catalog.plugins ?? []) {
         errors.push(`${at}: commit ${release.commit} could not be fetched exactly`)
         continue
       }
-      const manifest = readJson(path.join(dir, 'orca-plugin.json'))
+      const pluginDir = path.join(dir, ...(entry.source.path ?? '').split('/'))
+      const manifest = readJson(path.join(pluginDir, 'orca-plugin.json'))
       if (`${manifest.publisher}.${manifest.id}` !== entry.id) {
         errors.push(`${at}: manifest is ${manifest.publisher}.${manifest.id}, not ${entry.id}`)
       }
-      const result = validate(dir)
+      const result = validate(pluginDir)
       const marker = result.out.indexOf('Catalog release entry for HEAD')
       if (!result.ok || marker === -1) {
         errors.push(`${at}: plugin does not validate:\n${result.out.trim()}`)
@@ -156,7 +157,7 @@ for (const id of legacyOnly) {
   }
 }
 expected.plugins.push(...kept)
-if (process.argv.includes('--write-legacy')) {
+if (process.argv.includes('--write-legacy') && !isDeepStrictEqual(legacy, expected)) {
   writeFileSync(LEGACY, `${JSON.stringify(expected, null, 2)}\n`)
   console.log(`wrote orca-marketplace.json with ${expected.plugins.length} plugins`)
 } else if (!isDeepStrictEqual(legacy, expected)) {
