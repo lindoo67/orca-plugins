@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/midnight-theme",
   "engines": {
-    "orca": ">=1.4.240"
+    "orca": ">=1.4.241"
   },
   "contributes": {
     "themes": [
