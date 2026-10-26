@@ -123,6 +123,70 @@
       ]
     },
     {
+      "id": "stablyai.orca-oled-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/oled-theme"
+      },
+      "description": "A true-black dark theme and terminal theme for OLED displays.",
+      "categories": [
+        "themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "1c25d99a0aa9738372da0caf622f708064d7c541",
+          "contentHash": "e844b3420984e5ce72fb19e3ada0bfc7ae81a08e92e254b38d48bac1b0164653",
+          "execution": "data",
+          "minimumOrca": "1.4.241",
+          "types": [
+            "app-theme",
+            "terminal-theme"
+          ],
+          "name": "Orca OLED",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Orca OLED"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Orca OLED"
+            }
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/oled-theme/images/cover.png",
+              "alt": "Orca OLED: the worktree sidebar, an editor and a terminal on a pure black background",
+              "sha256": "1dfee579ddad8e3e1bc816eaf9397449a8589b35e7ccbf3a86ac792bb7b1b6c9",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/oled-theme/images/workspace.png",
+                "alt": "Orca OLED on the editor, terminal and file tree, separated by thin dark grey lines",
+                "sha256": "5755f9f013b2ec683fb9a865615ed3e85723fa5cd8d47b00e4a71d190bb32f27",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/oled-theme/images/palette.png",
+                "alt": "The Orca OLED terminal colours on true black",
+                "sha256": "7674c8f717f4cfc5dcd369b3217b4d4d7a86927e97a5e8d835af2769619a0d26",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "stablyai.orca-minimal-icons",
       "source": {
         "kind": "git",
