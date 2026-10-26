@@ -1,0 +1,47 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-oled-theme",
+  "publisher": "stablyai",
+  "name": "Orca OLED",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "A true-black dark theme and terminal theme for OLED displays.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/oled-theme",
+  "engines": {
+    "orca": ">=1.4.241"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "oled",
+        "label": "Orca OLED",
+        "path": "themes/oled.json"
+      }
+    ],
+    "terminalThemes": [
+      {
+        "id": "oled-terminal",
+        "label": "Orca OLED",
+        "path": "terminal/oled-terminal.json"
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "Orca OLED: the worktree sidebar, an editor and a terminal on a pure black background"
+  },
+  "screenshots": [
+    {
+      "path": "images/workspace.png",
+      "alt": "Orca OLED on the editor, terminal and file tree, separated by thin dark grey lines",
+      "caption": "Editor and terminal"
+    },
+    {
+      "path": "images/palette.png",
+      "alt": "The Orca OLED terminal colours on true black",
+      "caption": "Terminal palette"
+    }
+  ]
+}
