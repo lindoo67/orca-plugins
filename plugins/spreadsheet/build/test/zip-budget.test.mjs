@@ -1,7 +1,9 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import * as XLSX from 'xlsx'
+import { deflateRawSync } from 'node:zlib'
 import { checkOfficeZipBudget, OFFICE_ZIP_MAX_ENTRIES, OFFICE_ZIP_MAX_UNCOMPRESSED_BYTES } from '../src/zip-budget.js'
+import { inflateWorkbookZip } from '../src/zip-inflate.js'
 
 /** A zip holding only a central directory, with the given declared sizes. */
 function zipWithEntries(sizes, { comment = 0 } = {}) {
@@ -53,4 +55,45 @@ test('calls truncated or malformed directories corrupt', () => {
   const short = zipWithEntries([10])
   new DataView(short.buffer).setUint32(short.byteLength - 6, 1_000_000, true)
   assert.equal(checkOfficeZipBudget(short), 'corrupt')
+})
+
+/** One deflated entry whose central and local headers both declare a size of 0, as data descriptors do. */
+function zeroSizedBomb(inflatedBytes) {
+  const name = Buffer.from('xl/worksheets/sheet1.xml')
+  const data = deflateRawSync(Buffer.alloc(inflatedBytes, 0x41), { level: 9 })
+  const local = Buffer.alloc(30)
+  local.writeUInt32LE(0x04034b50, 0)
+  local.writeUInt16LE(8, 6)
+  local.writeUInt16LE(8, 8)
+  local.writeUInt16LE(name.length, 26)
+  const central = Buffer.alloc(46)
+  central.writeUInt32LE(0x02014b50, 0)
+  central.writeUInt16LE(8, 8)
+  central.writeUInt16LE(8, 10)
+  central.writeUInt32LE(data.length, 20)
+  central.writeUInt16LE(name.length, 28)
+  const directoryOffset = local.length + name.length + data.length
+  const end = Buffer.alloc(22)
+  end.writeUInt32LE(0x06054b50, 0)
+  end.writeUInt16LE(1, 8)
+  end.writeUInt16LE(1, 10)
+  end.writeUInt32LE(central.length + name.length, 12)
+  end.writeUInt32LE(directoryOffset, 16)
+  return new Uint8Array(Buffer.concat([local, name, data, central, name, end]))
+}
+
+test('a declared size of 0 passes the declared budget but not the inflated one', async () => {
+  const bomb = zeroSizedBomb(4 * 1024 * 1024)
+  assert.equal(checkOfficeZipBudget(bomb), 'ok')
+  assert.deepEqual(await inflateWorkbookZip(bomb, 1024 * 1024), { status: 'too-large' })
+  assert.equal((await inflateWorkbookZip(bomb, 8 * 1024 * 1024)).status, 'ok')
+})
+
+test('a real workbook round-trips through the stored copy SheetJS reads', async () => {
+  const wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['a', 1]]), 'One')
+  const zipped = new Uint8Array(XLSX.write(wb, { type: 'buffer', bookType: 'xlsx', compression: true }))
+  const inflated = await inflateWorkbookZip(zipped)
+  assert.equal(inflated.status, 'ok')
+  assert.deepEqual(XLSX.read(inflated.bytes, { type: 'array' }).SheetNames, ['One'])
 })

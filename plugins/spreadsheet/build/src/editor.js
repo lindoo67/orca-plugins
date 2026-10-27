@@ -86,12 +86,14 @@ function receive({ version, bytes }) {
   if (!model) showMessage(MESSAGES.opening)
   // Why: let "Opening" paint before the parse, which holds the main thread for large files.
   setTimeout(() => {
-    if (token === loadToken) load(bytes)
+    if (token === loadToken) void load(bytes, token)
   }, 0)
 }
 
-function load(bytes) {
-  const result = openWorkbook({ read }, bytes)
+async function load(bytes, token) {
+  const result = await openWorkbook({ read }, bytes)
+  // A newer document may have arrived while this one inflated.
+  if (token !== loadToken) return
   const previousName = currentSheet()?.name ?? null
   const previousIndex = activeIndex
   if (previousName !== null && !ui.gridHost.hidden) sheetStates.set(previousName, grid.state())

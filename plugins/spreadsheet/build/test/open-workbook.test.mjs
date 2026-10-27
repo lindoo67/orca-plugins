@@ -24,37 +24,39 @@ test('classifies password and encryption errors', () => {
   assert.equal(classifyReadError(undefined), 'corrupt')
 })
 
-test('opens every supported format', () => {
+test('opens every supported format', async () => {
   const wb = XLSX.utils.book_new()
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['a', 1]]), 'One')
   for (const bookType of ['xlsx', 'xlsm', 'xlsb', 'biff8', 'ods']) {
-    const result = openWorkbook(XLSX, new Uint8Array(XLSX.write(wb, { type: 'buffer', bookType })))
+    const result = await openWorkbook(XLSX, new Uint8Array(XLSX.write(wb, { type: 'buffer', bookType })))
     assert.equal(result.status, 'ok', bookType)
     assert.deepEqual(result.workbook.SheetNames, ['One'], bookType)
   }
 })
 
-test('refuses text that SheetJS would read as CSV', () => {
-  assert.deepEqual(openWorkbook(XLSX, text('hello, world')), { status: 'corrupt' })
+test('refuses text that SheetJS would read as CSV', async () => {
+  assert.deepEqual(await openWorkbook(XLSX, text('hello, world')), { status: 'corrupt' })
 })
 
-test('reports a truncated zip as corrupt and an encrypted package as encrypted', () => {
+test('reports a truncated zip as corrupt and an encrypted package as encrypted', async () => {
   const wb = XLSX.utils.book_new()
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['a']]), 'One')
   const zip = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' })
-  assert.deepEqual(openWorkbook(XLSX, new Uint8Array(zip.subarray(0, 200))), { status: 'corrupt' })
+  assert.deepEqual(await openWorkbook(XLSX, new Uint8Array(zip.subarray(0, 200))), { status: 'corrupt' })
 
   const cfb = XLSX.CFB.utils.cfb_new()
   XLSX.CFB.utils.cfb_add(cfb, '/EncryptionInfo', Buffer.from([4, 0, 4, 0, 0x40, 0, 0, 0, ...Buffer.from('<encryption/>')]))
   XLSX.CFB.utils.cfb_add(cfb, '/EncryptedPackage', Buffer.alloc(64))
-  assert.deepEqual(openWorkbook(XLSX, new Uint8Array(XLSX.CFB.write(cfb, { type: 'buffer' }))), { status: 'encrypted' })
+  assert.deepEqual(await openWorkbook(XLSX, new Uint8Array(XLSX.CFB.write(cfb, { type: 'buffer' }))), {
+    status: 'encrypted'
+  })
 })
 
-test('does not freeze or share options between reads', () => {
+test('does not freeze or share options between reads', async () => {
   const calls = []
   const fake = { read: (_, options) => (calls.push(options), { SheetNames: [], Sheets: {} }) }
-  openWorkbook(fake, text('<table></table>'))
-  openWorkbook(fake, text('<table></table>'))
+  await openWorkbook(fake, text('<table></table>'))
+  await openWorkbook(fake, text('<table></table>'))
   assert.notEqual(calls[0], calls[1])
   assert.equal(calls[0].dense, true)
   assert.equal(calls[0].cellFormula, true)

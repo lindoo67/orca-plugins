@@ -1,4 +1,5 @@
 import { checkOfficeZipBudget } from './zip-budget.js'
+import { inflateWorkbookZip } from './zip-inflate.js'
 
 // cellText keeps SheetJS's `.w`, so number and date formats read as Excel shows them. cellStyles is
 // on only because SheetJS reads column widths and row heights under it; fills and fonts go unused.
@@ -44,14 +45,18 @@ export function classifyReadError(error) {
 }
 
 /**
- * @returns {{ status: 'ok', workbook: object } | { status: 'encrypted' | 'corrupt' | 'too-large' }}
+ * @returns {Promise<{ status: 'ok', workbook: object } | { status: 'encrypted' | 'corrupt' | 'too-large' }>}
  */
-export function openWorkbook(XLSX, bytes) {
+export async function openWorkbook(XLSX, bytes) {
   const container = sniffContainer(bytes)
   if (container === 'unknown') return { status: 'corrupt' }
   if (container === 'zip') {
     const budget = checkOfficeZipBudget(bytes)
     if (budget !== 'ok') return { status: budget }
+    // Why: declared sizes can lie, and SheetJS trusts them; only counted output bytes cap a bomb.
+    const inflated = await inflateWorkbookZip(bytes)
+    if (inflated.status !== 'ok') return { status: inflated.status }
+    bytes = inflated.bytes
   }
   let workbook
   try {
