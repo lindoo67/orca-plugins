@@ -350,7 +350,7 @@
       ]
     },
     {
-      "id": "stablyai.excalidraw",
+      "id": "stablyai.orca-excalidraw",
       "source": {
         "kind": "git",
         "url": "https://github.com/stablyai/orca-plugins.git",
@@ -365,8 +365,8 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "7e2c0878596f67639af7be6ff82db33bc0507054",
-          "contentHash": "cac9e4ef73cac4ee25387ca381edb33da7eb306e1cd2389e758702b467474b01",
+          "commit": "035b51c7980790c8f6e17344b8be74dcdd0712fb",
+          "contentHash": "2a10ec7ba3eef87cb7e45bde65213ca03cd5f1bdb63d706a35787568b512900f",
           "execution": "sandboxed-ui",
           "minimumOrca": "1.4.242",
           "name": "Excalidraw",
@@ -401,6 +401,70 @@
                 "path": "plugins/excalidraw/images/dark.png",
                 "alt": "The same sketch in Excalidraw's dark theme",
                 "sha256": "5db71c99c28336bf8b942de84a8327bf81d23b33d4eff7788c6efed0ebc463c9",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-spreadsheet",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/spreadsheet"
+      },
+      "description": "View Excel and OpenDocument spreadsheets in Orca's editor: every sheet, formulas and formatted values, even for very large files.",
+      "categories": [
+        "editors",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "55855a77fc5adc21866dd1bf2945d38bd4243264",
+          "contentHash": "8edb64d3972421b0e874df34229803f0e06fc7a894c1c4747b6059953519fd17",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.242",
+          "name": "Spreadsheet Viewer",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "Spreadsheet",
+              "detail": ".xlsx, .xlsm, .xlsb, .xls, .ods"
+            }
+          ],
+          "fileTypes": [
+            "xlsx",
+            "xlsm",
+            "xlsb",
+            "xls",
+            "ods"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/spreadsheet/images/cover.png",
+              "alt": "A quarterly summary workbook in Spreadsheet Viewer: formatted currency, percentages and dates, a SUM formula above the grid, and sheet tabs",
+              "sha256": "bd07b5e0fa7c6646461713ad6fbfacf8b5dcd168f8414aaeaeb23b59f41552e8",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/spreadsheet/images/sheets.png",
+                "alt": "A 50,000-row data sheet with a block of cells selected and its count, sum and average in the status bar",
+                "sha256": "aaf8bc8a37bc461e9949bb2bd8429e62e882c3d1577981569323b75a05e1000d",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/spreadsheet/images/dark.png",
+                "alt": "The same summary workbook in Orca's dark theme, with merged title and notes cells and a #DIV/0! error in red",
+                "sha256": "f4040e07aa6a41d31b865fabb1fbae1d2623e9e8c9b1c6222f3a1018c76bc3b0",
                 "width": 1600,
                 "height": 1000
               }
