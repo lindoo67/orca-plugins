@@ -1,0 +1,42 @@
+{
+  "manifestVersion": 2,
+  "id": "excalidraw",
+  "publisher": "stablyai",
+  "name": "Excalidraw",
+  "version": "1.0.0",
+  "execution": "sandboxed-ui",
+  "description": "Draw and edit .excalidraw diagrams right in Orca's editor.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/excalidraw",
+  "engines": {
+    "orca": ">=1.4.242"
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "id": "excalidraw",
+        "title": "Excalidraw",
+        "fileTypes": ["excalidraw", "excalidraw.json"],
+        "entry": "editor/index.html",
+        "priority": "default"
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "A hand-drawn architecture sketch of a web app, API gateway, services and database open in the Excalidraw editor"
+  },
+  "screenshots": [
+    {
+      "path": "images/editing.png",
+      "alt": "A box in the sketch selected, with Excalidraw's stroke, fill and font options beside it",
+      "caption": "Editing a diagram"
+    },
+    {
+      "path": "images/dark.png",
+      "alt": "The same sketch in Excalidraw's dark theme",
+      "caption": "Follows Orca's dark theme"
+    }
+  ]
+}
