@@ -14,6 +14,21 @@ Plugins.
 | `scripts/release-entry.mjs` | Prints and checks the catalog release of every plugin in `plugins/`. |
 | `scripts/check-catalog.mjs` | Validates the catalog, every release, images and `orca-marketplace.json`. |
 
+## Official plugins
+
+| Plugin | Directory | What it adds |
+| --- | --- | --- |
+| Orca Midnight | `plugins/midnight-theme` | A dark app theme |
+| Nord for Orca | `plugins/nord-theme` | A cool, low-contrast app theme |
+| Orca OLED | `plugins/oled-theme` | A true-black app theme and terminal theme |
+| Dusk & Ember Themes | `plugins/dusk-ember` | A dark and a light app theme, with matching terminal themes |
+| Orca Minimal Icons | `plugins/minimal-icons` | A monochrome file icon theme |
+| Solarized Terminal | `plugins/solarized-terminal` | Solarized Dark terminal colors |
+| Gleam Language | `plugins/gleam` | Highlighting for `.gleam` files |
+| Prisma Syntax | `plugins/prisma` | Prisma-aware highlighting for `.prisma` files |
+| Excalidraw | `plugins/excalidraw` | An editor for `.excalidraw` diagrams |
+| Multipass VM Recipes | `plugins/multipass-recipes` | Disposable Multipass VM workspaces |
+
 Community plugins live in their authors' own repositories. The catalog can list them, but their
 code is not copied here.
 

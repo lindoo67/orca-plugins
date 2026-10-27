@@ -408,6 +408,191 @@
           }
         }
       ]
+    },
+    {
+      "id": "stablyai.orca-gleam",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/gleam"
+      },
+      "description": "Syntax highlighting, comment toggling and bracket matching for Gleam files.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "fa990697ed6c5b6cc15d97f39ba5136410b3ceda",
+          "contentHash": "9c4b26cf40bf873c9cca3fbe6d6ac46d03197f47dc399643dcd7161617d6d8ff",
+          "execution": "data",
+          "minimumOrca": "1.4.242",
+          "types": [
+            "syntax"
+          ],
+          "name": "Gleam Language",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "Gleam",
+              "detail": ".gleam"
+            }
+          ],
+          "fileTypes": [
+            "gleam"
+          ],
+          "license": "MIT AND Apache-2.0",
+          "images": {
+            "cover": {
+              "path": "plugins/gleam/images/cover.png",
+              "alt": "A Gleam router module with highlighted keywords, types and strings next to the Gleam star",
+              "sha256": "5406f139714066f3161c60a0ae6d8beffb4bc8d9311d969b9f9cbd9ba21a0ba5",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/gleam/images/editor.png",
+                "alt": "A highlighted Gleam module in the editor with gleam test output in the terminal below",
+                "sha256": "1c2f298f70e0b74886ee09f1a131ddc52fffc08799687d6d20ff1cb08ea4e3f6",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-prisma",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/prisma"
+      },
+      "description": "Prisma-aware highlighting for .prisma schema files: block keywords, model names, scalar types, attributes and built-in functions.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "fa990697ed6c5b6cc15d97f39ba5136410b3ceda",
+          "contentHash": "cda0aabd26864cf78a87458f1eb50f8ff175621acfaa216181b02de8d9534c68",
+          "execution": "data",
+          "minimumOrca": "1.4.242",
+          "types": [
+            "syntax"
+          ],
+          "name": "Prisma Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "Prisma",
+              "detail": ".prisma"
+            }
+          ],
+          "fileTypes": [
+            "prisma"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/prisma/images/cover.png",
+              "alt": "A Prisma model and enum with highlighted keywords, scalar types, attributes and functions",
+              "sha256": "c0c29963ab192ce02809731affec4768cc641eef8d3b0ccf97aa3f86b0f63529",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/prisma/images/editor.png",
+                "alt": "A Prisma schema with generator, datasource and model blocks highlighted in the editor",
+                "sha256": "eb88face5c23510871dc8861870bc628540978aaf3d83b0fcd88d39058e6b469",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-dusk-ember",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/dusk-ember"
+      },
+      "description": "A violet dark theme and a warm light theme, with matching terminal colors.",
+      "categories": [
+        "themes",
+        "terminal-themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "fa990697ed6c5b6cc15d97f39ba5136410b3ceda",
+          "contentHash": "a935654b3888922a4fd4ce5fe7f5af11ad206f13d5497e01da1fdc58e01dc323",
+          "execution": "data",
+          "minimumOrca": "1.4.242",
+          "types": [
+            "app-theme",
+            "terminal-theme"
+          ],
+          "name": "Dusk & Ember Themes",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Dusk"
+            },
+            {
+              "kind": "themes",
+              "name": "Ember"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Dusk"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Ember"
+            }
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/dusk-ember/images/cover.png",
+              "alt": "The violet Dusk theme and the warm, light Ember theme side by side on a Gleam file",
+              "sha256": "a8ee57d31adf91c8c1600e2d2f0e2d791b1a685717f7210f7a43b17cae7f604c",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/dusk-ember/images/dusk.png",
+                "alt": "The Dusk theme on the editor and file tree, with the Dusk terminal colors below",
+                "sha256": "b3c93ee147fe9c1a9325e1936a95ff940fdec3c20aae427dd57e2c276ca0826c",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/dusk-ember/images/ember.png",
+                "alt": "The Ember theme on the same file, with the Ember terminal colors below",
+                "sha256": "18d3add6875c496bee26679bedeb35cf6ed3e95e84bd0e103be7b62a62e2dd59",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
     }
   ]
 }
