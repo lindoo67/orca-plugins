@@ -348,6 +348,66 @@
           }
         }
       ]
+    },
+    {
+      "id": "stablyai.excalidraw",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/excalidraw"
+      },
+      "description": "Draw and edit .excalidraw diagrams right in Orca's editor.",
+      "categories": [
+        "editors",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "7e2c0878596f67639af7be6ff82db33bc0507054",
+          "contentHash": "cac9e4ef73cac4ee25387ca381edb33da7eb306e1cd2389e758702b467474b01",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.242",
+          "name": "Excalidraw",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "Excalidraw",
+              "detail": ".excalidraw, .excalidraw.json"
+            }
+          ],
+          "fileTypes": [
+            "excalidraw"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/excalidraw/images/cover.png",
+              "alt": "A hand-drawn architecture sketch of a web app, API gateway, services and database open in the Excalidraw editor",
+              "sha256": "85cc3391dbb7569b271d8367da9232b9806e0ea0bf183112e34fb304260f327d",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/excalidraw/images/editing.png",
+                "alt": "A box in the sketch selected, with Excalidraw's stroke, fill and font options beside it",
+                "sha256": "cf14ff5105a08d396765816de52be2eba5a0076af20e72f667a29ffcc2521152",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/excalidraw/images/dark.png",
+                "alt": "The same sketch in Excalidraw's dark theme",
+                "sha256": "5db71c99c28336bf8b942de84a8327bf81d23b33d4eff7788c6efed0ebc463c9",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
     }
   ]
 }
