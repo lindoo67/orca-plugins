@@ -8,7 +8,7 @@ Plugins.
 | --- | --- |
 | `plugins/<name>/` | Official plugins, one directory each, with its own manifest and licence. |
 | `orca-catalog.json` | Read by Orca builds that support catalog format 2. Each release is pinned to an exact commit and file hash. |
-| `orca-marketplace.json` | Read by older Orca builds. Frozen: it keeps the original listings, which install from each plugin's old repository. |
+| `orca-marketplace.json` | Read by older Orca builds. Frozen: it keeps the original listings, which install from each plugin's old repository, including plugins later dropped from `orca-catalog.json` (such as Orca Navigation Shortcuts). |
 | `legacy-v1-only.json` | The ids in `orca-marketplace.json` that the export does not produce. |
 | `assets/` | Listing images referenced by releases. |
 | `scripts/release-entry.mjs` | Prints and checks the catalog release of every plugin in `plugins/`. |
