@@ -25,5 +25,215 @@
     "--sidebar-accent-foreground": "#f4f5f8",
     "--sidebar-border": "#303642",
     "--sidebar-ring": "#9ca7bd"
-  }
+  },
+  "tokenColors": [
+    {
+      "name": "Comments",
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#7f879a",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Keywords",
+      "scope": [
+        "keyword",
+        "storage.type",
+        "storage.modifier",
+        "variable.language"
+      ],
+      "settings": {
+        "foreground": "#b9a7f8"
+      }
+    },
+    {
+      "name": "Operators",
+      "scope": [
+        "keyword.operator"
+      ],
+      "settings": {
+        "foreground": "#9ca7bd"
+      }
+    },
+    {
+      "name": "Strings",
+      "scope": [
+        "string",
+        "punctuation.definition.string",
+        "markup.inline.raw",
+        "markup.raw"
+      ],
+      "settings": {
+        "foreground": "#a6d9a0"
+      }
+    },
+    {
+      "name": "Escapes and regular expressions",
+      "scope": [
+        "constant.character.escape",
+        "string.regexp"
+      ],
+      "settings": {
+        "foreground": "#f0c27b"
+      }
+    },
+    {
+      "name": "Numbers",
+      "scope": [
+        "constant.numeric"
+      ],
+      "settings": {
+        "foreground": "#f2a97f"
+      }
+    },
+    {
+      "name": "Constants",
+      "scope": [
+        "constant",
+        "support.constant",
+        "variable.other.constant"
+      ],
+      "settings": {
+        "foreground": "#f2a97f"
+      }
+    },
+    {
+      "name": "Functions",
+      "scope": [
+        "entity.name.function",
+        "support.function",
+        "meta.function-call"
+      ],
+      "settings": {
+        "foreground": "#86b6ff"
+      }
+    },
+    {
+      "name": "Types",
+      "scope": [
+        "entity.name.type",
+        "entity.name.class",
+        "entity.name.namespace",
+        "entity.other.inherited-class",
+        "support.type",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "#76d2d0"
+      }
+    },
+    {
+      "name": "Variables",
+      "scope": [
+        "variable",
+        "variable.parameter",
+        "support.variable"
+      ],
+      "settings": {
+        "foreground": "#e8eaf0"
+      }
+    },
+    {
+      "name": "Punctuation",
+      "scope": [
+        "punctuation",
+        "meta.brace"
+      ],
+      "settings": {
+        "foreground": "#a7adbb"
+      }
+    },
+    {
+      "name": "Tags",
+      "scope": [
+        "entity.name.tag"
+      ],
+      "settings": {
+        "foreground": "#b9a7f8"
+      }
+    },
+    {
+      "name": "Attributes and keys",
+      "scope": [
+        "entity.other.attribute-name",
+        "support.type.property-name"
+      ],
+      "settings": {
+        "foreground": "#76d2d0"
+      }
+    },
+    {
+      "name": "Decorators",
+      "scope": [
+        "meta.decorator",
+        "entity.name.function.decorator"
+      ],
+      "settings": {
+        "foreground": "#f0c27b"
+      }
+    },
+    {
+      "name": "Headings",
+      "scope": [
+        "markup.heading",
+        "entity.name.section"
+      ],
+      "settings": {
+        "foreground": "#86b6ff",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Bold",
+      "scope": [
+        "markup.bold"
+      ],
+      "settings": {
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Italic",
+      "scope": [
+        "markup.italic"
+      ],
+      "settings": {
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Links",
+      "scope": [
+        "markup.underline.link",
+        "string.other.link"
+      ],
+      "settings": {
+        "foreground": "#76d2d0",
+        "fontStyle": "underline"
+      }
+    },
+    {
+      "name": "Quotes",
+      "scope": [
+        "markup.quote"
+      ],
+      "settings": {
+        "foreground": "#7f879a",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Invalid",
+      "scope": [
+        "invalid"
+      ],
+      "settings": {
+        "foreground": "#ff7b7b"
+      }
+    }
+  ]
 }
