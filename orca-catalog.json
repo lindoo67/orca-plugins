@@ -19,6 +19,20 @@
       ],
       "releases": [
         {
+          "version": "2.1.0",
+          "commit": "b411f469fb8e24d2520553aa82d14cde9f26de4f",
+          "contentHash": "8a006de475910004baa31306c3a1d3ba3b68344f49e338f50f10ec89cf53b743",
+          "execution": "data",
+          "minimumOrca": "1.4.242",
+          "name": "Orca Midnight",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Orca Midnight"
+            }
+          ]
+        },
+        {
           "version": "2.0.0",
           "commit": "c665d5b3a5052163da461da5bab17f03caf31717",
           "contentHash": "291c969a22fb6af7e0f624e5e24c6b22d173969b2dc3aa31d0699dcee4fa149c",
@@ -78,6 +92,20 @@
       ],
       "releases": [
         {
+          "version": "2.1.0",
+          "commit": "b411f469fb8e24d2520553aa82d14cde9f26de4f",
+          "contentHash": "b59cc1751b443fdf25f479c25f788d2ea4ee2606ce150240a61c827770532295",
+          "execution": "data",
+          "minimumOrca": "1.4.242",
+          "name": "Nord for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Nord"
+            }
+          ]
+        },
+        {
           "version": "2.0.0",
           "commit": "c665d5b3a5052163da461da5bab17f03caf31717",
           "contentHash": "0717b4ff4a69e8f5db38705031474243e1bfc8230600f1182ef5cec37bc24b9a",
@@ -136,6 +164,24 @@
         "official"
       ],
       "releases": [
+        {
+          "version": "1.1.0",
+          "commit": "b411f469fb8e24d2520553aa82d14cde9f26de4f",
+          "contentHash": "1ca72351f4f3461d821a048f241172283eac7aa3250820baaaf35cff5aa82cae",
+          "execution": "data",
+          "minimumOrca": "1.4.242",
+          "name": "Orca OLED",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Orca OLED"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Orca OLED"
+            }
+          ]
+        },
         {
           "version": "1.0.0",
           "commit": "c665d5b3a5052163da461da5bab17f03caf31717",
@@ -600,6 +646,32 @@
         "official"
       ],
       "releases": [
+        {
+          "version": "1.1.0",
+          "commit": "b411f469fb8e24d2520553aa82d14cde9f26de4f",
+          "contentHash": "e68cde3eac63130d3b32ce26d06e2dd0d760a4ef2daa646d19bef9c58fd88247",
+          "execution": "data",
+          "minimumOrca": "1.4.242",
+          "name": "Dusk & Ember Themes",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Dusk"
+            },
+            {
+              "kind": "themes",
+              "name": "Ember"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Dusk"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Ember"
+            }
+          ]
+        },
         {
           "version": "1.0.0",
           "commit": "fa990697ed6c5b6cc15d97f39ba5136410b3ceda",
