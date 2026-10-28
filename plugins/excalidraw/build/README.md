@@ -1,8 +1,8 @@
 # Building the Excalidraw editor
 
 `../editor/index.html` is generated. Orca loads it as one document inside a sandboxed frame whose
-CSP allows only inline scripts and styles and `data:` fonts and images, with no network, so the
-build inlines everything: the bundle, its CSS, and the Latin fonts as `data:` URLs.
+CSP allows only inline scripts and styles and `data:` fonts and images, so the build inlines
+everything: the bundle, its CSS, and the Latin fonts as `data:` URLs.
 
 ```sh
 npm ci --ignore-scripts
@@ -18,14 +18,12 @@ What the build leaves out, and why:
 - Font subsetting (WebAssembly, which the CSP refuses): image exports embed whole fonts.
 - The CJK font Xiaolai (12 MB) and Liberation Sans: those fall back to system fonts.
 
-## Protocol
+## Talking to Orca
 
-The frame talks to its editor tab with `postMessage`; Orca keeps the buffer, dirty state and saving.
+The editor uses the `window.orca` API Orca injects into the frame; Orca keeps the buffer, dirty
+state and saving.
 
-| Direction | Message | Meaning |
-| --- | --- | --- |
-| frame → Orca | `{ type: 'orca-editor-ready' }` | Listening; send the document. |
-| Orca → frame | `{ type: 'orca-editor-document', text, readOnly }` | The file's full text, on open and on every outside change. |
-| frame → Orca | `{ type: 'orca-editor-edit', text }` | The whole new text after a user change (debounced 250 ms). |
-| Orca → frame | `{ type: 'orca-editor-flush', requestId }` | About to save: post any pending edit now. |
-| frame → Orca | `{ type: 'orca-editor-flushed', requestId }` | Done flushing. |
+- `orca.document.onDidChange(doc)`: the file's text, on open and on every outside change.
+- `orca.document.applyEdit({ baseVersion, content: { kind: 'text', text } })`: the whole new
+  text after a user change (debounced 250 ms). On a refusal the next change resends the scene.
+- `orca.on('editor.flush', …)`: about to save; the pending edit is sent and Orca waits for it.

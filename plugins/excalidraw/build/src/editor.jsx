@@ -22,7 +22,7 @@ const EDIT_DEBOUNCE_MS = 250
 
 const UI_OPTIONS = {
   canvasActions: {
-    // Why: the frame has no file system, network or downloads; Orca saves the document itself.
+    // Why: the frame has no file system or downloads; Orca saves the document itself.
     loadScene: false,
     saveToActiveFile: false,
     export: false,
@@ -32,10 +32,6 @@ const UI_OPTIONS = {
     clearCanvas: true
   },
   tools: { image: true }
-}
-
-function post(message) {
-  window.parent.postMessage(message, '*')
 }
 
 function readTheme() {
@@ -110,11 +106,14 @@ function App() {
       }
       s.baseline = next
       s.lastPosted = next
-      post({
-        type: 'orca-editor-edit',
-        baseVersion: s.documentVersion,
-        content: { kind: 'text', text: next }
-      })
+      return window.orca.document
+        .applyEdit({ baseVersion: s.documentVersion, content: { kind: 'text', text: next } })
+        .catch(() => {
+          // Orca kept its text: forget what this canvas last sent, so the next change sends the
+          // whole scene again (a conflict also brings the newer document, which reloads the canvas).
+          s.baseline = ''
+          s.lastPosted = null
+        })
     }
 
     s.onChange = (elements, appState, files) => {
@@ -191,36 +190,18 @@ function App() {
       })
     }
 
-    const onMessage = (event) => {
-      if (event.source !== window.parent) {
-        return
-      }
-      const data = event.data
-      if (!data || typeof data !== 'object') {
-        return
-      }
-      if (
-        data.type === 'orca-editor-document' &&
-        Number.isSafeInteger(data.version) &&
-        data.content?.kind === 'text' &&
-        typeof data.content.text === 'string'
-      ) {
-        s.documentVersion = data.version
-        loadDocument(data.content.text, data.readOnly === true)
-      } else if (data.type === 'orca-editor-edit-rejected') {
-        // Orca kept its text: forget what this canvas last posted, so the next change posts the
-        // whole scene again (a conflict also brings the newer document, which reloads the canvas).
-        s.baseline = ''
-        s.lastPosted = null
-      } else if (data.type === 'orca-editor-flush' && Number.isSafeInteger(data.requestId)) {
-        flush()
-        post({ type: 'orca-editor-flushed', requestId: data.requestId })
+    const onDocument = (doc) => {
+      if (Number.isSafeInteger(doc.version) && doc.content?.kind === 'text') {
+        s.documentVersion = doc.version
+        loadDocument(doc.content.text, doc.readOnly === true)
       }
     }
-
-    window.addEventListener('message', onMessage)
-    post({ type: 'orca-editor-ready' })
-    return () => window.removeEventListener('message', onMessage)
+    // Orca waits for the returned promise before it saves.
+    const subscriptions = [
+      window.orca.document.onDidChange(onDocument),
+      window.orca.on('editor.flush', () => flush())
+    ]
+    return () => subscriptions.forEach((subscription) => subscription.dispose())
   }, [])
 
   if (view.status === 'waiting') {

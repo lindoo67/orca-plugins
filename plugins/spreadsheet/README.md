@@ -50,7 +50,7 @@ as they are displayed, not as raw numbers.
 - Old `.xls` files that use a non-Western code page (BIFF5 and earlier) may show garbled text;
   `.xls` files from Excel 97 and later are fine.
 
-The viewer runs in Orca's sandboxed editor frame, with no network access.
+The viewer runs in Orca's sandboxed editor frame.
 
 ## Licence
 

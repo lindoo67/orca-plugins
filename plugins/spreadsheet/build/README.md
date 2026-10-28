@@ -1,7 +1,7 @@
 # Building Spreadsheet Viewer
 
 `../editor/index.html` is generated. Orca loads it as one document inside a sandboxed frame whose
-CSP allows only inline scripts and styles, with no network and no workers, so the build inlines
+CSP allows only inline scripts and styles and no workers, so the build inlines
 everything into that one file. There is no framework: the grid is plain DOM, and the only
 dependency in the bundle is SheetJS.
 
@@ -48,7 +48,7 @@ What the build leaves out, and why:
 
 | File | What it holds |
 | --- | --- |
-| `src/editor.js` | Entry: messages, workbook state, sheet tabs, detail and status bars, copy |
+| `src/editor.js` | Entry: `window.orca` documents, workbook state, sheet tabs, detail and status bars, copy |
 | `src/grid-view.js` | The virtualized grid: rendering, scrolling, keyboard and pointer input |
 | `src/open-workbook.js` | Container sniffing, the zip check, SheetJS options, error classification |
 | `src/zip-budget.js` | The zip-bomb guard |
@@ -57,7 +57,7 @@ What the build leaves out, and why:
 | `src/merge-index.js` | Merged-cell lookup by cell and by window |
 | `src/range-copy.js` | Selection to TSV and HTML, and the status bar's count/sum/average |
 | `src/cell-display.js`, `src/address.js` | Cell text, kinds, formulas; A1 addresses |
-| `src/document-message.js` | Validation of Orca's document message |
+| `src/document-message.js` | Validation of the document `window.orca` delivers |
 | `scripts/make-fixtures.mjs` | Writes the test workbooks to `/private/tmp/xlsx-fixtures` (or `$SPREADSHEET_FIXTURES`) |
 | `test/harness.mjs` | An Orca-like host: the same CSP, tokens and sandboxed `srcdoc` frame, in headless Chromium |
 

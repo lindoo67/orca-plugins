@@ -212,9 +212,9 @@ describe('multi-sheet workbook', () => {
   test('ignores messages that are not binary spreadsheet documents', async () => {
     await page.evaluate(() => {
       const version = window.__version + 1
-      window.__post({ type: 'orca-editor-document', version, readOnly: true, content: { kind: 'text', text: 'a,b' } })
-      window.__post({ type: 'orca-editor-document', version, readOnly: true, content: { kind: 'bytes', bytes: new Uint8Array(4) } })
-      window.__post({ type: 'orca-editor-document', readOnly: true, content: { kind: 'bytes', bytes: new ArrayBuffer(4) } })
+      window.__post({ version, readOnly: true, content: { kind: 'text', text: 'a,b' } })
+      window.__post({ version, readOnly: true, content: { kind: 'bytes', bytes: new Uint8Array(4) } })
+      window.__post({ readOnly: true, content: { kind: 'bytes', bytes: new ArrayBuffer(4) } })
       window.__post({ type: 'something-else' })
       window.__post(null)
     })
@@ -232,8 +232,8 @@ describe('multi-sheet workbook', () => {
   })
 
   test('never posts edits and logs no errors', async () => {
-    const posted = await page.evaluate(() => window.__messages.map((message) => message?.type))
-    assert.deepEqual([...new Set(posted)], ['orca-editor-ready'])
+    const posted = await page.evaluate(() => window.__messages.map((message) => message?.kind + ':' + message?.event))
+    assert.deepEqual([...new Set(posted)], ['evt:ready'])
     assert.deepEqual(errors.map(String), [])
   })
 })

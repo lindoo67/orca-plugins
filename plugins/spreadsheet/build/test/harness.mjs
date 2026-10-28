@@ -1,5 +1,6 @@
-// A stand-in for Orca's custom editor host: the same shell (CSP, design tokens, html class) in a
-// sandboxed srcdoc frame, posting the file's bytes once the editor is ready. Headless Chromium only.
+// A stand-in for Orca's custom editor host: the same shell (CSP, design tokens, html class, and the
+// part of `window.orca` this viewer uses) in a sandboxed srcdoc frame, posting the file's bytes once
+// the editor is ready. Headless Chromium only.
 import { chromium } from 'playwright-core'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
@@ -30,16 +31,31 @@ const TOKENS = {
   }
 }
 
+// The document half of Orca's frame API; the real one is in Orca's plugin-panel-shell.ts.
+const ORCA_SHIM = `(function () {
+  var listeners = []
+  var post = function (message) { window.parent.postMessage(Object.assign({ orca: 1 }, message), '*') }
+  window.orca = Object.freeze({
+    document: Object.freeze({
+      onDidChange: function (fn) { listeners.push(fn); return { dispose: function () {} } }
+    })
+  })
+  window.addEventListener('message', function (event) {
+    var m = event.data
+    if (event.source !== window.parent || !m || m.orca !== 1 || m.kind !== 'evt') return
+    if (m.event === 'ping') post({ kind: 'evt', event: 'pong', payload: m.payload })
+    if (m.event === 'editor.document') listeners.forEach(function (fn) { fn(m.payload) })
+  })
+  post({ kind: 'evt', event: 'ready', payload: { protocol: 1 } })
+})()`
+
 export function frameDocument(theme = 'light', html = EDITOR_HTML) {
   const tokens = Object.entries(TOKENS[theme]).map(([name, value]) => `--orca-${name}:${value};`).join('')
   return (
     `<!doctype html>\n<html class="${theme}">\n<head>\n<meta charset="utf-8">\n` +
     `<meta http-equiv="Content-Security-Policy" content="${CSP}">\n` +
     `<style id="orca-design-tokens">:root{${tokens}}</style>\n` +
-    `<script>window.addEventListener('message', function (event) {\n` +
-    `  if (event.source === window.parent && event.data && event.data.type === 'orca-panel-ping')\n` +
-    `    window.parent.postMessage({ type: 'orca-panel-pong', pingId: event.data.pingId }, '*')\n` +
-    `})</script>\n</head>\n${html}`
+    `<script>${ORCA_SHIM}</script>\n</head>\n${html}`
   )
 }
 
@@ -50,9 +66,12 @@ window.__readyCount = 0
 window.addEventListener('message', (event) => {
   if (event.source !== document.getElementById('editor').contentWindow) return
   window.__messages.push(event.data)
-  if (event.data && event.data.type === 'orca-editor-ready') window.__readyCount++
+  if (event.data && event.data.event === 'ready') window.__readyCount++
 })
-window.__post = (message) => document.getElementById('editor').contentWindow.postMessage(message, '*')
+window.__post = (payload) => document.getElementById('editor').contentWindow.postMessage(
+  { orca: 1, kind: 'evt', event: 'editor.document', payload },
+  '*'
+)
 window.__version = 0
 window.__postBytes = (base64, fileType, version = ++window.__version) => {
   const binary = atob(base64)
@@ -60,7 +79,7 @@ window.__postBytes = (base64, fileType, version = ++window.__version) => {
   for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i)
   const sentAt = Date.now()
   document.getElementById('editor').contentWindow.postMessage(
-    { type: 'orca-editor-document', version, readOnly: true, fileType, content: { kind: 'bytes', bytes: bytes.buffer } },
+    { orca: 1, kind: 'evt', event: 'editor.document', payload: { version, readOnly: true, fileType, content: { kind: 'bytes', bytes: bytes.buffer } } },
     '*',
     [bytes.buffer]
   )
@@ -73,7 +92,7 @@ export async function launch() {
 }
 
 /**
- * Opens a fresh host page with the editor frame and waits for `orca-editor-ready`.
+ * Opens a fresh host page with the editor frame and waits for `ready`.
  * @returns {Promise<{ page: import('playwright-core').Page, frame: import('playwright-core').Frame }>}
  */
 export async function openEditor(browser, { theme = 'light', width = 1280, height = 800 } = {}) {

@@ -4,7 +4,7 @@
 import { read } from 'xlsx'
 import { rangeAddress } from './address.js'
 import { cellFormula, cellRawValue, cellText } from './cell-display.js'
-import { parseDocumentMessage } from './document-message.js'
+import { parseDocument } from './document-message.js'
 import { createGridView } from './grid-view.js'
 import { MESSAGES } from './messages.js'
 import { openWorkbook } from './open-workbook.js'
@@ -259,10 +259,8 @@ function onTabsKeyDown(event) {
 
 ui.tabs.addEventListener('keydown', onTabsKeyDown)
 document.addEventListener('copy', onCopy)
-window.addEventListener('message', (event) => {
-  if (event.source !== window.parent) return
-  const message = parseDocumentMessage(event.data)
+showMessage(MESSAGES.opening)
+window.orca.document.onDidChange((doc) => {
+  const message = parseDocument(doc)
   if (message) receive(message)
 })
-showMessage(MESSAGES.opening)
-window.parent.postMessage({ type: 'orca-editor-ready' }, '*')
