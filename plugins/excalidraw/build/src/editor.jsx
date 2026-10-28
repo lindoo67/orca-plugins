@@ -80,6 +80,8 @@ function App() {
     // scene onChange reports after a load, not the raw text; otherwise opening a file dirties it.
     awaitingBaseline: false,
     baseline: null,
+    // The Orca document version the canvas shows; every edit names it so Orca can refuse stale ones.
+    documentVersion: null,
     version: null,
     latest: null,
     lastPosted: null,
@@ -99,7 +101,7 @@ function App() {
     const flush = () => {
       window.clearTimeout(s.timer)
       s.timer = undefined
-      if (s.readOnly || s.baseline === null || s.latest === null) {
+      if (s.readOnly || s.baseline === null || s.latest === null || s.documentVersion === null) {
         return
       }
       const next = serialize(s.latest)
@@ -108,7 +110,11 @@ function App() {
       }
       s.baseline = next
       s.lastPosted = next
-      post({ type: 'orca-editor-edit', text: next })
+      post({
+        type: 'orca-editor-edit',
+        baseVersion: s.documentVersion,
+        content: { kind: 'text', text: next }
+      })
     }
 
     s.onChange = (elements, appState, files) => {
@@ -193,8 +199,19 @@ function App() {
       if (!data || typeof data !== 'object') {
         return
       }
-      if (data.type === 'orca-editor-document' && typeof data.text === 'string') {
-        loadDocument(data.text, data.readOnly === true)
+      if (
+        data.type === 'orca-editor-document' &&
+        Number.isSafeInteger(data.version) &&
+        data.content?.kind === 'text' &&
+        typeof data.content.text === 'string'
+      ) {
+        s.documentVersion = data.version
+        loadDocument(data.content.text, data.readOnly === true)
+      } else if (data.type === 'orca-editor-edit-rejected') {
+        // Orca kept its text: forget what this canvas last posted, so the next change posts the
+        // whole scene again (a conflict also brings the newer document, which reloads the canvas).
+        s.baseline = ''
+        s.lastPosted = null
       } else if (data.type === 'orca-editor-flush' && Number.isSafeInteger(data.requestId)) {
         flush()
         post({ type: 'orca-editor-flushed', requestId: data.requestId })
