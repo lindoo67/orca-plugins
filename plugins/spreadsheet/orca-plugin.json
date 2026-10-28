@@ -19,8 +19,7 @@
         "fileTypes": ["xlsx", "xlsm", "xlsb", "xls", "ods"],
         "entry": "editor/index.html",
         "priority": "default",
-        "contentKind": "bytes",
-        "readonly": true
+        "contentKind": "bytes"
       }
     ]
   },

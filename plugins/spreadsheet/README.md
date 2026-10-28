@@ -1,6 +1,6 @@
 # Spreadsheet Viewer
 
-Opens Excel and OpenDocument spreadsheets in Orca's editor, read-only: `.xlsx`, `.xlsm`, `.xlsb`,
+Opens Excel and OpenDocument spreadsheets in Orca's editor for viewing: `.xlsx`, `.xlsm`, `.xlsb`,
 `.xls` and `.ods`. Every visible sheet gets a tab along the bottom, and the grid shows each cell as
 the file formats it — currency, percentages, dates, errors such as `#DIV/0!` — with merged cells
 drawn as one. The bar above the grid shows the selected cell's address, its value, its formula and,
@@ -35,7 +35,7 @@ as they are displayed, not as raw numbers.
 
 ## Limits
 
-- **Read-only.** Nothing is ever written back to the file.
+- **View only, for now.** Cells cannot be edited yet, so the viewer never writes back to the file.
 - **Formulas are not recalculated.** The grid shows the results saved in the file by the
   application that last wrote it; a file saved without results shows those cells empty.
 - **Macros never run.** `.xlsm` workbooks open as plain data.

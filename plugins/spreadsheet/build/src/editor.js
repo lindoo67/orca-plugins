@@ -1,5 +1,6 @@
-// Orca custom editor for spreadsheets, read-only. Orca posts the file's bytes; this frame parses
-// them with SheetJS and shows every visible sheet in a virtualized grid (see build/README.md).
+// Orca custom editor for spreadsheets; it views only, with no cell editing yet. Orca posts the
+// file's bytes; this frame parses them with SheetJS and shows every visible sheet in a virtualized
+// grid (see build/README.md).
 import { read } from 'xlsx'
 import { rangeAddress } from './address.js'
 import { cellFormula, cellRawValue, cellText } from './cell-display.js'

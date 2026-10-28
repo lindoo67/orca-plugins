@@ -66,12 +66,12 @@ chromium-headless-shell` if it is missing). Set `SPREADSHEET_SCREENSHOTS=<dir>` 
 
 ## Protocol
 
-The frame talks to its editor tab with `postMessage`. The editor is read-only and never posts edits.
+The frame talks to its editor tab with `postMessage`. The viewer does not edit cells yet, so it never posts edits.
 
 | Direction | Message | Meaning |
 | --- | --- | --- |
 | frame → Orca | `{ type: 'orca-editor-ready' }` | Listening; send the document. |
-| Orca → frame | `{ type: 'orca-editor-document', version, readOnly: true, fileType, content: { kind: 'bytes', bytes } }` | The file's bytes as a transferred `ArrayBuffer`, on open and whenever the file changes on disk; `version` grows with each change. The active sheet, selection and scroll position are kept when the sheet still exists. |
+| Orca → frame | `{ type: 'orca-editor-document', version, readOnly, fileType, content: { kind: 'bytes', bytes } }` | The file's bytes as a transferred `ArrayBuffer`, on open and whenever the file changes on disk; `version` grows with each change. The active sheet, selection and scroll position are kept when the sheet still exists. |
 
 Messages from anything but the parent window, documents whose `version` is not newer than the
 last one rendered, and `content.kind: 'text'` documents are ignored. `fileType` is informational; the format is detected from the bytes. Orca
