@@ -16,7 +16,7 @@
       {
         "id": "spreadsheet",
         "title": "Spreadsheet",
-        "fileTypes": ["xlsx", "xlsm", "xlsb", "xls", "ods"],
+        "extensions": [".xlsx", ".xlsm", ".xlsb", ".xls", ".ods"],
         "entry": "editor/index.html",
         "priority": "default",
         "contentKind": "bytes"

@@ -15,7 +15,7 @@
     "themes": [
       {
         "id": "nord",
-        "label": "Nord",
+        "title": "Nord",
         "path": "themes/nord.json"
       }
     ]

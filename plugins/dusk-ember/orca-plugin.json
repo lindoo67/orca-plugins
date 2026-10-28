@@ -15,24 +15,24 @@
     "themes": [
       {
         "id": "dusk",
-        "label": "Dusk",
+        "title": "Dusk",
         "path": "themes/dusk.json"
       },
       {
         "id": "ember",
-        "label": "Ember",
+        "title": "Ember",
         "path": "themes/ember.json"
       }
     ],
     "terminalThemes": [
       {
         "id": "dusk",
-        "label": "Dusk",
+        "title": "Dusk",
         "path": "terminal/dusk.json"
       },
       {
         "id": "ember",
-        "label": "Ember",
+        "title": "Ember",
         "path": "terminal/ember.json"
       }
     ]

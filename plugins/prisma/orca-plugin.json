@@ -15,7 +15,7 @@
     "syntaxes": [
       {
         "id": "prisma",
-        "label": "Prisma",
+        "title": "Prisma",
         "scopeName": "source.prisma",
         "path": "syntaxes/prisma.tmLanguage.json",
         "configuration": "syntaxes/language-configuration.json",

@@ -16,7 +16,7 @@
       {
         "id": "excalidraw",
         "title": "Excalidraw",
-        "fileTypes": ["excalidraw", "excalidraw.json"],
+        "extensions": [".excalidraw", ".excalidraw.json"],
         "entry": "editor/index.html",
         "priority": "default"
       }

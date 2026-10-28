@@ -15,7 +15,7 @@
     "iconThemes": [
       {
         "id": "minimal",
-        "label": "Minimal",
+        "title": "Minimal",
         "path": "icons/theme.json"
       }
     ]

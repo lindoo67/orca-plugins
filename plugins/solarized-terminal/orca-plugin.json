@@ -15,7 +15,7 @@
     "terminalThemes": [
       {
         "id": "solarized-dark",
-        "label": "Solarized Dark",
+        "title": "Solarized Dark",
         "path": "terminal/solarized-dark.json"
       }
     ]

@@ -15,14 +15,14 @@
     "themes": [
       {
         "id": "oled",
-        "label": "Orca OLED",
+        "title": "Orca OLED",
         "path": "themes/oled.json"
       }
     ],
     "terminalThemes": [
       {
         "id": "oled-terminal",
-        "label": "Orca OLED",
+        "title": "Orca OLED",
         "path": "terminal/oled-terminal.json"
       }
     ]
