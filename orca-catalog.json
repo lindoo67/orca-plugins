@@ -53,7 +53,7 @@
             "cover": {
               "path": "plugins/midnight-theme/images/cover.png",
               "alt": "The Orca Midnight theme on an editor with a file tree and a TypeScript file",
-              "sha256": "5511598eff0cb4ee0986cac1682402f0d2d8dcdef40a288e2e521d84ae64434f",
+              "sha256": "dd5f46e7206cbc9b05438014e70609a1e063668bd93c8b968d3ea0f45d89c5ea",
               "width": 1600,
               "height": 1000
             },
@@ -61,7 +61,7 @@
               {
                 "path": "plugins/midnight-theme/images/editor.png",
                 "alt": "Orca Midnight on the editor and terminal",
-                "sha256": "99949fc97caa4d644a8fa6759f775963362885c4411f688d0d4be95aceb6e916",
+                "sha256": "52e5f60d2101d3ad627145d71796d6df9cba0927d147a72bff7ae6c81c7da229",
                 "width": 1600,
                 "height": 1000
               },
@@ -126,7 +126,7 @@
             "cover": {
               "path": "plugins/nord-theme/images/cover.png",
               "alt": "The Nord theme on an editor with a file tree and a TypeScript file",
-              "sha256": "60d2086e65f07b2e847b51e5a5cafca100593cda97cd92f2a8e438d93e2dda93",
+              "sha256": "39d136fcc481191250faedf379f9d5081fee354dfd40525d90b0ff3695a6b774",
               "width": 1600,
               "height": 1000
             },
@@ -134,7 +134,7 @@
               {
                 "path": "plugins/nord-theme/images/editor.png",
                 "alt": "Nord on the editor and terminal",
-                "sha256": "c5e3b80607b41773c98adf5adbb5eb98dd7233b8812d3b3fce67f0ea94d410be",
+                "sha256": "2daaec134aff9d8a30ca1e99664db3ebc61995438abceb9404b4fba79b529225",
                 "width": 1600,
                 "height": 1000
               },
@@ -208,7 +208,7 @@
             "cover": {
               "path": "plugins/oled-theme/images/cover.png",
               "alt": "Orca OLED: the worktree sidebar, an editor and a terminal on a pure black background",
-              "sha256": "1dfee579ddad8e3e1bc816eaf9397449a8589b35e7ccbf3a86ac792bb7b1b6c9",
+              "sha256": "57f208aad3d420b952f46e6914811ee8b3105ce30e614b7c4626431b8b2f65e3",
               "width": 1600,
               "height": 1000
             },
@@ -216,7 +216,7 @@
               {
                 "path": "plugins/oled-theme/images/workspace.png",
                 "alt": "Orca OLED on the editor, terminal and file tree, separated by thin dark grey lines",
-                "sha256": "5755f9f013b2ec683fb9a865615ed3e85723fa5cd8d47b00e4a71d190bb32f27",
+                "sha256": "e08f69ec7b91faed608669fc50cbf1ad0b95266e0a513ef8bf6a381176d44975",
                 "width": 1600,
                 "height": 1000
               },
@@ -411,8 +411,8 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "035b51c7980790c8f6e17344b8be74dcdd0712fb",
-          "contentHash": "2a10ec7ba3eef87cb7e45bde65213ca03cd5f1bdb63d706a35787568b512900f",
+          "commit": "2a59e6c9aaa2d14e215abe3d31bbe3196cd55d27",
+          "contentHash": "c8f1f4dd283d3e9643eeee141e58e34ff2d4d5ead34c26c8ed3528ac5abe72c9",
           "execution": "sandboxed-ui",
           "minimumOrca": "1.4.242",
           "name": "Excalidraw",
@@ -451,7 +451,10 @@
                 "height": 1000
               }
             ]
-          }
+          },
+          "editorFileTypes": [
+            "excalidraw"
+          ]
         }
       ]
     },
@@ -471,8 +474,8 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "55855a77fc5adc21866dd1bf2945d38bd4243264",
-          "contentHash": "8edb64d3972421b0e874df34229803f0e06fc7a894c1c4747b6059953519fd17",
+          "commit": "b1e49c7359d91b645200ca43f07033b136646643",
+          "contentHash": "9a67685bc70ee71b124dcc5bbc827e73e3f354c59fb2c8f1d978be09715eaedd",
           "execution": "sandboxed-ui",
           "minimumOrca": "1.4.242",
           "name": "Spreadsheet Viewer",
@@ -515,7 +518,14 @@
                 "height": 1000
               }
             ]
-          }
+          },
+          "editorFileTypes": [
+            "xlsx",
+            "xlsm",
+            "xlsb",
+            "xls",
+            "ods"
+          ]
         }
       ]
     },
@@ -706,7 +716,7 @@
             "cover": {
               "path": "plugins/dusk-ember/images/cover.png",
               "alt": "The violet Dusk theme and the warm, light Ember theme side by side on a Gleam file",
-              "sha256": "a8ee57d31adf91c8c1600e2d2f0e2d791b1a685717f7210f7a43b17cae7f604c",
+              "sha256": "b2614cedfec38ec336874f49756845ab4a3266feeb13c598d7dcd6903a556ca6",
               "width": 1600,
               "height": 1000
             },
@@ -714,14 +724,14 @@
               {
                 "path": "plugins/dusk-ember/images/dusk.png",
                 "alt": "The Dusk theme on the editor and file tree, with the Dusk terminal colors below",
-                "sha256": "b3c93ee147fe9c1a9325e1936a95ff940fdec3c20aae427dd57e2c276ca0826c",
+                "sha256": "34988d2389baca80cfa77fd79f1df673315544a03e4d0d224107d60da679e0dc",
                 "width": 1600,
                 "height": 1000
               },
               {
                 "path": "plugins/dusk-ember/images/ember.png",
                 "alt": "The Ember theme on the same file, with the Ember terminal colors below",
-                "sha256": "18d3add6875c496bee26679bedeb35cf6ed3e95e84bd0e103be7b62a62e2dd59",
+                "sha256": "de8c8a2a7f411ab3c8622632b1a491b4af5e4f252091b3597f7d2240b2814fa7",
                 "width": 1600,
                 "height": 1000
               }
