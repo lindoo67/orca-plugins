@@ -20,10 +20,10 @@
       "releases": [
         {
           "version": "2.1.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "13558981c8031382c5e705504feacbd3d25574437376f3838cd576eb8a6c6af7",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "8b3d50f5d9abc27b8f96cc32eb242925fdf3ad90bf30e2552833399216314a00",
           "execution": "data",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "name": "Orca Midnight",
           "contributes": [
             {
@@ -50,10 +50,10 @@
       "releases": [
         {
           "version": "2.1.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "cf1a907da80ac2610b346ca9150300c04b20e7537395d3fe0c7b38bebde177a4",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "503b9a42250a3bffd5c94fa18b69e5aa3ca9745165b2eb7799c94b8817aef6f4",
           "execution": "data",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "name": "Nord for Orca",
           "contributes": [
             {
@@ -80,10 +80,10 @@
       "releases": [
         {
           "version": "1.1.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "8a49f9f44071e56b36d445c699398bbeb1ef246d4f54714d6a0ba6886c12aeab",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "e6af7e37ddd303b40e541fd708ede4d568c89ae53d37ef3f4723a29b736f2dd0",
           "execution": "data",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "name": "Orca OLED",
           "contributes": [
             {
@@ -114,10 +114,10 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "0578e49671258c4ab8cfb286e813fe35bd7139b2e3717d92edd57a6f34ca6e6f",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "53a8e3292833c2587a5d6b7feba9a398df7dad394425323fee43dc4f5b75a6d2",
           "execution": "data",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "types": [
             "icon-theme"
           ],
@@ -166,10 +166,10 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "36d34205c5efaf4a70123e7b7c47238cea2452795b9603b794fb898d70e273f0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "149e259ba983c58202cf234ca63fb1c46e2e804527f68922fb0dc875442d9e14",
           "execution": "data",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "types": [
             "terminal-theme"
           ],
@@ -225,10 +225,10 @@
       "releases": [
         {
           "version": "2.0.0",
-          "commit": "c665d5b3a5052163da461da5bab17f03caf31717",
-          "contentHash": "88180dc35ce651c6eaf64ca23e5fad91f89e4ba698b893ac155443de2ff3a7e1",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "b01d1c121bddc24555a2a5d34a432c5bd99c3d4c800f17fdcacc636b7a4a4cc1",
           "execution": "declarative",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "types": [
             "instructions"
           ],
@@ -277,10 +277,10 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "99e4be742aa7d689965642d5536ebbdec55abb53",
-          "contentHash": "3fb4c7b68baabcf61b2732a9d389070e2c4a7a1a90cebf6d87894f9ec4be66b6",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "30d0e90c0528e96134581fcb944f8b94ecd3784273cfa76d5a7d3562baa33188",
           "execution": "sandboxed-ui",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "name": "Excalidraw",
           "contributes": [
             {
@@ -340,10 +340,10 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "bcd4835f2ee25afe729e52f9711ff8e71d1566fa",
-          "contentHash": "e3f66f78d5885fde35fc2d22bbbd2e336951acc64e4a470ec81980fb0724e2df",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "88e9b6d7d922eefd1665af3c04086a38b25044ca53468fe693380ab076a04919",
           "execution": "sandboxed-ui",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "name": "Spreadsheet Viewer",
           "contributes": [
             {
@@ -411,10 +411,10 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "42b57b355b0be22209026d075cea1e00f7d7d27111204f6548b8ec742ab89dfa",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "16c05e3557668de1c0706720ab8760b72675962457e69abf4886a819a77dee16",
           "execution": "data",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "types": [
             "syntax"
           ],
@@ -467,10 +467,10 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "bcf8861e1499d2bc2d76cb8d3f417d949ad2a60ad371e136fb08a91d6b2efa03",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "178773aff5c1bba09b3c0de2b82bcbe8c821bf47ed9c1523974a407182cbab8a",
           "execution": "data",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "types": [
             "syntax"
           ],
@@ -524,10 +524,10 @@
       "releases": [
         {
           "version": "1.1.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "ed3cc08c3450b2815ba13ef68c5c338ade5289ea33c1d28de7fd25bf1817ef4b",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "57a6ff4b8bbb56da0ea31addad57629580df17da1e05e5de28128357d61106f3",
           "execution": "data",
-          "minimumOrca": "1.4.242",
+          "minimumOrca": "1.4.244",
           "name": "Dusk & Ember Themes",
           "contributes": [
             {
