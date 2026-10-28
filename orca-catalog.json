@@ -30,21 +30,32 @@
               "kind": "themes",
               "name": "Orca Midnight"
             }
-          ]
-        },
-        {
-          "version": "2.1.0",
-          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
-          "contentHash": "8b3d50f5d9abc27b8f96cc32eb242925fdf3ad90bf30e2552833399216314a00",
-          "execution": "data",
-          "minimumOrca": "1.4.244",
-          "name": "Orca Midnight",
-          "contributes": [
-            {
-              "kind": "themes",
-              "name": "Orca Midnight"
-            }
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/midnight-theme/images/cover.png",
+              "alt": "A crescent moon and stars over a deep blue-grey night sky, with the word Midnight and the theme palette",
+              "sha256": "8fec31d4f6f3a77a643f70391914e4d310add2571786b3110951c7d0efb3f671",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/midnight-theme/images/editor.png",
+                "alt": "Orca Midnight on the editor and terminal",
+                "sha256": "52e5f60d2101d3ad627145d71796d6df9cba0927d147a72bff7ae6c81c7da229",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/midnight-theme/images/settings.png",
+                "alt": "Orca Midnight selected in Appearance settings",
+                "sha256": "91fea1694d407b6ccfc6473f68ccfb0a895b7be23cd663c9a2ba8d1d4d934aa7",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     },
@@ -74,7 +85,32 @@
               "kind": "themes",
               "name": "Nord"
             }
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/nord-theme/images/cover.png",
+              "alt": "The Nord theme on an editor with a file tree and a TypeScript file",
+              "sha256": "39d136fcc481191250faedf379f9d5081fee354dfd40525d90b0ff3695a6b774",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/nord-theme/images/editor.png",
+                "alt": "Nord on the editor and terminal",
+                "sha256": "2daaec134aff9d8a30ca1e99664db3ebc61995438abceb9404b4fba79b529225",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/nord-theme/images/settings.png",
+                "alt": "Nord selected in Appearance settings",
+                "sha256": "314f09e5e0b69249efe8028c7186c00b4ee4d0ff52481fea18acfa722025ee63",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     },
@@ -108,25 +144,32 @@
               "kind": "terminalThemes",
               "name": "Orca OLED"
             }
-          ]
-        },
-        {
-          "version": "1.1.0",
-          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
-          "contentHash": "e6af7e37ddd303b40e541fd708ede4d568c89ae53d37ef3f4723a29b736f2dd0",
-          "execution": "data",
-          "minimumOrca": "1.4.244",
-          "name": "Orca OLED",
-          "contributes": [
-            {
-              "kind": "themes",
-              "name": "Orca OLED"
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/oled-theme/images/cover.png",
+              "alt": "The word OLED in large white letters on true black, mirrored below in a fading reflection",
+              "sha256": "3eeb8dc5080745ab62803232f77d0ee79fc6ac1fc2c1bf97466910b2872c425f",
+              "width": 1600,
+              "height": 1000
             },
-            {
-              "kind": "terminalThemes",
-              "name": "Orca OLED"
-            }
-          ]
+            "screenshots": [
+              {
+                "path": "plugins/oled-theme/images/workspace.png",
+                "alt": "Orca OLED on the editor, terminal and file tree, separated by thin dark grey lines",
+                "sha256": "e08f69ec7b91faed608669fc50cbf1ad0b95266e0a513ef8bf6a381176d44975",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/oled-theme/images/palette.png",
+                "alt": "The Orca OLED terminal colours on true black",
+                "sha256": "7674c8f717f4cfc5dcd369b3217b4d4d7a86927e97a5e8d835af2769619a0d26",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     },
@@ -331,7 +374,32 @@
           ],
           "editorFileTypes": [
             "excalidraw"
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/excalidraw/images/cover.png",
+              "alt": "A hand-drawn architecture sketch of a web app, API gateway, services and database open in the Excalidraw editor",
+              "sha256": "85cc3391dbb7569b271d8367da9232b9806e0ea0bf183112e34fb304260f327d",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/excalidraw/images/editing.png",
+                "alt": "A box in the sketch selected, with Excalidraw's stroke, fill and font options beside it",
+                "sha256": "cf14ff5105a08d396765816de52be2eba5a0076af20e72f667a29ffcc2521152",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/excalidraw/images/dark.png",
+                "alt": "The same sketch in Excalidraw's dark theme",
+                "sha256": "5db71c99c28336bf8b942de84a8327bf81d23b33d4eff7788c6efed0ebc463c9",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         },
         {
           "version": "1.0.0",
@@ -423,7 +491,32 @@
             "xlsb",
             "xls",
             "ods"
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/spreadsheet/images/cover.png",
+              "alt": "A quarterly summary workbook in Spreadsheet Viewer: formatted currency, percentages and dates, a SUM formula above the grid, and sheet tabs",
+              "sha256": "bd07b5e0fa7c6646461713ad6fbfacf8b5dcd168f8414aaeaeb23b59f41552e8",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/spreadsheet/images/sheets.png",
+                "alt": "A 50,000-row data sheet with a block of cells selected and its count, sum and average in the status bar",
+                "sha256": "aaf8bc8a37bc461e9949bb2bd8429e62e882c3d1577981569323b75a05e1000d",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/spreadsheet/images/dark.png",
+                "alt": "The same summary workbook in Orca's dark theme, with merged title and notes cells and a #DIV/0! error in red",
+                "sha256": "f4040e07aa6a41d31b865fabb1fbae1d2623e9e8c9b1c6222f3a1018c76bc3b0",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         },
         {
           "version": "1.0.0",
@@ -633,7 +726,32 @@
               "kind": "terminalThemes",
               "name": "Ember"
             }
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/dusk-ember/images/cover.png",
+              "alt": "The violet Dusk theme and the warm, light Ember theme side by side on a Gleam file",
+              "sha256": "b2614cedfec38ec336874f49756845ab4a3266feeb13c598d7dcd6903a556ca6",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/dusk-ember/images/dusk.png",
+                "alt": "The Dusk theme on the editor and file tree, with the Dusk terminal colors below",
+                "sha256": "34988d2389baca80cfa77fd79f1df673315544a03e4d0d224107d60da679e0dc",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/dusk-ember/images/ember.png",
+                "alt": "The Ember theme on the same file, with the Ember terminal colors below",
+                "sha256": "de8c8a2a7f411ab3c8622632b1a491b4af5e4f252091b3597f7d2240b2814fa7",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
         }
       ]
     }

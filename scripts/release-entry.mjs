@@ -95,7 +95,8 @@ for (const sourcePath of dirs) {
       )
     }
   } else if (write) {
-    releases.unshift(printed)
+    // Why carried: a validator that prints no images must not drop the covers the last release listed.
+    releases.unshift(newest?.images && !printed.images ? { ...printed, images: newest.images } : printed)
     console.log(`${entry.id}: added release ${printed.version}`)
   } else {
     errors.push(
