@@ -31,49 +31,6 @@
               "name": "Orca Midnight"
             }
           ]
-        },
-        {
-          "version": "2.0.0",
-          "commit": "c665d5b3a5052163da461da5bab17f03caf31717",
-          "contentHash": "291c969a22fb6af7e0f624e5e24c6b22d173969b2dc3aa31d0699dcee4fa149c",
-          "execution": "data",
-          "minimumOrca": "1.4.242",
-          "types": [
-            "app-theme"
-          ],
-          "name": "Orca Midnight",
-          "contributes": [
-            {
-              "kind": "themes",
-              "name": "Orca Midnight"
-            }
-          ],
-          "license": "MIT",
-          "images": {
-            "cover": {
-              "path": "plugins/midnight-theme/images/cover.png",
-              "alt": "The Orca Midnight theme on an editor with a file tree and a TypeScript file",
-              "sha256": "dd5f46e7206cbc9b05438014e70609a1e063668bd93c8b968d3ea0f45d89c5ea",
-              "width": 1600,
-              "height": 1000
-            },
-            "screenshots": [
-              {
-                "path": "plugins/midnight-theme/images/editor.png",
-                "alt": "Orca Midnight on the editor and terminal",
-                "sha256": "52e5f60d2101d3ad627145d71796d6df9cba0927d147a72bff7ae6c81c7da229",
-                "width": 1600,
-                "height": 1000
-              },
-              {
-                "path": "plugins/midnight-theme/images/settings.png",
-                "alt": "Orca Midnight selected in Appearance settings",
-                "sha256": "91fea1694d407b6ccfc6473f68ccfb0a895b7be23cd663c9a2ba8d1d4d934aa7",
-                "width": 1600,
-                "height": 1000
-              }
-            ]
-          }
         }
       ]
     },
@@ -104,49 +61,6 @@
               "name": "Nord"
             }
           ]
-        },
-        {
-          "version": "2.0.0",
-          "commit": "c665d5b3a5052163da461da5bab17f03caf31717",
-          "contentHash": "0717b4ff4a69e8f5db38705031474243e1bfc8230600f1182ef5cec37bc24b9a",
-          "execution": "data",
-          "minimumOrca": "1.4.242",
-          "types": [
-            "app-theme"
-          ],
-          "name": "Nord for Orca",
-          "contributes": [
-            {
-              "kind": "themes",
-              "name": "Nord"
-            }
-          ],
-          "license": "MIT",
-          "images": {
-            "cover": {
-              "path": "plugins/nord-theme/images/cover.png",
-              "alt": "The Nord theme on an editor with a file tree and a TypeScript file",
-              "sha256": "39d136fcc481191250faedf379f9d5081fee354dfd40525d90b0ff3695a6b774",
-              "width": 1600,
-              "height": 1000
-            },
-            "screenshots": [
-              {
-                "path": "plugins/nord-theme/images/editor.png",
-                "alt": "Nord on the editor and terminal",
-                "sha256": "2daaec134aff9d8a30ca1e99664db3ebc61995438abceb9404b4fba79b529225",
-                "width": 1600,
-                "height": 1000
-              },
-              {
-                "path": "plugins/nord-theme/images/settings.png",
-                "alt": "Nord selected in Appearance settings",
-                "sha256": "314f09e5e0b69249efe8028c7186c00b4ee4d0ff52481fea18acfa722025ee63",
-                "width": 1600,
-                "height": 1000
-              }
-            ]
-          }
         }
       ]
     },
@@ -181,54 +95,6 @@
               "name": "Orca OLED"
             }
           ]
-        },
-        {
-          "version": "1.0.0",
-          "commit": "c665d5b3a5052163da461da5bab17f03caf31717",
-          "contentHash": "903fa502799cf9bbeba692299261ca31efaa359ce608bc942a633f7f25cf291b",
-          "execution": "data",
-          "minimumOrca": "1.4.242",
-          "types": [
-            "app-theme",
-            "terminal-theme"
-          ],
-          "name": "Orca OLED",
-          "contributes": [
-            {
-              "kind": "themes",
-              "name": "Orca OLED"
-            },
-            {
-              "kind": "terminalThemes",
-              "name": "Orca OLED"
-            }
-          ],
-          "license": "MIT",
-          "images": {
-            "cover": {
-              "path": "plugins/oled-theme/images/cover.png",
-              "alt": "Orca OLED: the worktree sidebar, an editor and a terminal on a pure black background",
-              "sha256": "57f208aad3d420b952f46e6914811ee8b3105ce30e614b7c4626431b8b2f65e3",
-              "width": 1600,
-              "height": 1000
-            },
-            "screenshots": [
-              {
-                "path": "plugins/oled-theme/images/workspace.png",
-                "alt": "Orca OLED on the editor, terminal and file tree, separated by thin dark grey lines",
-                "sha256": "e08f69ec7b91faed608669fc50cbf1ad0b95266e0a513ef8bf6a381176d44975",
-                "width": 1600,
-                "height": 1000
-              },
-              {
-                "path": "plugins/oled-theme/images/palette.png",
-                "alt": "The Orca OLED terminal colours on true black",
-                "sha256": "7674c8f717f4cfc5dcd369b3217b4d4d7a86927e97a5e8d835af2769619a0d26",
-                "width": 1600,
-                "height": 1000
-              }
-            ]
-          }
         }
       ]
     },
@@ -681,62 +547,6 @@
               "name": "Ember"
             }
           ]
-        },
-        {
-          "version": "1.0.0",
-          "commit": "fa990697ed6c5b6cc15d97f39ba5136410b3ceda",
-          "contentHash": "a935654b3888922a4fd4ce5fe7f5af11ad206f13d5497e01da1fdc58e01dc323",
-          "execution": "data",
-          "minimumOrca": "1.4.242",
-          "types": [
-            "app-theme",
-            "terminal-theme"
-          ],
-          "name": "Dusk & Ember Themes",
-          "contributes": [
-            {
-              "kind": "themes",
-              "name": "Dusk"
-            },
-            {
-              "kind": "themes",
-              "name": "Ember"
-            },
-            {
-              "kind": "terminalThemes",
-              "name": "Dusk"
-            },
-            {
-              "kind": "terminalThemes",
-              "name": "Ember"
-            }
-          ],
-          "license": "MIT",
-          "images": {
-            "cover": {
-              "path": "plugins/dusk-ember/images/cover.png",
-              "alt": "The violet Dusk theme and the warm, light Ember theme side by side on a Gleam file",
-              "sha256": "b2614cedfec38ec336874f49756845ab4a3266feeb13c598d7dcd6903a556ca6",
-              "width": 1600,
-              "height": 1000
-            },
-            "screenshots": [
-              {
-                "path": "plugins/dusk-ember/images/dusk.png",
-                "alt": "The Dusk theme on the editor and file tree, with the Dusk terminal colors below",
-                "sha256": "34988d2389baca80cfa77fd79f1df673315544a03e4d0d224107d60da679e0dc",
-                "width": 1600,
-                "height": 1000
-              },
-              {
-                "path": "plugins/dusk-ember/images/ember.png",
-                "alt": "The Ember theme on the same file, with the Ember terminal colors below",
-                "sha256": "de8c8a2a7f411ab3c8622632b1a491b4af5e4f252091b3597f7d2240b2814fa7",
-                "width": 1600,
-                "height": 1000
-              }
-            ]
-          }
         }
       ]
     }
