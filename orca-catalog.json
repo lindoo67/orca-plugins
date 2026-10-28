@@ -277,8 +277,8 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "2760286021090faa26e7f919f616242b1e84c7c2243c25adb362dc8f9feb0f1d",
+          "commit": "99e4be742aa7d689965642d5536ebbdec55abb53",
+          "contentHash": "3fb4c7b68baabcf61b2732a9d389070e2c4a7a1a90cebf6d87894f9ec4be66b6",
           "execution": "sandboxed-ui",
           "minimumOrca": "1.4.242",
           "name": "Excalidraw",
@@ -340,8 +340,8 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "c8881aaedb173a928c025a7c824d678d5d33b48b",
-          "contentHash": "c2ab4e53ccade721a3a1dab9ffb6a2e01979d0bd8c59bc182b2c3f19ea7402e5",
+          "commit": "99e4be742aa7d689965642d5536ebbdec55abb53",
+          "contentHash": "53cc4aaac15d47f19d4fbd7941b777288074286f80268b56d6c4653287c3f542",
           "execution": "sandboxed-ui",
           "minimumOrca": "1.4.242",
           "name": "Spreadsheet Viewer",

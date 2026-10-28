@@ -10,7 +10,7 @@ permissions:
 
 env:
   # Orca commit whose validator and legacy export the catalog is checked with. Bump it deliberately.
-  ORCA_REF: c874093b64c7e66c61edf33db60ece0c2b71af1a
+  ORCA_REF: 1afc38023b04a33ca00cb0541e457b1a5dade74c
 
 jobs:
   validate:
