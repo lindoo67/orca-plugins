@@ -474,8 +474,8 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "b1e49c7359d91b645200ca43f07033b136646643",
-          "contentHash": "9a67685bc70ee71b124dcc5bbc827e73e3f354c59fb2c8f1d978be09715eaedd",
+          "commit": "07fd88b0f23e03a3282366ce9103777b390f0d2e",
+          "contentHash": "3a766930d392397e03c30a409dfcf7f59e27bc1d79b5ef2bf879fffac12899d7",
           "execution": "sandboxed-ui",
           "minimumOrca": "1.4.242",
           "name": "Spreadsheet Viewer",
