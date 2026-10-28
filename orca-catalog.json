@@ -19,6 +19,20 @@
       ],
       "releases": [
         {
+          "version": "2.1.1",
+          "commit": "6d79256a1c72ec5eb24edaa2bb6e1ef3e81cea5a",
+          "contentHash": "c54280fedfdcbed71bef6310091b7e980f1bffa2b4b6a46125ea9aef3c442bda",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Orca Midnight",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Orca Midnight"
+            }
+          ]
+        },
+        {
           "version": "2.1.0",
           "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
           "contentHash": "8b3d50f5d9abc27b8f96cc32eb242925fdf3ad90bf30e2552833399216314a00",
@@ -78,6 +92,24 @@
         "official"
       ],
       "releases": [
+        {
+          "version": "1.1.1",
+          "commit": "6d79256a1c72ec5eb24edaa2bb6e1ef3e81cea5a",
+          "contentHash": "8c10ed3c1d8cd996bc53ca4b951323da147b42e3db2b091b04df6c5c3d6e038e",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Orca OLED",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Orca OLED"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Orca OLED"
+            }
+          ]
+        },
         {
           "version": "1.1.0",
           "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
@@ -276,6 +308,32 @@
       ],
       "releases": [
         {
+          "version": "1.1.0",
+          "commit": "6d79256a1c72ec5eb24edaa2bb6e1ef3e81cea5a",
+          "contentHash": "1944e9c3712db4f279bfc9f6f4975c642e720a8e90c9ea38c302c8bc2c47256c",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.244",
+          "name": "Excalidraw",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "Excalidraw",
+              "detail": ".excalidraw, .excalidraw.json"
+            },
+            {
+              "kind": "newFiles",
+              "name": "New Excalidraw drawing",
+              "detail": ".excalidraw"
+            }
+          ],
+          "fileTypes": [
+            "excalidraw"
+          ],
+          "editorFileTypes": [
+            "excalidraw"
+          ]
+        },
+        {
           "version": "1.0.0",
           "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
           "contentHash": "30d0e90c0528e96134581fcb944f8b94ecd3784273cfa76d5a7d3562baa33188",
@@ -338,6 +396,35 @@
         "official"
       ],
       "releases": [
+        {
+          "version": "1.1.0",
+          "commit": "6d79256a1c72ec5eb24edaa2bb6e1ef3e81cea5a",
+          "contentHash": "f2145e641e61ae587bb6944fd7371b3da0cb6bb91af53d4b221273ed119f8d13",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.244",
+          "name": "Spreadsheet Viewer",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "Spreadsheet",
+              "detail": ".xlsx, .xlsm, .xlsb, .xls, .ods"
+            }
+          ],
+          "fileTypes": [
+            "xlsx",
+            "xlsm",
+            "xlsb",
+            "xls",
+            "ods"
+          ],
+          "editorFileTypes": [
+            "xlsx",
+            "xlsm",
+            "xlsb",
+            "xls",
+            "ods"
+          ]
+        },
         {
           "version": "1.0.0",
           "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
