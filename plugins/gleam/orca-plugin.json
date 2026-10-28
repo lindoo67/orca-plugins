@@ -9,7 +9,7 @@
   "license": "MIT AND Apache-2.0",
   "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/gleam",
   "engines": {
-    "orca": ">=1.4.242"
+    "orca": ">=1.4.244"
   },
   "contributes": {
     "syntaxes": [
