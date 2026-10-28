@@ -3,7 +3,7 @@
   "id": "orca-midnight-theme",
   "publisher": "stablyai",
   "name": "Orca Midnight",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "execution": "data",
   "description": "A quiet dark theme tuned for long coding sessions.",
   "license": "MIT",
@@ -23,7 +23,7 @@
   "capabilities": [],
   "cover": {
     "path": "images/cover.png",
-    "alt": "The Orca Midnight theme on an editor with a file tree and a TypeScript file"
+    "alt": "A crescent moon and stars over a deep blue-grey night sky, with the word Midnight and the theme palette"
   },
   "screenshots": [
     {
