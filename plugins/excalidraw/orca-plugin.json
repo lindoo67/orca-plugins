@@ -3,7 +3,7 @@
   "id": "orca-excalidraw",
   "publisher": "stablyai",
   "name": "Excalidraw",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "execution": "sandboxed-ui",
   "description": "Draw and edit .excalidraw diagrams right in Orca's editor.",
   "license": "MIT",
@@ -16,9 +16,19 @@
       {
         "id": "excalidraw",
         "title": "Excalidraw",
+        "icon": "images/tab-icon.png",
         "extensions": [".excalidraw", ".excalidraw.json"],
         "entry": "editor/index.html",
         "priority": "default"
+      }
+    ],
+    "newFiles": [
+      {
+        "id": "drawing",
+        "title": "New Excalidraw drawing",
+        "extension": ".excalidraw",
+        "template": "templates/empty.excalidraw",
+        "icon": "images/tab-icon.png"
       }
     ]
   },
