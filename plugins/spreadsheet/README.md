@@ -42,7 +42,7 @@ as they are displayed, not as raw numbers.
 - **Cell data only.** Charts, images, comments, conditional formatting, fonts, colours and borders
   are not shown. Chart sheets say so; hidden sheets are left out (the tab bar counts them), and
   hidden rows and columns stay hidden.
-- **Size.** Orca opens files of up to 16 MiB. Zip-based workbooks (`.xlsx`, `.xlsm`, `.xlsb`,
+- **Size.** Orca opens files of up to 64 MiB. Zip-based workbooks (`.xlsx`, `.xlsm`, `.xlsb`,
   `.ods`) are also refused if their contents expand past 256 MB or 4,000 parts, so a damaged or
   hostile file cannot exhaust memory.
 - **Encrypted workbooks** (password to open) are not supported; a password that only protects
