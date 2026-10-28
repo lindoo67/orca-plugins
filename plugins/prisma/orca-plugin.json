@@ -1,0 +1,40 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-prisma",
+  "publisher": "stablyai",
+  "name": "Prisma Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Prisma-aware highlighting for .prisma schema files: block keywords, model names, scalar types, attributes and built-in functions.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/prisma",
+  "engines": {
+    "orca": ">=1.4.244"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "prisma",
+        "title": "Prisma",
+        "scopeName": "source.prisma",
+        "path": "syntaxes/prisma.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".prisma"
+        ]
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "A Prisma model and enum with highlighted keywords, scalar types, attributes and functions"
+  },
+  "screenshots": [
+    {
+      "path": "images/editor.png",
+      "alt": "A Prisma schema with generator, datasource and model blocks highlighted in the editor",
+      "caption": "Editor"
+    }
+  ]
+}

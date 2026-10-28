@@ -1,0 +1,554 @@
+{
+  "$schema": "https://raw.githubusercontent.com/stablyai/orca/main/docs/schemas/plugins/orca-catalog.v2.schema.json",
+  "catalogVersion": 2,
+  "name": "Orca Official Plugins",
+  "owner": "stablyai",
+  "plugins": [
+    {
+      "id": "stablyai.orca-midnight-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/midnight-theme"
+      },
+      "description": "A quiet dark theme tuned for long coding sessions.",
+      "categories": [
+        "themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "2.1.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "8b3d50f5d9abc27b8f96cc32eb242925fdf3ad90bf30e2552833399216314a00",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Orca Midnight",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Orca Midnight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-nord-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/nord-theme"
+      },
+      "description": "A cool, low-contrast application theme inspired by arctic colors.",
+      "categories": [
+        "themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "2.1.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "503b9a42250a3bffd5c94fa18b69e5aa3ca9745165b2eb7799c94b8817aef6f4",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Nord for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Nord"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-oled-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/oled-theme"
+      },
+      "description": "A true-black dark theme and terminal theme for OLED displays.",
+      "categories": [
+        "themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.1.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "e6af7e37ddd303b40e541fd708ede4d568c89ae53d37ef3f4723a29b736f2dd0",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Orca OLED",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Orca OLED"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Orca OLED"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-minimal-icons",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/minimal-icons"
+      },
+      "description": "A compact monochrome icon theme for common source files.",
+      "categories": [
+        "icons",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "2.0.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "53a8e3292833c2587a5d6b7feba9a398df7dad394425323fee43dc4f5b75a6d2",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "types": [
+            "icon-theme"
+          ],
+          "name": "Orca Minimal Icons",
+          "contributes": [
+            {
+              "kind": "iconThemes",
+              "name": "Minimal"
+            }
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/minimal-icons/images/cover.png",
+              "alt": "The Minimal icons in the file explorer and the eight icons the theme provides",
+              "sha256": "60565d006e8dd868eae755fa131195ec62cab829135ad0d8c866b3ec61f1b311",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/minimal-icons/images/explorer.png",
+                "alt": "Minimal icons in the explorer and editor tabs",
+                "sha256": "a485fd14f4e0950e90a5ac31faf9793442723553679fc7acccc78d78f66d2fcf",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-solarized-terminal",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/solarized-terminal"
+      },
+      "description": "Solarized Dark terminal colors packaged for Orca.",
+      "categories": [
+        "terminal-themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "2.0.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "149e259ba983c58202cf234ca63fb1c46e2e804527f68922fb0dc875442d9e14",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "types": [
+            "terminal-theme"
+          ],
+          "name": "Solarized Terminal",
+          "contributes": [
+            {
+              "kind": "terminalThemes",
+              "name": "Solarized Dark"
+            }
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/solarized-terminal/images/cover.png",
+              "alt": "A terminal in Solarized Dark colours with git, ls and test output, and its 16-colour palette",
+              "sha256": "5b73a5d6ff662f69a3a05a042089e4bc0918dc535726cb2d43352c16099f42b7",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/solarized-terminal/images/terminal.png",
+                "alt": "A Solarized Dark terminal beside the worktree list",
+                "sha256": "a7526bf00fb227d86e22a43508372a016375d1072203384c1d2a8d46cf6cdb96",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/solarized-terminal/images/palette.png",
+                "alt": "The 16 Solarized Dark terminal colours",
+                "sha256": "be7b3869c14370b25cc3d1d5dcfd4cfb188709eb5ab67ba516dbaf2928e58255",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-multipass-recipes",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/multipass-recipes"
+      },
+      "description": "A reviewed starter lifecycle for disposable Multipass workspaces.",
+      "categories": [
+        "vm-recipes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "2.0.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "b01d1c121bddc24555a2a5d34a432c5bd99c3d4c800f17fdcacc636b7a4a4cc1",
+          "execution": "declarative",
+          "minimumOrca": "1.4.244",
+          "types": [
+            "instructions"
+          ],
+          "name": "Multipass VM Recipes",
+          "contributes": [
+            {
+              "kind": "vmRecipes",
+              "name": "recipes/ubuntu-lts.json"
+            }
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/multipass-recipes/images/cover.png",
+              "alt": "The Multipass Ubuntu LTS recipe with its create, suspend, resume and destroy commands",
+              "sha256": "9490fccc49dba758e9e0fc190922919601c67688da8265cf9f5384dce5680cd1",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/multipass-recipes/images/session.png",
+                "alt": "A terminal on a Multipass machine created by the recipe",
+                "sha256": "055488d690f6626493a2adb9deef8a0a687671300f43d4be4ffdbdb7f10edacf",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-excalidraw",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/excalidraw"
+      },
+      "description": "Draw and edit .excalidraw diagrams right in Orca's editor.",
+      "categories": [
+        "editors",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "30d0e90c0528e96134581fcb944f8b94ecd3784273cfa76d5a7d3562baa33188",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.244",
+          "name": "Excalidraw",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "Excalidraw",
+              "detail": ".excalidraw, .excalidraw.json"
+            }
+          ],
+          "fileTypes": [
+            "excalidraw"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/excalidraw/images/cover.png",
+              "alt": "A hand-drawn architecture sketch of a web app, API gateway, services and database open in the Excalidraw editor",
+              "sha256": "85cc3391dbb7569b271d8367da9232b9806e0ea0bf183112e34fb304260f327d",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/excalidraw/images/editing.png",
+                "alt": "A box in the sketch selected, with Excalidraw's stroke, fill and font options beside it",
+                "sha256": "cf14ff5105a08d396765816de52be2eba5a0076af20e72f667a29ffcc2521152",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/excalidraw/images/dark.png",
+                "alt": "The same sketch in Excalidraw's dark theme",
+                "sha256": "5db71c99c28336bf8b942de84a8327bf81d23b33d4eff7788c6efed0ebc463c9",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          },
+          "editorFileTypes": [
+            "excalidraw"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-spreadsheet",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/spreadsheet"
+      },
+      "description": "View Excel and OpenDocument spreadsheets in Orca's editor: every sheet, formulas and formatted values, even for very large files.",
+      "categories": [
+        "editors",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "88e9b6d7d922eefd1665af3c04086a38b25044ca53468fe693380ab076a04919",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.244",
+          "name": "Spreadsheet Viewer",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "Spreadsheet",
+              "detail": ".xlsx, .xlsm, .xlsb, .xls, .ods"
+            }
+          ],
+          "fileTypes": [
+            "xlsx",
+            "xlsm",
+            "xlsb",
+            "xls",
+            "ods"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/spreadsheet/images/cover.png",
+              "alt": "A quarterly summary workbook in Spreadsheet Viewer: formatted currency, percentages and dates, a SUM formula above the grid, and sheet tabs",
+              "sha256": "bd07b5e0fa7c6646461713ad6fbfacf8b5dcd168f8414aaeaeb23b59f41552e8",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/spreadsheet/images/sheets.png",
+                "alt": "A 50,000-row data sheet with a block of cells selected and its count, sum and average in the status bar",
+                "sha256": "aaf8bc8a37bc461e9949bb2bd8429e62e882c3d1577981569323b75a05e1000d",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/spreadsheet/images/dark.png",
+                "alt": "The same summary workbook in Orca's dark theme, with merged title and notes cells and a #DIV/0! error in red",
+                "sha256": "f4040e07aa6a41d31b865fabb1fbae1d2623e9e8c9b1c6222f3a1018c76bc3b0",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          },
+          "editorFileTypes": [
+            "xlsx",
+            "xlsm",
+            "xlsb",
+            "xls",
+            "ods"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-gleam",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/gleam"
+      },
+      "description": "Syntax highlighting, comment toggling and bracket matching for Gleam files.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "16c05e3557668de1c0706720ab8760b72675962457e69abf4886a819a77dee16",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "types": [
+            "syntax"
+          ],
+          "name": "Gleam Language",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "Gleam",
+              "detail": ".gleam"
+            }
+          ],
+          "fileTypes": [
+            "gleam"
+          ],
+          "license": "MIT AND Apache-2.0",
+          "images": {
+            "cover": {
+              "path": "plugins/gleam/images/cover.png",
+              "alt": "A Gleam router module with highlighted keywords, types and strings next to the Gleam star",
+              "sha256": "5406f139714066f3161c60a0ae6d8beffb4bc8d9311d969b9f9cbd9ba21a0ba5",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/gleam/images/editor.png",
+                "alt": "A highlighted Gleam module in the editor with gleam test output in the terminal below",
+                "sha256": "1c2f298f70e0b74886ee09f1a131ddc52fffc08799687d6d20ff1cb08ea4e3f6",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-prisma",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/prisma"
+      },
+      "description": "Prisma-aware highlighting for .prisma schema files: block keywords, model names, scalar types, attributes and built-in functions.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "178773aff5c1bba09b3c0de2b82bcbe8c821bf47ed9c1523974a407182cbab8a",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "types": [
+            "syntax"
+          ],
+          "name": "Prisma Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "Prisma",
+              "detail": ".prisma"
+            }
+          ],
+          "fileTypes": [
+            "prisma"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "plugins/prisma/images/cover.png",
+              "alt": "A Prisma model and enum with highlighted keywords, scalar types, attributes and functions",
+              "sha256": "c0c29963ab192ce02809731affec4768cc641eef8d3b0ccf97aa3f86b0f63529",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/prisma/images/editor.png",
+                "alt": "A Prisma schema with generator, datasource and model blocks highlighted in the editor",
+                "sha256": "eb88face5c23510871dc8861870bc628540978aaf3d83b0fcd88d39058e6b469",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-dusk-ember",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/dusk-ember"
+      },
+      "description": "A violet dark theme and a warm light theme, with matching terminal colors.",
+      "categories": [
+        "themes",
+        "terminal-themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.1.0",
+          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
+          "contentHash": "57a6ff4b8bbb56da0ea31addad57629580df17da1e05e5de28128357d61106f3",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Dusk & Ember Themes",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Dusk"
+            },
+            {
+              "kind": "themes",
+              "name": "Ember"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Dusk"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Ember"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

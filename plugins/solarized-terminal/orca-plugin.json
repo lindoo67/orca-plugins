@@ -1,0 +1,40 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-solarized-terminal",
+  "publisher": "stablyai",
+  "name": "Solarized Terminal",
+  "version": "2.0.0",
+  "execution": "data",
+  "description": "Solarized Dark terminal colors packaged for Orca.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/solarized-terminal",
+  "engines": {
+    "orca": ">=1.4.244"
+  },
+  "contributes": {
+    "terminalThemes": [
+      {
+        "id": "solarized-dark",
+        "title": "Solarized Dark",
+        "path": "terminal/solarized-dark.json"
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "A terminal in Solarized Dark colours with git, ls and test output, and its 16-colour palette"
+  },
+  "screenshots": [
+    {
+      "path": "images/terminal.png",
+      "alt": "A Solarized Dark terminal beside the worktree list",
+      "caption": "Terminal"
+    },
+    {
+      "path": "images/palette.png",
+      "alt": "The 16 Solarized Dark terminal colours",
+      "caption": "Palette"
+    }
+  ]
+}

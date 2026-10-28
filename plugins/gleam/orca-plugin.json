@@ -1,0 +1,40 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-gleam",
+  "publisher": "stablyai",
+  "name": "Gleam Language",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting, comment toggling and bracket matching for Gleam files.",
+  "license": "MIT AND Apache-2.0",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/gleam",
+  "engines": {
+    "orca": ">=1.4.244"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "gleam",
+        "title": "Gleam",
+        "scopeName": "source.gleam",
+        "path": "syntaxes/gleam.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".gleam"
+        ]
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "A Gleam router module with highlighted keywords, types and strings next to the Gleam star"
+  },
+  "screenshots": [
+    {
+      "path": "images/editor.png",
+      "alt": "A highlighted Gleam module in the editor with gleam test output in the terminal below",
+      "caption": "Editor and terminal"
+    }
+  ]
+}

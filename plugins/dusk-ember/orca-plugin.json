@@ -1,0 +1,59 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-dusk-ember",
+  "publisher": "stablyai",
+  "name": "Dusk & Ember Themes",
+  "version": "1.1.0",
+  "execution": "data",
+  "description": "A violet dark theme and a warm light theme, with matching terminal colors.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/dusk-ember",
+  "engines": {
+    "orca": ">=1.4.244"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "dusk",
+        "title": "Dusk",
+        "path": "themes/dusk.json"
+      },
+      {
+        "id": "ember",
+        "title": "Ember",
+        "path": "themes/ember.json"
+      }
+    ],
+    "terminalThemes": [
+      {
+        "id": "dusk",
+        "title": "Dusk",
+        "path": "terminal/dusk.json"
+      },
+      {
+        "id": "ember",
+        "title": "Ember",
+        "path": "terminal/ember.json"
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "The violet Dusk theme and the warm, light Ember theme side by side on a Gleam file"
+  },
+  "screenshots": [
+    {
+      "path": "images/dusk.png",
+      "alt": "The Dusk theme on the editor and file tree, with the Dusk terminal colors below",
+      "caption": "Dusk",
+      "theme": "dark"
+    },
+    {
+      "path": "images/ember.png",
+      "alt": "The Ember theme on the same file, with the Ember terminal colors below",
+      "caption": "Ember",
+      "theme": "light"
+    }
+  ]
+}

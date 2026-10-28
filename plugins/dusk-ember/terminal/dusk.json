@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "mode": "dark",
+  "terminal": {
+    "background": "#1b1430",
+    "foreground": "#e8e0ff",
+    "cursor": "#c38bff",
+    "selectionBackground": "#3a1f6e",
+    "black": "#120d22",
+    "red": "#ff6b8b",
+    "green": "#7ee0a8",
+    "yellow": "#ffd479",
+    "blue": "#8fb8ff",
+    "magenta": "#d29bff",
+    "cyan": "#7fe3e3",
+    "white": "#e8e0ff",
+    "brightBlack": "#6b5a99",
+    "brightRed": "#ff8fa6",
+    "brightGreen": "#a3f0c4",
+    "brightYellow": "#ffe3a3",
+    "brightBlue": "#b3cfff",
+    "brightMagenta": "#e4bfff",
+    "brightCyan": "#a6f0f0",
+    "brightWhite": "#ffffff"
+  }
+}
