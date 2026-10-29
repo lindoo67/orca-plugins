@@ -669,6 +669,33 @@
       ],
       "releases": [
         {
+          "version": "1.0.2",
+          "commit": "e78a6df982abdc6e6803878e16fb31ecc6dc58ac",
+          "contentHash": "47a866fc54e4d6dc330b25581bde5b96ed63e99da541beae747475ae1f8e7027",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "GitHub Light for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "GitHub Light"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "GitHub Light"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/github-light-theme/images/cover.png",
+              "alt": "GitHub Light theme preview with a file tree, syntax-highlighted TypeScript, terminal output, and palette swatches",
+              "sha256": "877ebfa585c421372b9663304690757fc8ca36d2a426d9894c4db5453dc5650b",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        },
+        {
           "version": "1.0.1",
           "commit": "07590d2c7bdc8c6c9299123106b9e0525656a411",
           "contentHash": "d52486e0dae3ebcde3f4b7fb94c1349bef3f65f659e21c3cd4306d2b8b9d331e",
