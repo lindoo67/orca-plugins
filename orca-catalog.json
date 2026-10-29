@@ -1036,6 +1036,36 @@
           }
         }
       ]
+    },
+    {
+      "id": "stablyai.orca-runner",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/orca-runner"
+      },
+      "description": "An offline endless runner game in Orca's sidebar, starring a little black-and-white orca.",
+      "categories": [
+        "games",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "1b2df52ecaae0e216f701a94683a94d5084af193",
+          "contentHash": "08234b084cd0f1a02c01608b1e4488dd4daaa3f1ff584137f59878e3b6fbea06",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "Orca Runner",
+          "contributes": [
+            {
+              "kind": "panels",
+              "name": "Orca Runner"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
