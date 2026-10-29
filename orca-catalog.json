@@ -749,7 +749,7 @@
         "ref": "main",
         "path": "plugins/dracula-theme"
       },
-      "description": "A dark application theme with Dracula\u2019s vivid pink, purple, and green palette, plus matching terminal colors.",
+      "description": "A dark application theme with Dracula’s vivid pink, purple, and green palette, plus matching terminal colors.",
       "categories": [
         "themes",
         "terminal-themes",
@@ -1052,6 +1052,29 @@
       ],
       "releases": [
         {
+          "version": "1.2.0",
+          "commit": "1e66a15792014213e971ddfda64c4a34c02f7246",
+          "contentHash": "8b36fe3eb72eaea4b3817cbc7fe3514121d096077ceec7e647f3a8172a1106ae",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "Orca Run",
+          "contributes": [
+            {
+              "kind": "panels",
+              "name": "Orca Run"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "assets/orca-runner/orca-run-cover.png",
+              "alt": "Orca Run pixel art: a black-and-white orca leaps over an iceberg on an icy ocean, framed beneath the Orca Run title on a starry sky.",
+              "sha256": "4068b51ad31f96c5e0136d6926fd2ba60b93b81223663d707279b7514d3fac8c",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        },
+        {
           "version": "1.1.0",
           "commit": "1982c9937db84d3e5b6ebd89f87848887cf1288f",
           "contentHash": "282db3c2adc92d3a481a27e5e13ce677666c2be60886088d66d6494ab68dfcd6",
@@ -1066,11 +1089,11 @@
           ],
           "images": {
             "cover": {
-              "path": "assets/orca-runner/cover.jpg",
-              "alt": "A black-and-white orca leaps over an icy ocean toward icebergs and a flying seabird beneath the Orca Runner title.",
-              "sha256": "63e238ac2e9ed3cfc765b8cedad930bbc992b986f52bad2cf10f10c3d0e0aba8",
-              "width": 1586,
-              "height": 992
+              "path": "assets/orca-runner/cover.png",
+              "alt": "Orca Runner pixel art gameplay with a black-and-white orca, snow-capped mountains, an ocean, and the press space to swim prompt.",
+              "sha256": "755f8980020b9c29d0495ff2c9c2fc2e90493864b0cb21c0684ebf6e2950424e",
+              "width": 800,
+              "height": 500
             }
           }
         },
@@ -1089,11 +1112,11 @@
           ],
           "images": {
             "cover": {
-              "path": "assets/orca-runner/cover.jpg",
-              "alt": "A black-and-white orca leaps over an icy ocean toward icebergs and a flying seabird beneath the Orca Runner title.",
-              "sha256": "63e238ac2e9ed3cfc765b8cedad930bbc992b986f52bad2cf10f10c3d0e0aba8",
-              "width": 1586,
-              "height": 992
+              "path": "assets/orca-runner/cover.png",
+              "alt": "Orca Runner pixel art gameplay with a black-and-white orca, snow-capped mountains, an ocean, and the press space to swim prompt.",
+              "sha256": "755f8980020b9c29d0495ff2c9c2fc2e90493864b0cb21c0684ebf6e2950424e",
+              "width": 800,
+              "height": 500
             }
           }
         }

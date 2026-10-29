@@ -11,9 +11,11 @@ function harness(width = 720, random = () => 0.5) {
   let best = 0;
   const frames = new Map();
   const states = [];
-  // Drawing is a no-op; gradients only need addColorStop.
-  const gradient = { addColorStop() {} };
-  const context = new Proxy({}, { get: () => () => gradient, set: () => true });
+  // Frames paint into a real pixel buffer; putting it on the canvas is a no-op.
+  const context = {
+    createImageData: (w, h) => ({width: w, height: h, data: new Uint8ClampedArray(w * h * 4)}),
+    putImageData() {}
+  };
   const canvas = { style: {}, parentElement: { getBoundingClientRect: () => ({width}) }, getContext: () => context };
   const window = {
     devicePixelRatio: 2,
@@ -79,8 +81,8 @@ test('jump cannot be retriggered in the air and releasing jump shortens its heig
 
 test('a delayed frame is bounded, narrow panels retain game geometry, and destroy cancels work', () => {
   const h = harness(280);
-  assert.equal(h.canvas.width,560);
-  assert.equal(h.canvas.height,327);
+  assert.equal(h.canvas.width,160,'a 480-unit viewport is 160 art pixels wide');
+  assert.equal(h.canvas.height,94);
   h.game.start(); h.step(); h.step(30000);
   assert.ok(h.score < 2,'background time does not advance the world by 30 seconds');
   h.game.destroy();
