@@ -1,8 +1,9 @@
-# Orca Runner
+# Orca Run
 
 A pixel art, Chrome Dino-inspired endless runner starring a little black-and-white orca. Jump icebergs,
-duck seabirds, and see how far you can swim. Opens from the **Orca Runner** (lightning bolt)
-icon in Orca's right sidebar.
+duck seabirds, and see how far you can swim. Opens from the **Orca Run** (lightning bolt)
+icon in Orca's right sidebar. It was called Orca Runner before 1.2.0; the plugin ID is still `orca-runner`, so
+existing installs update in place.
 
 ## Try it in Orca
 
@@ -10,7 +11,7 @@ Requires Orca **1.4.245 or later**.
 
 1. Open **Settings → Plugins → Development folders…**.
 2. Add this directory (`plugins/orca-runner`), then review and enable the plugin.
-3. Select **Orca Runner** in the right sidebar, click the game and press **Space**.
+3. Select **Orca Run** in the right sidebar, click the game and press **Space**.
 
 The game runs offline in a `sandboxed-ui` panel with **no requested capabilities**. It has no
 worker, dependencies, network requests, tracking, or access to the workspace. Best scores are

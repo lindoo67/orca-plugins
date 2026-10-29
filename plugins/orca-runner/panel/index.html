@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; base-uri 'none'; form-action 'none'">
-<title>Orca Runner</title>
+<title>Orca Run</title>
 <style>:root {
   color-scheme: light;
   --page: var(--orca-background, #f4f9fc);
@@ -27,11 +27,11 @@ canvas:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 </head>
 <body>
 <main>
-  <h1 class="sr-only">Orca Runner</h1>
-  <div class="playfield" id="playfield"><canvas id="game" tabindex="0" aria-label="Orca Runner. Space, up arrow or tap to jump. Down arrow to dive. P to pause."></canvas></div>
+  <h1 class="sr-only">Orca Run</h1>
+  <div class="playfield" id="playfield"><canvas id="game" tabindex="0" aria-label="Orca Run. Space, up arrow or tap to jump. Down arrow to dive. P to pause."></canvas></div>
   <p id="announcement" class="sr-only" aria-live="polite"></p>
 </main>
-<script>/* Orca Runner — original canvas game. Copyright (c) 2026 Orca contributors. MIT. */
+<script>/* Orca Run — original canvas game. Copyright (c) 2026 Orca contributors. MIT. */
 (function () {
   'use strict';
   const WIDTH = 720;
@@ -215,7 +215,7 @@ canvas:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
   window.createOrcaRunner = function ({ canvas, onStateChange = function () {}, onScore = function () {} }) {
     const context = canvas.getContext('2d');
-    if (!context) throw new Error('Orca Runner needs a 2D canvas.');
+    if (!context) throw new Error('Orca Run needs a 2D canvas.');
     const sparkle = seeded(99);
     let state = 'ready';
     let frame = null;

@@ -1,4 +1,4 @@
-/* Orca Runner — original canvas game. Copyright (c) 2026 Orca contributors. MIT. */
+/* Orca Run — original canvas game. Copyright (c) 2026 Orca contributors. MIT. */
 (function () {
   'use strict';
   const WIDTH = 720;
@@ -182,7 +182,7 @@
 
   window.createOrcaRunner = function ({ canvas, onStateChange = function () {}, onScore = function () {} }) {
     const context = canvas.getContext('2d');
-    if (!context) throw new Error('Orca Runner needs a 2D canvas.');
+    if (!context) throw new Error('Orca Run needs a 2D canvas.');
     const sparkle = seeded(99);
     let state = 'ready';
     let frame = null;
