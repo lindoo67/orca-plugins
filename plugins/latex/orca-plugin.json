@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "execution": "data",
   "engines": {
-    "orca": ">=1.4.244"
+    "orca": ">=1.4.245"
   },
   "capabilities": [],
   "id": "orca-latex",

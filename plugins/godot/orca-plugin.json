@@ -5,7 +5,7 @@
   "execution": "data",
   "license": "MIT",
   "engines": {
-    "orca": ">=1.4.244"
+    "orca": ">=1.4.245"
   },
   "capabilities": [],
   "id": "orca-godot",

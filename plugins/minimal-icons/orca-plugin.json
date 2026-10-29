@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/minimal-icons",
   "engines": {
-    "orca": ">=1.4.244"
+    "orca": ">=1.4.245"
   },
   "contributes": {
     "iconThemes": [
