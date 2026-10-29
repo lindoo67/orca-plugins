@@ -749,7 +749,7 @@
         "ref": "main",
         "path": "plugins/dracula-theme"
       },
-      "description": "A dark application theme with Dracula\u2019s vivid pink, purple, and green palette, plus matching terminal colors.",
+      "description": "A dark application theme with Dracula’s vivid pink, purple, and green palette, plus matching terminal colors.",
       "categories": [
         "themes",
         "terminal-themes",
@@ -1066,11 +1066,11 @@
           ],
           "images": {
             "cover": {
-              "path": "assets/orca-runner/cover.jpg",
-              "alt": "A black-and-white orca leaps over an icy ocean toward icebergs and a flying seabird beneath the Orca Runner title.",
-              "sha256": "63e238ac2e9ed3cfc765b8cedad930bbc992b986f52bad2cf10f10c3d0e0aba8",
-              "width": 1586,
-              "height": 992
+              "path": "assets/orca-runner/cover.png",
+              "alt": "Orca Runner pixel art gameplay with a black-and-white orca, snow-capped mountains, an ocean, and the press space to swim prompt.",
+              "sha256": "755f8980020b9c29d0495ff2c9c2fc2e90493864b0cb21c0684ebf6e2950424e",
+              "width": 800,
+              "height": 500
             }
           }
         },
@@ -1089,11 +1089,11 @@
           ],
           "images": {
             "cover": {
-              "path": "assets/orca-runner/cover.jpg",
-              "alt": "A black-and-white orca leaps over an icy ocean toward icebergs and a flying seabird beneath the Orca Runner title.",
-              "sha256": "63e238ac2e9ed3cfc765b8cedad930bbc992b986f52bad2cf10f10c3d0e0aba8",
-              "width": 1586,
-              "height": 992
+              "path": "assets/orca-runner/cover.png",
+              "alt": "Orca Runner pixel art gameplay with a black-and-white orca, snow-capped mountains, an ocean, and the press space to swim prompt.",
+              "sha256": "755f8980020b9c29d0495ff2c9c2fc2e90493864b0cb21c0684ebf6e2950424e",
+              "width": 800,
+              "height": 500
             }
           }
         }

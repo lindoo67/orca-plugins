@@ -1,6 +1,6 @@
 # Orca Runner
 
-A Chrome Dino-inspired endless runner starring a little black-and-white orca. Jump icebergs,
+A pixel art, Chrome Dino-inspired endless runner starring a little black-and-white orca. Jump icebergs,
 duck seabirds, and see how far you can swim. Opens from the **Orca Runner** (lightning bolt)
 icon in Orca's right sidebar.
 
@@ -10,25 +10,30 @@ Requires Orca **1.4.245 or later**.
 
 1. Open **Settings → Plugins → Development folders…**.
 2. Add this directory (`plugins/orca-runner`), then review and enable the plugin.
-3. Select **Orca Runner** in the right sidebar and click **Let's go**.
+3. Select **Orca Runner** in the right sidebar, click the game and press **Space**.
 
 The game runs offline in a `sandboxed-ui` panel with **no requested capabilities**. It has no
 worker, dependencies, network requests, tracking, or access to the workspace. Best scores are
 kept for the current panel instance; switching sidebar panels, closing, or reloading resets them. Switching focus
-or hiding the document pauses gameplay. Resume with P or the resume button.
+or hiding the document pauses gameplay. Resume with Space, P or a tap.
 
 ## Controls
 
 | Input | Action |
 | --- | --- |
-| Space / ↑ / tap the ocean / Jump button | Jump; hold for more airtime |
-| ↓ / hold the Duck button | Duck under seabirds; descend faster in the air |
-| P / Escape / pause button | Pause or resume |
-| Let's go / Try again | Start a fresh run |
+| Space / ↑ / tap the game | Jump (hold for more airtime); start or restart a run |
+| ↓ | Dive under seabirds; descend faster in the air |
+| P / Escape | Pause or resume |
 
 Click the game to focus keyboard input. Controls only handle keys inside the panel and leave
-Cmd/Ctrl shortcuts to Orca. Speed increases with distance; birds join after the opening stretch.
-The layout follows Orca's light/dark theme and fits narrow sidebars.
+Cmd/Ctrl shortcuts to Orca. Speed increases with distance; birds join after the opening stretch, and the sky turns
+from day to dusk to an aurora night as you swim.
+Like the offline dino page, the panel is just the game: score, best and prompts are drawn inside it.
+The page follows Orca's light/dark theme and the game fits narrow sidebars.
+
+Pixel art is the game's only visual style: each frame is painted on a grid of up to 240×94 art pixels (one per 3 world units) with
+hand-placed sprites and ordered-dither gradients, then scaled up by the browser without smoothing. Physics and
+collision boxes use the same world units as before, so the art never changes how a run plays.
 
 ## Development
 
@@ -49,7 +54,7 @@ node "$ORCA_DIR/config/scripts/validate-plugin-files.mjs" plugins/orca-runner
 The generated `panel/index.html` is committed with the source because Orca's sandbox only
 allows inline styles/scripts and data images. No build runs at installation. To list a public
 release in the official catalog, follow the repository's `CONTRIBUTING.md`: commit the plugin,
-then generate its pinned release and content hash. This development plugin is not yet listed.
+then generate its pinned release and content hash.
 
 ## Open-source research and license
 
@@ -58,6 +63,6 @@ extraction of Chromium's runner, and
 [KarthikNedunchezhiyan/google-chrome-dino](https://github.com/KarthikNedunchezhiyan/google-chrome-dino)
 (MIT). Both can be adapted, but this plugin uses an original, small Canvas implementation to
 fit Orca's opaque-origin sandbox without Chromium page APIs, audio assets, or storage access.
-No source code or sprites from either project are included. The orca artwork is drawn in code.
+No source code or sprites from either project are included. The sprites are drawn as text grids in `src/game.js`.
 
 Code and artwork are MIT licensed; see `LICENSE`.
