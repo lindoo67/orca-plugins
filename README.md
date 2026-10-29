@@ -24,6 +24,8 @@ Plugins.
 | Dusk & Ember Themes | `plugins/dusk-ember` | A dark and a light app theme, with matching terminal themes |
 | GitHub Light for Orca | `plugins/github-light-theme` | A light app theme with matching syntax and terminal colors |
 | Solarized Light for Orca | `plugins/solarized-light-theme` | A light app theme with matching syntax and terminal colors |
+| Dracula for Orca | `plugins/dracula-theme` | A dark app theme with matching syntax and terminal colors |
+| Gruvbox for Orca | `plugins/gruvbox-theme` | Dark and light app themes with matching syntax and terminal colors |
 | Orca Minimal Icons | `plugins/minimal-icons` | A monochrome file icon theme |
 | Solarized Terminal | `plugins/solarized-terminal` | Solarized Dark terminal colors |
 | Gleam Language | `plugins/gleam` | Highlighting for `.gleam` files |
@@ -39,3 +41,15 @@ code is not copied here.
 
 Every pull request is checked by `.github/workflows/validate-catalog.yml`, which runs Orca's own
 validator at a pinned Orca commit.
+
+## Theme covers
+
+The GitHub Light, Solarized Light, Dracula, and Gruvbox covers use the same editor-preview
+layout. Their app, syntax, and terminal colors come directly from the plugin JSON files.
+With `agent-browser` and Chromium installed, regenerate them with:
+
+```sh
+node scripts/render-theme-covers.mjs
+```
+
+These are illustrative theme previews, rather than captured Orca sessions.
