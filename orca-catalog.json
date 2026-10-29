@@ -754,6 +754,54 @@
           }
         }
       ]
+    },
+    {
+      "id": "stablyai.orca-github-light-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/github-light-theme"
+      },
+      "description": "A crisp white application theme inspired by GitHub's default light palette, with matching terminal colors.",
+      "categories": [
+        "themes",
+        "terminal-themes",
+        "official"
+      ],
+      "releases": []
+    },
+    {
+      "id": "stablyai.orca-catppuccin-latte-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/catppuccin-latte-theme"
+      },
+      "description": "A soft pastel light application theme from the Catppuccin Latte palette, with matching terminal colors.",
+      "categories": [
+        "themes",
+        "terminal-themes",
+        "official"
+      ],
+      "releases": []
+    },
+    {
+      "id": "stablyai.orca-solarized-light-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/solarized-light-theme"
+      },
+      "description": "A warm cream application theme based on Ethan Schoonover's Solarized Light palette, with matching terminal colors.",
+      "categories": [
+        "themes",
+        "terminal-themes",
+        "official"
+      ],
+      "releases": []
     }
   ]
 }

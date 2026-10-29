@@ -22,6 +22,9 @@ Plugins.
 | Nord for Orca | `plugins/nord-theme` | A cool, low-contrast app theme |
 | Orca OLED | `plugins/oled-theme` | A true-black app theme and terminal theme |
 | Dusk & Ember Themes | `plugins/dusk-ember` | A dark and a light app theme, with matching terminal themes |
+| GitHub Light for Orca | `plugins/github-light-theme` | A light app theme with matching syntax and terminal colors |
+| Catppuccin Latte for Orca | `plugins/catppuccin-latte-theme` | A light app theme with matching syntax and terminal colors |
+| Solarized Light for Orca | `plugins/solarized-light-theme` | A light app theme with matching syntax and terminal colors |
 | Orca Minimal Icons | `plugins/minimal-icons` | A monochrome file icon theme |
 | Solarized Terminal | `plugins/solarized-terminal` | Solarized Dark terminal colors |
 | Gleam Language | `plugins/gleam` | Highlighting for `.gleam` files |
