@@ -1052,6 +1052,29 @@
       ],
       "releases": [
         {
+          "version": "1.1.0",
+          "commit": "8ea504a5c58c993a9fbc5f02679bd661078d4d69",
+          "contentHash": "8cbc3589975c2b4b442f1d1bb7e26f6ac578a3db61804e922ac8ac54515938d6",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "Orca Runner",
+          "contributes": [
+            {
+              "kind": "panels",
+              "name": "Orca Runner"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "assets/orca-runner/cover.jpg",
+              "alt": "A black-and-white orca leaps over an icy ocean toward icebergs and a flying seabird beneath the Orca Runner title.",
+              "sha256": "63e238ac2e9ed3cfc765b8cedad930bbc992b986f52bad2cf10f10c3d0e0aba8",
+              "width": 1586,
+              "height": 992
+            }
+          }
+        },
+        {
           "version": "1.0.0",
           "commit": "1b2df52ecaae0e216f701a94683a94d5084af193",
           "contentHash": "08234b084cd0f1a02c01608b1e4488dd4daaa3f1ff584137f59878e3b6fbea06",

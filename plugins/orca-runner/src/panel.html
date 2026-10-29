@@ -16,10 +16,11 @@
     <div class="playfield" id="playfield"><canvas id="game" tabindex="0" aria-label="Game area. Space or up arrow to jump. Down arrow to duck. P to pause."></canvas><div id="overlay" class="overlay"><div class="overlay-label" id="overlay-label">THE OCEAN IS CALLING</div><h2 id="overlay-title">Ready, little orca?</h2><p id="overlay-hint">Jump the ice. Find your flow.</p></div></div>
     <div class="game-bottom"><span id="run-message">Your next adventure starts here.</span><button id="pause" class="icon-button" type="button" disabled aria-label="Pause game" title="Pause (P)"><span id="pause-symbol" aria-hidden="true">Ⅱ</span></button></div>
   </section>
-  <div class="action-row"><button id="start" class="primary" type="button"><span id="start-text">Let's go</span><span aria-hidden="true">↗</span></button><span class="action-hint" id="action-hint">or press <kbd>space</kbd></span></div>
-  <div class="controls" role="group" aria-label="Game controls"><div><kbd>SPACE</kbd><span>jump</span></div><div><kbd>↓</kbd><span>duck</span></div><div><kbd>P</kbd><span>pause</span></div></div>
-  <div class="touch-controls"><button type="button" id="jump">Jump ↑</button><button type="button" id="duck">Hold to duck ↓</button></div>
-  <aside class="tip"><span aria-hidden="true">✳</span><p>A little tip: hold your jump for more airtime.<br>Things pick up as you go.</p></aside>
+  <div class="command-deck">
+    <div class="action-row"><button id="start" class="primary" type="button"><span id="start-text">Let's go</span><span aria-hidden="true">↗</span></button><span class="action-hint" id="action-hint">or press <kbd>space</kbd></span></div>
+    <div class="touch-controls" role="group" aria-label="Game controls"><button type="button" id="jump"><span class="control-icon" aria-hidden="true">↑</span><span>Jump<small>Hold for airtime</small></span><kbd>SPACE</kbd></button><button type="button" id="duck"><span class="control-icon" aria-hidden="true">↓</span><span>Dive<small>Hold to duck</small></span><kbd>↓</kbd></button></div>
+  </div>
+  <p class="control-note">Tap the ocean to jump <span>·</span> <kbd>P</kbd> to pause</p>
   <footer><span>MADE FOR A MOMENT OF PLAY</span><span>∞ attempts</span></footer>
   <p id="announcement" class="sr-only" aria-live="polite"></p>
 </main>
