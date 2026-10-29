@@ -807,8 +807,8 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "34c744fefe430ad993a2502f8591048772d6421b",
-          "contentHash": "a51c102334ae76bdc0514fba156c374604e631d6e3affd90b7e9bc782c1b9b5e",
+          "commit": "350b77fb1c40db5bd59cadfb371836eb282cc29b",
+          "contentHash": "63cb54106418d99ea7469b97644107574cb437e0718b2e341b195fa33d61707c",
           "execution": "data",
           "minimumOrca": "1.4.244",
           "name": "Solarized Light for Orca",
