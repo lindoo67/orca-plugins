@@ -754,6 +754,76 @@
           }
         }
       ]
+    },
+    {
+      "id": "stablyai.orca-github-light-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/github-light-theme"
+      },
+      "description": "A crisp white application theme inspired by GitHub's default light palette, with matching terminal colors.",
+      "categories": [
+        "themes",
+        "terminal-themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "34c744fefe430ad993a2502f8591048772d6421b",
+          "contentHash": "fc774ff9fe4e59226323e6113940358a8e1d17576a2a832ba90645b2926528d0",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "GitHub Light for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "GitHub Light"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "GitHub Light"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-solarized-light-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/solarized-light-theme"
+      },
+      "description": "A warm cream application theme based on Ethan Schoonover's Solarized Light palette, with matching terminal colors.",
+      "categories": [
+        "themes",
+        "terminal-themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "350b77fb1c40db5bd59cadfb371836eb282cc29b",
+          "contentHash": "63cb54106418d99ea7469b97644107574cb437e0718b2e341b195fa33d61707c",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Solarized Light for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Solarized Light"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Solarized Light"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
