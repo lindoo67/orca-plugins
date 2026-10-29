@@ -769,7 +769,26 @@
         "terminal-themes",
         "official"
       ],
-      "releases": []
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "34c744fefe430ad993a2502f8591048772d6421b",
+          "contentHash": "fc774ff9fe4e59226323e6113940358a8e1d17576a2a832ba90645b2926528d0",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "GitHub Light for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "GitHub Light"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "GitHub Light"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "stablyai.orca-catppuccin-latte-theme",
@@ -785,7 +804,26 @@
         "terminal-themes",
         "official"
       ],
-      "releases": []
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "34c744fefe430ad993a2502f8591048772d6421b",
+          "contentHash": "fe66dade11eab07c720941515790d4fef3fecdf736ec2c63bae29b9831fda415",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Catppuccin Latte for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Catppuccin Latte"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Catppuccin Latte"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "stablyai.orca-solarized-light-theme",
@@ -801,7 +839,26 @@
         "terminal-themes",
         "official"
       ],
-      "releases": []
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "34c744fefe430ad993a2502f8591048772d6421b",
+          "contentHash": "a51c102334ae76bdc0514fba156c374604e631d6e3affd90b7e9bc782c1b9b5e",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Solarized Light for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Solarized Light"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Solarized Light"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
