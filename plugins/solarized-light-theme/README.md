@@ -10,3 +10,7 @@ for matching ANSI colors. Includes syntax colors for source files and Markdown.
 Adapted for Orca from the [Solarized Light upstream project](https://ethanschoonover.com/solarized/).
 The Orca token mapping is maintained here; this is an unofficial port.
 Upstream MIT notices are included in [LICENSE](LICENSE).
+
+UI text, button blue, and low-contrast syntax shades are darkened for Orca's
+contrast checks. Sidebar hover uses a deeper cream to stay visible. The terminal
+uses the original Solarized ANSI palette.

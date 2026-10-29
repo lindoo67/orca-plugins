@@ -3,26 +3,26 @@
   "tokens": {
     "--background": "#fdf6e3",
     "--editor-surface": "#fdf6e3",
-    "--foreground": "#657b83",
+    "--foreground": "#586e75",
     "--card": "#eee8d5",
-    "--card-foreground": "#657b83",
+    "--card-foreground": "#435b63",
     "--popover": "#fdf6e3",
-    "--popover-foreground": "#657b83",
-    "--primary": "#268bd2",
+    "--popover-foreground": "#586e75",
+    "--primary": "#2073ae",
     "--primary-foreground": "#fdf6e3",
     "--secondary": "#eee8d5",
-    "--secondary-foreground": "#657b83",
+    "--secondary-foreground": "#435b63",
     "--muted": "#eee8d5",
-    "--muted-foreground": "#586e75",
+    "--muted-foreground": "#435b63",
     "--accent": "#eee8d5",
-    "--accent-foreground": "#657b83",
+    "--accent-foreground": "#435b63",
     "--border": "#93a1a1",
     "--input": "#93a1a1",
     "--ring": "#268bd2",
     "--sidebar": "#eee8d5",
-    "--sidebar-foreground": "#657b83",
-    "--sidebar-accent": "#eee8d5",
-    "--sidebar-accent-foreground": "#657b83",
+    "--sidebar-foreground": "#435b63",
+    "--sidebar-accent": "#e1dbc8",
+    "--sidebar-accent-foreground": "#435b63",
     "--sidebar-border": "#93a1a1",
     "--sidebar-ring": "#268bd2"
   },
@@ -34,7 +34,7 @@
         "punctuation.definition.comment"
       ],
       "settings": {
-        "foreground": "#93a1a1",
+        "foreground": "#818e8e",
         "fontStyle": "italic"
       }
     },
@@ -77,7 +77,7 @@
         "variable.language"
       ],
       "settings": {
-        "foreground": "#859900"
+        "foreground": "#819400"
       }
     },
     {
@@ -86,7 +86,7 @@
         "keyword.operator"
       ],
       "settings": {
-        "foreground": "#859900"
+        "foreground": "#819400"
       }
     },
     {
@@ -98,7 +98,7 @@
         "markup.raw"
       ],
       "settings": {
-        "foreground": "#2aa198"
+        "foreground": "#299c93"
       }
     },
     {
@@ -132,7 +132,7 @@
         "support.class"
       ],
       "settings": {
-        "foreground": "#b58900"
+        "foreground": "#b18600"
       }
     },
     {
@@ -161,7 +161,7 @@
         "support.type.property-name"
       ],
       "settings": {
-        "foreground": "#b58900"
+        "foreground": "#b18600"
       }
     },
     {
@@ -220,7 +220,7 @@
         "markup.quote"
       ],
       "settings": {
-        "foreground": "#93a1a1",
+        "foreground": "#818e8e",
         "fontStyle": "italic"
       }
     },

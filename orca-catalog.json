@@ -791,41 +791,6 @@
       ]
     },
     {
-      "id": "stablyai.orca-catppuccin-latte-theme",
-      "source": {
-        "kind": "git",
-        "url": "https://github.com/stablyai/orca-plugins.git",
-        "ref": "main",
-        "path": "plugins/catppuccin-latte-theme"
-      },
-      "description": "A soft pastel light application theme from the Catppuccin Latte palette, with matching terminal colors.",
-      "categories": [
-        "themes",
-        "terminal-themes",
-        "official"
-      ],
-      "releases": [
-        {
-          "version": "1.0.0",
-          "commit": "34c744fefe430ad993a2502f8591048772d6421b",
-          "contentHash": "fe66dade11eab07c720941515790d4fef3fecdf736ec2c63bae29b9831fda415",
-          "execution": "data",
-          "minimumOrca": "1.4.244",
-          "name": "Catppuccin Latte for Orca",
-          "contributes": [
-            {
-              "kind": "themes",
-              "name": "Catppuccin Latte"
-            },
-            {
-              "kind": "terminalThemes",
-              "name": "Catppuccin Latte"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "stablyai.orca-solarized-light-theme",
       "source": {
         "kind": "git",
