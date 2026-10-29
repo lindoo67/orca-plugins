@@ -3,7 +3,7 @@
   "id": "orca-runner",
   "publisher": "stablyai",
   "name": "Orca Run",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "execution": "sandboxed-ui",
   "description": "A pixel art ocean escape. Jump icebergs and duck seabirds in a Chrome Dino-inspired runner starring Orca.",
   "license": "MIT",

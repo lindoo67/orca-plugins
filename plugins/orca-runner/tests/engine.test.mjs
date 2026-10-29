@@ -91,14 +91,38 @@ test('a delayed frame is bounded, narrow panels retain game geometry, and destro
   assert.equal(h.pending,0);
 });
 
-test('ducking lowers the grounded hitbox and pausing clears duck', () => {
+test('diving starts a run, stays underwater while held, and surfaces on release', () => {
+  const h = harness();
+  h.game.setDucking(true);
+  assert.equal(h.game.getState(),'running');
+  h.advance(256);
+  assert.ok(h.y > 250,'the whole orca sinks beneath the waterline');
+  assert.equal(h.crouched,true);
+  const depth = h.y;
+  h.advance(256);
+  assert.equal(h.y,depth,'holding down maintains dive depth');
+  h.game.setDucking(false);
+  h.advance(256);
+  assert.equal(h.y,210,'releasing down returns to the waterline');
+  h.game.jump(); h.advance(112);
+  assert.ok(h.y < 210,'jumping still works after surfacing');
+});
+
+test('pausing underwater freezes the dive and resuming surfaces without a stuck input', () => {
   const h = harness();
   h.game.start(); h.game.setDucking(true);
+  h.advance(256);
   assert.equal(h.crouched,true);
   h.game.pause();
   assert.equal(h.crouched,false);
+  const depth = h.y;
+  h.advance(1000);
+  assert.equal(h.y,depth);
+  assert.equal(h.pending,0);
   h.game.togglePause();
   assert.equal(h.game.getState(),'running');
+  h.advance(256);
+  assert.equal(h.y,210);
   h.game.jump(); h.advance(112);
   assert.ok(h.y < 210);
 });
@@ -114,14 +138,27 @@ test('a timed jump clears the first iceberg that otherwise ends a run', () => {
 });
 
 
-test('airborne duck turns an ascending jump into a fast fall', () => {
+test('holding down in midair fast falls and continues underwater after landing', () => {
   const falling = harness();
   const held = harness();
   for (const h of [falling,held]) { h.game.jump(); h.advance(112); }
   falling.game.setDucking(true);
   for (const h of [falling,held]) h.advance(112);
-  assert.equal(falling.y,210,'fast fall has already landed');
+  assert.ok(falling.y > 210,'fast fall has landed and started diving');
   assert.ok(held.y < 150,'ordinary held jump is still high in the air');
+  falling.advance(256);
+  assert.ok(falling.y > 250,'held down keeps diving after landing');
+});
+
+test('the submerged iceberg shelf still blocks a diving orca and restart clears the dive', () => {
+  const h = harness();
+  h.game.setDucking(true);
+  for (let i = 0; i < 800 && h.game.getState() !== 'gameover'; i++) h.step();
+  assert.equal(h.game.getState(),'gameover');
+  assert.ok(h.y > 250,'collision happened underwater');
+  h.game.start();
+  assert.equal(h.y,210,'a new run starts at the surface');
+  assert.equal(h.crouched,false);
 });
 
 function reachFirstBird(duck) {
