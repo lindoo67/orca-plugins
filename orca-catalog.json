@@ -1052,6 +1052,29 @@
       ],
       "releases": [
         {
+          "version": "1.2.0",
+          "commit": "1e66a15792014213e971ddfda64c4a34c02f7246",
+          "contentHash": "8b36fe3eb72eaea4b3817cbc7fe3514121d096077ceec7e647f3a8172a1106ae",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "Orca Run",
+          "contributes": [
+            {
+              "kind": "panels",
+              "name": "Orca Run"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "assets/orca-runner/orca-run-cover.png",
+              "alt": "Orca Run pixel art: a black-and-white orca leaps over an iceberg on an icy ocean, framed beneath the Orca Run title on a starry sky.",
+              "sha256": "4068b51ad31f96c5e0136d6926fd2ba60b93b81223663d707279b7514d3fac8c",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        },
+        {
           "version": "1.1.0",
           "commit": "1982c9937db84d3e5b6ebd89f87848887cf1288f",
           "contentHash": "282db3c2adc92d3a481a27e5e13ce677666c2be60886088d66d6494ab68dfcd6",
