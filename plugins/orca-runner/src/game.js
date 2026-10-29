@@ -4,33 +4,86 @@
   const WIDTH = 720;
   const HEIGHT = 280;
   const GROUND = 210;
+  const HORIZON = 146;
+  const SURFACE = GROUND - 7;
   const PLAYER_X = 82;
   const GRAVITY = 1450;
   const JUMP_VELOCITY = 505;
+  // One full day → dusk → aurora night → dawn loop, measured in world distance (1200 points).
+  const CYCLE = 12000;
+  const TILE = 960;
+
+  function hex(value) {
+    const number = parseInt(value.slice(1), 16);
+    return [number >> 16, (number >> 8) & 255, number & 255];
+  }
+  function palette(colors) {
+    const parsed = {};
+    for (const key of Object.keys(colors)) parsed[key] = typeof colors[key] === 'string' ? hex(colors[key]) : colors[key];
+    return parsed;
+  }
+  const DAY = palette({ skyTop:'#5aaee6', skyLow:'#d4edfa', sun:'#fff7dc', haze:'#b2d3e8', ridge:'#86b4d4', snow:'#f6fbff', sea:'#3f93cc', deep:'#0c3566', crest:'#8cc6ec', foam:'#f4fbff', ice:'#f8fdff', iceShade:'#9acbea', iceDeep:'#4f92c4', cloud:'#ffffff', rim:'#9cc4e0', night:0, sunY:58 });
+  const DUSK = palette({ skyTop:'#3b4c8c', skyLow:'#ffb48c', sun:'#ffc887', haze:'#c79bb5', ridge:'#8b76a2', snow:'#ffe3d3', sea:'#7273ac', deep:'#1b2252', crest:'#c9a5c6', foam:'#fff0e6', ice:'#fff4ec', iceShade:'#c6a8cc', iceDeep:'#7c6ca6', cloud:'#ffcbb6', rim:'#ffb78e', night:0.2, sunY:132 });
+  const NIGHT = palette({ skyTop:'#06122a', skyLow:'#1a3d66', sun:'#ffd9a8', haze:'#2a4c74', ridge:'#1e3b5f', snow:'#a3bfda', sea:'#1c4570', deep:'#030b1d', crest:'#3d71a0', foam:'#c0d9ee', ice:'#dbecfa', iceShade:'#7ea7cd', iceDeep:'#3f6b98', cloud:'#2a496d', rim:'#8fb8de', night:1, sunY:190 });
+  const DAWN = palette({ skyTop:'#6c93cc', skyLow:'#ffd4ba', sun:'#ffe7c4', haze:'#c6b6d0', ridge:'#979ec6', snow:'#fff1ea', sea:'#7aa0d0', deep:'#1a3868', crest:'#b8c9e8', foam:'#fff7f2', ice:'#fffaf7', iceShade:'#b5c1e2', iceDeep:'#7189c0', cloud:'#ffe1d3', rim:'#ffcfb6', night:0.15, sunY:118 });
+  const SKY = [[0, DAY], [0.38, DAY], [0.5, DUSK], [0.6, NIGHT], [0.86, NIGHT], [0.95, DAWN], [1, DAY]];
+
+  // Scenery is generated once from fixed seeds, so every run sails past the same coastline.
+  function seeded(seed) {
+    return function () {
+      seed = (seed * 1664525 + 1013904223) >>> 0;
+      return seed / 4294967296;
+    };
+  }
+  function ridge(seed, low, high) {
+    const random = seeded(seed);
+    const points = [{ x: 0, y: HORIZON - 9, peak: false }];
+    let x = 0;
+    while (x < TILE - 130) {
+      x += 34 + random() * 46;
+      points.push({ x, y: HORIZON - low - random() * (high - low), peak: true });
+      x += 30 + random() * 50;
+      points.push({ x, y: HORIZON - 5 - random() * 12, peak: false });
+    }
+    points.push({ x: TILE, y: HORIZON - 9, peak: false });
+    return points;
+  }
+  const FAR_RIDGE = ridge(3, 30, 74);
+  const NEAR_RIDGE = ridge(21, 14, 38);
+  const CLOUDS = (function () {
+    const random = seeded(7);
+    return Array.from({ length: 6 }, (_, index) => ({ x: index * 190 + random() * 90, y: 24 + random() * 58, size: 0.6 + random() * 0.7 }));
+  })();
+  const STARS = (function () {
+    const random = seeded(11);
+    return Array.from({ length: 54 }, () => ({ x: random() * WIDTH, y: 6 + random() * (HORIZON - 46), phase: random() * 6.3, size: random() < 0.18 ? 1.8 : 1 }));
+  })();
 
   window.createOrcaRunner = function ({ canvas, onStateChange = function () {}, onScore = function () {} }) {
     const context = canvas.getContext('2d');
     if (!context) throw new Error('Orca Runner needs a 2D canvas.');
+    const sparkle = seeded(99);
     let state = 'ready';
     let frame = null;
     let lastTime = null;
     let distance = 0;
+    let clock = 0;
     let score = 0;
     let best = 0;
     let height = 0;
     let velocity = 0;
     let ducking = false;
+    let dive = 0;
     let obstacles = [];
+    let particles = [];
+    let spawned = 0;
     let untilSpawn = 1.8;
+    let untilWake = 0;
+    let impact = null;
     let destroyed = false;
     let scale = 1;
     let viewportWidth = WIDTH;
-    let ink = '#23313b';
-    let orcaBody = '#203b3b';
-    let water = '#64b9c7';
-    let sky = '#edf8fc';
-    let ice = '#ffffff';
-    let iceShade = '#79c5e4';
+    let phaseStart = 0;
 
     function setState(next) {
       if (state === next) return;
@@ -45,6 +98,32 @@
     function scheduleFrame() {
       if (!destroyed && state === 'running' && frame === null) frame = window.requestAnimationFrame(tick);
     }
+    function speed() {
+      return Math.min(430, 255 + distance * 0.009);
+    }
+
+    // ---- Colour -----------------------------------------------------------------------------
+    function mix(a, b, amount) {
+      return a + (b - a) * amount;
+    }
+    function rgba(color, alpha) {
+      return `rgba(${Math.round(color[0])},${Math.round(color[1])},${Math.round(color[2])},${alpha === undefined ? 1 : alpha})`;
+    }
+    function skyAt(time) {
+      let index = 0;
+      while (index < SKY.length - 2 && time > SKY[index + 1][0]) index++;
+      const [from, a] = SKY[index];
+      const [to, b] = SKY[index + 1];
+      const linear = to === from ? 0 : Math.min(1, Math.max(0, (time - from) / (to - from)));
+      const amount = linear * linear * (3 - 2 * linear);
+      const result = {};
+      for (const key of Object.keys(a)) {
+        result[key] = Array.isArray(a[key]) ? a[key].map((value, channel) => mix(value, b[key][channel], amount)) : mix(a[key], b[key], amount);
+      }
+      return result;
+    }
+
+    // ---- Drawing primitives -----------------------------------------------------------------
     function polygon(points, color) {
       context.fillStyle = color;
       context.beginPath();
@@ -53,118 +132,415 @@
       context.closePath();
       context.fill();
     }
-    function rect(x, y, w, h, color) {
+    function ellipse(x, y, radiusX, radiusY, color, rotation) {
       context.fillStyle = color;
-      context.fillRect(x, y, w, h);
+      context.beginPath();
+      context.ellipse(x, y, radiusX, radiusY, rotation || 0, 0, Math.PI * 2);
+      context.fill();
     }
-    function drawOrca() {
+    function wrap(value, size) {
+      return ((value % size) + size) % size;
+    }
+
+    // ---- Sky --------------------------------------------------------------------------------
+    function drawSky(sky) {
+      const gradient = context.createLinearGradient(0, 0, 0, HORIZON);
+      gradient.addColorStop(0, rgba(sky.skyTop));
+      gradient.addColorStop(1, rgba(sky.skyLow));
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, viewportWidth, HORIZON + 2);
+      if (sky.night > 0.25) {
+        const starlight = (sky.night - 0.25) / 0.75;
+        context.fillStyle = '#ffffff';
+        for (const star of STARS) {
+          if (star.x > viewportWidth) continue;
+          context.globalAlpha = starlight * (0.45 + 0.4 * Math.sin(clock * 2.4 + star.phase));
+          context.fillRect(star.x, star.y, star.size, star.size);
+        }
+        context.globalAlpha = 1;
+        drawAurora(starlight);
+        drawMoon(starlight);
+      }
+      drawSun(sky);
+    }
+    function drawAurora(strength) {
+      // Curtains: thin vertical rays under a drifting crest, brighter in slow-moving patches.
+      const ribbons = [[44, '110,255,190', 0], [70, '150,140,255', 2.2]];
+      for (const [base, color, phase] of ribbons) {
+        const gradient = context.createLinearGradient(0, 0, 0, 64);
+        gradient.addColorStop(0, `rgba(${color},0)`);
+        gradient.addColorStop(0.2, `rgba(${color},0.9)`);
+        gradient.addColorStop(1, `rgba(${color},0)`);
+        context.fillStyle = gradient;
+        for (let x = 0; x < viewportWidth; x += 3) {
+          const top = base - 22 + Math.sin(x * 0.012 + clock * 0.45 + phase) * 13 + Math.sin(x * 0.033 + phase) * 4;
+          const patch = Math.max(0, Math.sin(x * 0.011 - clock * 0.3 + phase * 1.7));
+          const rays = 0.65 + 0.35 * Math.sin(x * 0.37 + phase + clock * 0.8);
+          context.globalAlpha = strength * 0.5 * patch * patch * rays;
+          context.save();
+          context.translate(x, top);
+          context.scale(1, 0.8 + 0.4 * Math.sin(x * 0.05 + phase));
+          context.fillRect(0, 0, 3, 64);
+          context.restore();
+        }
+      }
+      context.globalAlpha = 1;
+    }
+    function drawMoon(strength) {
+      const x = viewportWidth - 160;
+      const y = 40;
+      context.globalAlpha = strength;
+      const glow = context.createRadialGradient(x, y, 4, x, y, 46);
+      glow.addColorStop(0, 'rgba(220,235,255,0.35)');
+      glow.addColorStop(1, 'rgba(220,235,255,0)');
+      context.fillStyle = glow;
+      context.fillRect(x - 46, y - 46, 92, 92);
+      ellipse(x, y, 12, 12, '#eef4ff');
+      ellipse(x - 4, y - 3, 3, 2.6, 'rgba(160,184,214,0.45)');
+      ellipse(x + 4, y + 4, 2.2, 2, 'rgba(160,184,214,0.4)');
+      ellipse(x + 3, y - 5, 1.4, 1.3, 'rgba(160,184,214,0.35)');
+      context.globalAlpha = 1;
+    }
+    function drawSun(sky) {
+      if (sky.sunY > HORIZON + 24) return;
+      const x = viewportWidth - 92;
+      const y = sky.sunY;
+      const glow = context.createRadialGradient(x, y, 8, x, y, 86);
+      glow.addColorStop(0, rgba(sky.sun, 0.6));
+      glow.addColorStop(1, rgba(sky.sun, 0));
+      context.fillStyle = glow;
+      context.fillRect(x - 86, y - 86, 172, 172);
+      ellipse(x, y, 20, 20, rgba(sky.sun));
+    }
+    function drawCloud(x, y, size, color) {
+      context.fillStyle = color;
+      context.beginPath();
+      for (const [dx, dy, radius] of [[0, 0, 8], [13, -6, 11], [27, -2, 9], [38, 2, 6]]) {
+        context.moveTo(x + (dx + radius) * size, y + dy * size);
+        context.arc(x + dx * size, y + dy * size, radius * size, 0, Math.PI * 2);
+      }
+      context.rect(x, y, 38 * size, 8 * size);
+      context.fill();
+    }
+    function drawRidge(points, parallax, fill, shade, snow) {
+      const offset = -wrap(distance * parallax, TILE);
+      for (let left = offset; left < viewportWidth; left += TILE) {
+        context.fillStyle = fill;
+        context.beginPath();
+        context.moveTo(left, HORIZON + 1);
+        for (const point of points) context.lineTo(left + point.x, point.y);
+        context.lineTo(left + TILE, HORIZON + 1);
+        context.closePath();
+        context.fill();
+        for (let index = 1; index < points.length - 1; index++) {
+          const peak = points[index];
+          if (!peak.peak || left + peak.x < -90 || left + peak.x > viewportWidth + 90) continue;
+          const before = points[index - 1];
+          const after = points[index + 1];
+          const x = left + peak.x;
+          // The leeward face sits in shadow and every tall peak keeps a jagged snow cap.
+          polygon([[x, peak.y], [left + after.x, after.y], [left + after.x, HORIZON + 1], [mix(x, left + after.x, 0.2), HORIZON + 1]], shade);
+          if (HORIZON - peak.y < 24) continue;
+          const lx = mix(x, left + before.x, 0.34);
+          const ly = mix(peak.y, before.y, 0.34);
+          const rx = mix(x, left + after.x, 0.3);
+          const ry = mix(peak.y, after.y, 0.3);
+          polygon([[x, peak.y], [rx, ry], [mix(x, rx, 0.5), ry + 4], [x - 1, mix(peak.y, ly, 0.6)], [mix(x, lx, 0.55), ly + 5], [lx, ly]], snow);
+        }
+      }
+    }
+
+    // ---- Sea --------------------------------------------------------------------------------
+    function drawSea(sky) {
+      const gradient = context.createLinearGradient(0, HORIZON, 0, HEIGHT);
+      gradient.addColorStop(0, rgba(sky.sea));
+      gradient.addColorStop(0.55, rgba(sky.sea.map((value, channel) => mix(value, sky.deep[channel], 0.55))));
+      gradient.addColorStop(1, rgba(sky.deep));
+      context.fillStyle = gradient;
+      context.fillRect(0, HORIZON, viewportWidth, HEIGHT - HORIZON);
+      context.fillStyle = rgba(sky.foam, 0.55);
+      context.fillRect(0, HORIZON, viewportWidth, 1.5);
+      // Glitter path under the sun or moon.
+      const shine = sky.sunY < HORIZON ? sky.sun : sky.night > 0.5 ? [238, 244, 255] : null;
+      if (shine) {
+        const x = sky.sunY < HORIZON ? viewportWidth - 92 : viewportWidth - 160;
+        const strength = sky.sunY < HORIZON ? 0.55 * (1 - sky.night * 0.6) : 0.35 * sky.night;
+        context.fillStyle = rgba(shine, strength);
+        for (let y = HORIZON + 4; y < GROUND - 12; y += 5) {
+          const reach = 8 + (y - HORIZON) * 0.55;
+          const wobble = Math.sin(clock * 3 + y * 0.7) * reach * 0.35;
+          context.fillRect(x - reach / 2 + wobble, y, reach * (0.4 + 0.3 * Math.sin(y + clock * 5)), 1.5);
+        }
+      }
+      drawWaves(sky, 9, HORIZON + 5, GROUND - 10, 0.08, 0.7);
+    }
+    function drawWaves(sky, rows, top, bottom, slowest, fastest) {
+      context.strokeStyle = rgba(sky.crest, 0.55);
+      for (let row = 0; row < rows; row++) {
+        const depth = row / (rows - 1);
+        const y = top + depth * depth * (bottom - top);
+        const parallax = mix(slowest, fastest, depth);
+        const length = 5 + depth * 18;
+        const spacing = 46 + depth * 54 + (row % 3) * 9;
+        context.lineWidth = 1 + depth;
+        context.beginPath();
+        for (let x = wrap(row * 53 - distance * parallax, spacing) - 40; x < viewportWidth + 40; x += spacing) {
+          const jitter = wrap(x * 7.3 + row * 31, 23) - 11;
+          context.moveTo(x + jitter, y);
+          context.quadraticCurveTo(x + jitter + length / 2, y - 1.5 - depth * 2, x + jitter + length, y);
+        }
+        context.stroke();
+      }
+    }
+    function drawFrontWater(sky) {
+      const swell = x => SURFACE + Math.sin((x + distance) * 0.045) * 1.6 + Math.sin((x + distance * 1.3) * 0.11) * 0.7;
+      context.fillStyle = rgba(sky.sea, 0.52);
+      context.beginPath();
+      context.moveTo(0, HEIGHT);
+      for (let x = 0; x <= viewportWidth + 10; x += 10) context.lineTo(x, swell(x));
+      context.lineTo(viewportWidth + 10, HEIGHT);
+      context.closePath();
+      context.fill();
+      const depth = context.createLinearGradient(0, GROUND, 0, HEIGHT);
+      depth.addColorStop(0, rgba(sky.deep, 0));
+      depth.addColorStop(1, rgba(sky.deep, 0.7));
+      context.fillStyle = depth;
+      context.fillRect(0, GROUND, viewportWidth, HEIGHT - GROUND);
+      context.strokeStyle = rgba(sky.foam, 0.4);
+      context.lineWidth = 1.2;
+      context.beginPath();
+      for (let x = 0; x <= viewportWidth + 10; x += 10) {
+        if (x === 0) context.moveTo(x, swell(x));
+        else context.lineTo(x, swell(x));
+      }
+      context.stroke();
+      drawWaves(sky, 5, GROUND + 9, HEIGHT - 8, 1.05, 1.5);
+    }
+
+    // ---- Hazards ----------------------------------------------------------------------------
+    // Three iceberg silhouettes share one hitbox; only the facets differ.
+    const ICEBERGS = [
+      { lit: [[-3, 0], [3, -20], [11, -38], [13, -14], [9, 0]], shade: [[11, -38], [19, -25], [23, -29], [30, 0], [9, 0], [13, -14]], deep: [[11, -38], [13, -14], [9, 0], [17, 0], [17, -19]], shine: [[3, -20], [11, -38], [7, -20]] },
+      { lit: [[-3, 0], [0, -20], [6, -31], [11, -25], [18, -38], [16, -12], [13, 0]], shade: [[18, -38], [25, -22], [30, 0], [13, 0], [16, -12]], deep: [[6, -31], [9, -14], [5, 0], [2, -10]], shine: [[0, -20], [6, -31], [4, -19]] },
+      { lit: [[-3, 0], [-1, -25], [5, -33], [16, -36], [14, -16], [12, 0]], shade: [[16, -36], [25, -32], [28, -16], [30, 0], [12, 0], [14, -16]], deep: [[16, -36], [14, -16], [19, -8], [21, -28]], shine: [[-1, -25], [5, -33], [14, -34], [4, -28]] }
+    ];
+    function drawIce(obstacle, sky) {
+      const x = obstacle.x;
+      const shape = ICEBERGS[obstacle.variant % ICEBERGS.length];
+      const at = points => points.map(([dx, dy]) => [x + dx, GROUND + dy]);
+      polygon([[x - 4, GROUND], [x + 31, GROUND], [x + 35, GROUND + 14], [x - 8, GROUND + 14]], rgba(sky.iceDeep, 0.45));
+      polygon(at(shape.lit), rgba(sky.ice));
+      polygon(at(shape.shade), rgba(sky.iceShade));
+      polygon(at(shape.deep), rgba(sky.iceDeep, 0.8));
+      polygon(at(shape.shine), 'rgba(255,255,255,0.9)');
+    }
+    function drawIceFoam(obstacle, sky) {
+      const lap = Math.sin(clock * 6 + obstacle.x * 0.05) * 1.5;
+      context.strokeStyle = rgba(sky.foam, 0.85);
+      context.lineWidth = 1.5;
+      context.beginPath();
+      context.ellipse(obstacle.x + 13.5, SURFACE + 1, 21 + lap, 2.8, 0, 0, Math.PI);
+      context.stroke();
+    }
+    function drawGull(obstacle, sky) {
+      const x = obstacle.x;
+      const y = obstacle.y;
+      const flap = Math.sin(clock * 13 + obstacle.x * 0.02);
+      // Downstrokes stay above the bird's hitbox so the wing never looks like it touched a diving orca.
+      const lift = flap > 0 ? 15 * flap : 5 * flap;
+      ellipse(x + 16, SURFACE - 1, 12, 2, rgba(sky.deep, 0.25));
+      polygon([[x + 13, y + 8], [x + 19, y + 8], [x + 25, y + 8 - lift * 0.8], [x + 18, y + 8 - lift * 0.6]], '#b9c9d8');
+      ellipse(x + 16, y + 10, 11, 4.6, '#ffffff', 0.05);
+      polygon([[x + 25, y + 8], [x + 32, y + 6], [x + 31, y + 12], [x + 25, y + 12]], '#e3ebf2');
+      ellipse(x + 6, y + 7.5, 4.6, 4.4, '#ffffff');
+      polygon([[x + 2, y + 6.8], [x - 4, y + 8.4], [x + 2, y + 9.8]], '#f39a4c');
+      ellipse(x + 4.8, y + 6.6, 0.95, 0.95, '#1a2735');
+      polygon([[x + 10, y + 8], [x + 20, y + 8], [x + 27, y + 8 - lift], [x + 16, y + 8 - lift * 0.7]], '#d3e0ea');
+      polygon([[x + 21.5, y + 8 - lift * 0.78], [x + 27, y + 8 - lift], [x + 24.5, y + 8 - lift * 0.68]], '#253545');
+    }
+
+    // ---- Orca -------------------------------------------------------------------------------
+    function drawOrca(sky) {
+      const swimming = state === 'running' && height === 0;
+      const bob = swimming ? Math.sin(clock * 7) * 1.2 : 0;
+      const tilt = height > 0 ? Math.max(-0.32, Math.min(0.38, -velocity / 1300)) : 0;
+      const tail = swimming ? Math.sin(clock * 9) * 3 : height > 0 ? Math.sin(clock * 16) * 2 : 0;
+      const fin = mix(1, 0.25, dive);
+      if (height > 0) {
+        const fade = Math.max(0, 1 - height / 180);
+        ellipse(PLAYER_X + 34, SURFACE, 30 * (0.5 + fade / 2), 2.6, rgba(sky.deep, 0.35 * fade));
+      }
       context.save();
-      context.translate(PLAYER_X, GROUND - height);
-      if (ducking && height === 0) context.scale(1.05, 0.56);
-      const tailLift = state === 'running' ? Math.sin(distance / 35) * 3 : 0;
-      // Smooth, compact silhouette with the eye patch, white belly and swept dorsal fin.
-      context.fillStyle = orcaBody;
+      // Ducking dives under the surface: the hitbox shrinks while the front water tints the body.
+      context.translate(PLAYER_X, GROUND - height + bob * (1 - dive) + dive * 23);
+      context.translate(34, -22);
+      context.rotate(tilt);
+      context.translate(-34, 22);
+      const body = context.createLinearGradient(0, -48, 0, 2);
+      body.addColorStop(0, '#2a3f55');
+      body.addColorStop(0.5, '#0d1926');
+      body.addColorStop(1, '#060c14');
+      context.fillStyle = body;
       context.beginPath();
-      context.moveTo(0,-20);
-      context.bezierCurveTo(9,-43,44,-49,61,-35);
-      context.bezierCurveTo(72,-28,73,-16,61,-10);
-      context.bezierCurveTo(43,1,12,-2,0,-20);
+      context.moveTo(6, -27);
+      context.quadraticCurveTo(-6, -22, -12, -19 + tail * 0.5);
+      context.quadraticCurveTo(-19, -29 + tail, -28, -31 + tail);
+      context.quadraticCurveTo(-21, -22 + tail, -22, -17 + tail);
+      context.quadraticCurveTo(-21, -12 + tail, -28, -5 + tail);
+      context.quadraticCurveTo(-18, -8 + tail, -11, -16 + tail * 0.5);
+      context.quadraticCurveTo(-4, -12, 6, -12);
+      context.closePath();
       context.fill();
       context.beginPath();
-      context.moveTo(24,-39);
-      context.quadraticCurveTo(27,-54,22,-60);
-      context.quadraticCurveTo(41,-57,42,-41);
+      context.moveTo(22, -42);
+      context.quadraticCurveTo(mix(22, 15, 1 - fin), -42 - 12 * fin, mix(23, 4, 1 - fin), -42 - 24 * fin);
+      context.quadraticCurveTo(38, -42 - 14 * fin, 42, -43);
+      context.closePath();
       context.fill();
-      polygon([[8,-18],[-8,-18+tailLift],[-20,-31+tailLift],[-21,-18+tailLift],[-14,-10+tailLift],[-23,-1+tailLift],[-10,-1+tailLift],[3,-10]], orcaBody);
+      context.beginPath();
+      context.moveTo(-2, -20);
+      context.bezierCurveTo(6, -37, 28, -47, 48, -43);
+      context.bezierCurveTo(62, -41, 74, -33, 74, -24);
+      context.bezierCurveTo(74, -14, 62, -7, 47, -5);
+      context.bezierCurveTo(27, -2, 7, -7, -2, -20);
+      context.fill();
+      context.strokeStyle = rgba(sky.rim, 0.55);
+      context.lineWidth = 1.4;
+      context.beginPath();
+      context.moveTo(6, -31);
+      context.bezierCurveTo(14, -40, 30, -46, 46, -44);
+      context.stroke();
+      ellipse(16, -38.5, 8, 2.6, 'rgba(190,210,228,0.28)', -0.28);
       context.fillStyle = '#ffffff';
       context.beginPath();
-      context.moveTo(12,-12);
-      context.bezierCurveTo(33,-5,39,-21,68,-21);
-      context.bezierCurveTo(69,-6,34,4,12,-12);
+      context.moveTo(73, -21);
+      context.bezierCurveTo(68, -9, 47, -4, 27, -7);
+      context.bezierCurveTo(42, -11, 59, -12, 73, -21);
       context.fill();
       context.beginPath();
-      context.ellipse(49,-31,9,4,-0.2,0,Math.PI*2);
+      context.moveTo(31, -8.5);
+      context.bezierCurveTo(19, -6, 8, -12, 5, -22);
+      context.bezierCurveTo(13, -16, 23, -15, 33, -14);
+      context.closePath();
       context.fill();
+      ellipse(50, -31.5, 9, 3.8, '#ffffff', -0.16);
+      if (state === 'gameover') {
+        context.strokeStyle = '#ffffff';
+        context.lineWidth = 1.6;
+        context.beginPath();
+        context.moveTo(59, -32);
+        context.lineTo(64, -27);
+        context.moveTo(64, -32);
+        context.lineTo(59, -27);
+        context.stroke();
+      } else {
+        ellipse(61.5, -29.5, 2.5, 2.5, '#ffffff');
+        ellipse(62.2, -29.5, 1.4, 1.5, '#0a1622');
+        ellipse(62.8, -30.3, 0.55, 0.55, '#ffffff');
+      }
+      context.fillStyle = '#0b1622';
       context.beginPath();
-      context.arc(63,-27,2,0,Math.PI*2);
+      context.moveTo(36, -14);
+      context.quadraticCurveTo(41, -6, 33, 3);
+      context.quadraticCurveTo(28, -3, 30, -12);
+      context.closePath();
       context.fill();
-      rect(63,-28,1,2,orcaBody);
-      polygon([[29,-17],[43,-15],[35,-1],[28,2],[27,-7]], orcaBody);
-      if (height === 0) {
-        rect(-22,-1,12,2,'#ffffff');
-        rect(-32,-6,5,2,'#ffffff');
+      if (state === 'ready') {
+        // A little spout says hello before the first run.
+        context.fillStyle = rgba(sky.foam, 0.9);
+        for (const [dx, dy, radius] of [[44, -50, 2.2], [40, -55, 1.8], [48, -55, 1.8], [36, -58, 1.4], [52, -58, 1.4], [44, -59, 1.6]]) {
+          context.beginPath();
+          context.arc(dx, dy, radius, 0, Math.PI * 2);
+          context.fill();
+        }
       }
       context.restore();
     }
-    function drawIce(obstacle) {
-      const x = obstacle.x;
-      const top = GROUND - obstacle.height;
-      polygon([[x,GROUND],[x+3,top+12],[x+12,top],[x+22,top+8],[x+obstacle.width,GROUND]], ice);
-      polygon([[x+12,top],[x+22,top+8],[x+obstacle.width,GROUND],[x+16,GROUND]], iceShade);
-      polygon([[x+3,top+12],[x+12,top],[x+8,GROUND],[x,GROUND]], '#b9e5f3');
-      polygon([[x+12,top+6],[x+16,top+18],[x+13,top+15],[x+17,GROUND-4],[x+10,GROUND-9]], '#d9f2fa');
-      rect(x-4,GROUND,obstacle.width+8,2,'#ffffff');
+
+    // ---- Particles --------------------------------------------------------------------------
+    function splash(count, x, y, reach) {
+      const drift = -speed() * 0.45;
+      for (let index = 0; index < count; index++) {
+        particles.push({ kind: 'drop', x: x + sparkle() * reach, y, vx: drift + (sparkle() - 0.5) * 140, vy: -(110 + sparkle() * 170), life: 0.7, age: 0, size: 1.2 + sparkle() * 1.8 });
+      }
+      for (let index = 0; index < count / 3; index++) {
+        particles.push({ kind: 'foam', x: x + sparkle() * reach, y: SURFACE + sparkle() * 2, vx: -speed(), vy: 0, life: 0.6, age: 0, size: 3 + sparkle() * 4 });
+      }
+      if (particles.length > 160) particles = particles.slice(-160);
     }
-    function drawBird(obstacle) {
-      const flap = Math.sin(distance / 24) > 0 ? -9 : 7;
-      const x = obstacle.x;
-      const y = obstacle.y;
-      polygon([[x,y+8],[x+10,y+3],[x+22,y+5],[x+29,y+10],[x+19,y+15],[x+7,y+13]], ink);
-      polygon([[x+7,y+8],[x+12,y+4],[x+24,y+6],[x+28,y+11],[x+16,y+12]], '#ffffff');
-      polygon([[x+12,y+8],[x+7,y+flap],[x+18,y+flap+2],[x+22,y+9]], '#36536c');
-      polygon([[x+27,y+8],[x+34,y+11],[x+27,y+12]], '#ef986e');
+    function updateParticles(dt, worldSpeed) {
+      untilWake -= dt;
+      if (state === 'running' && height === 0 && untilWake <= 0) {
+        untilWake = 0.045;
+        if (dive > 0.5) particles.push({ kind: 'bubble', x: PLAYER_X + 10 + sparkle() * 50, y: SURFACE + 8 + sparkle() * 10, vx: -worldSpeed * 0.8, vy: -30, life: 0.5, age: 0, size: 1 + sparkle() * 1.6 });
+        else particles.push({ kind: 'foam', x: PLAYER_X - 10 + sparkle() * 14, y: SURFACE + sparkle() * 2.5, vx: -worldSpeed, vy: 0, life: 0.55, age: 0, size: 2 + sparkle() * 3 });
+      }
+      for (const particle of particles) {
+        particle.age += dt;
+        particle.x += particle.vx * dt;
+        particle.y += particle.vy * dt;
+        if (particle.kind === 'drop') particle.vy += 900 * dt;
+      }
+      particles = particles.filter(particle => particle.age < particle.life && particle.x > -20 && (particle.kind !== 'drop' || particle.y < SURFACE + 4));
     }
+    function drawParticles(sky) {
+      for (const particle of particles) {
+        const fade = 1 - particle.age / particle.life;
+        if (particle.kind === 'foam') ellipse(particle.x, particle.y, particle.size * (1 + particle.age * 2), 1.2, rgba(sky.foam, 0.7 * fade));
+        else if (particle.kind === 'bubble') {
+          context.strokeStyle = rgba(sky.foam, 0.6 * fade);
+          context.lineWidth = 0.8;
+          context.beginPath();
+          context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          context.stroke();
+        } else ellipse(particle.x, particle.y, particle.size, particle.size, rgba(sky.foam, 0.95 * fade));
+      }
+    }
+    function drawImpact(sky) {
+      if (!impact) return;
+      context.fillStyle = rgba(sky.foam, 0.92);
+      context.beginPath();
+      for (let point = 0; point < 16; point++) {
+        const angle = point / 16 * Math.PI * 2;
+        const radius = point % 2 ? 6 : 15;
+        context.lineTo(impact.x + Math.cos(angle) * radius, impact.y + Math.sin(angle) * radius);
+      }
+      context.closePath();
+      context.fill();
+      ellipse(impact.x, impact.y, 4, 4, '#ffd36b');
+    }
+
+    // ---- Frame ------------------------------------------------------------------------------
     function draw() {
       if (destroyed) return;
-      const styles = window.getComputedStyle(canvas);
-      ink = styles.getPropertyValue('--game-ink').trim() || '#23313b';
-      orcaBody = styles.getPropertyValue('--game-orca-body').trim() || '#203b3b';
-      water = styles.getPropertyValue('--game-water').trim() || '#64b9c7';
-      sky = styles.getPropertyValue('--game-sky').trim() || '#edf8fc';
-      ice = styles.getPropertyValue('--game-ice').trim() || '#ffffff';
-      iceShade = styles.getPropertyValue('--game-ice-shade').trim() || '#79c5e4';
+      const sky = skyAt(wrap(phaseStart + distance / CYCLE, 1));
       context.setTransform(scale, 0, 0, scale, 0, 0);
       context.clearRect(0, 0, WIDTH, HEIGHT);
-      rect(0,0,WIDTH,HEIGHT,sky);
-      context.fillStyle = ice;
-      context.beginPath();
-      context.arc(viewportWidth-70,47,23,0,Math.PI*2);
-      context.fill();
-      // Quiet distant peaks and two water layers add depth without hiding hazards.
-      for (let i = 0; i < 7; i++) {
-        const x = ((i*137-distance*0.06)%960+960)%960-150;
-        polygon([[x,GROUND-24],[x+53,121+(i%3)*12],[x+133,GROUND-24]], '#b9dce9');
-        polygon([[x+53,121+(i%3)*12],[x+68,164],[x+49,152],[x+30,171]], ice);
+      drawSky(sky);
+      for (const cloud of CLOUDS) {
+        const x = wrap(cloud.x - distance * 0.025 * cloud.size - clock * 3, 1140) - 120;
+        drawCloud(x, cloud.y, cloud.size, rgba(sky.cloud, (0.55 + 0.35 * cloud.size) * (1 - sky.night * 0.75)));
       }
-      rect(0,GROUND-24,WIDTH,94,water);
-      rect(0,GROUND+25,WIDTH,45,iceShade);
-      // Scenery scrolls more slowly than hazards, leaving the play area readable.
-      for (let i = 0; i < 5; i++) {
-        const x = ((i * 179 + 60 - distance * 0.12) % 900 + 900) % 900 - 70;
-        rect(x, 55+(i%3)*19, 39, 3, ice);
-        rect(x+8, 50+(i%3)*19, 18, 5, ice);
-      }
-      rect(0, GROUND, WIDTH, 2, ice);
-      for (let i = 0; i < 21; i++) {
-        const x = ((i*43-distance*0.65)%903+903)%903-80;
-        rect(x, GROUND+13+(i%3)*15, 11+(i%3)*7, 2, '#b9e5f3');
-      }
+      drawRidge(FAR_RIDGE, 0.03, rgba(sky.haze), rgba(sky.deep, 0.08), rgba(sky.snow, 0.85));
+      drawRidge(NEAR_RIDGE, 0.07, rgba(sky.ridge), rgba(sky.deep, 0.12), rgba(sky.snow));
+      drawSea(sky);
       for (const obstacle of obstacles) {
-        if (obstacle.kind === 'bird') drawBird(obstacle);
-        else drawIce(obstacle);
+        if (obstacle.kind === 'bird') drawGull(obstacle, sky);
+        else drawIce(obstacle, sky);
       }
-      drawOrca();
-      if (state === 'gameover') {
-        rect(PLAYER_X+20, GROUND-30-height, 3, 3, water);
-        rect(PLAYER_X+27, GROUND-35-height, 3, 3, water);
-      }
+      drawOrca(sky);
+      drawFrontWater(sky);
+      for (const obstacle of obstacles) if (obstacle.kind === 'ice') drawIceFoam(obstacle, sky);
+      drawParticles(sky);
+      if (state === 'gameover') drawImpact(sky);
     }
     function intersects(a, b) {
       return a.x < b.x+b.width && a.x+a.width > b.x && a.y < b.y+b.height && a.y+a.height > b.y;
     }
     function update(dt) {
-      const speed = Math.min(430, 255+distance*0.009);
-      distance += speed*dt;
+      const worldSpeed = speed();
+      distance += worldSpeed*dt;
+      clock += dt;
       const nextScore = Math.floor(distance/10);
       if (nextScore !== score) {
         score = nextScore;
@@ -174,25 +550,34 @@
       if (height > 0 || velocity > 0) {
         velocity -= GRAVITY*dt;
         height = Math.max(0,height+velocity*dt);
-        if (height === 0 && velocity < 0) velocity = 0;
+        if (height === 0 && velocity < 0) {
+          velocity = 0;
+          splash(12, PLAYER_X + 8, SURFACE, 50);
+        }
       }
+      dive += ((ducking && height === 0 ? 1 : 0) - dive) * Math.min(1, dt * 22);
       untilSpawn -= dt;
       if (untilSpawn <= 0) {
         const bird = score > 180 && Math.random() < 0.3;
         obstacles.push(bird
           ? {kind:'bird',x:WIDTH+35,y:170,width:30,height:17}
-          : {kind:'ice',x:WIDTH+35,y:GROUND-34,width:27,height:34});
+          : {kind:'ice',x:WIDTH+35,y:GROUND-34,width:27,height:34,variant:spawned});
+        spawned++;
         // Space hazards by time, so acceleration cannot create impossible clusters.
         untilSpawn = 1.35+Math.random()*0.75;
       }
+      updateParticles(dt, worldSpeed);
       const crouched = ducking && height === 0;
       const player = {x:PLAYER_X+8,y:GROUND-height-(crouched?19:37),width:51,height:crouched?15:31};
       for (const obstacle of obstacles) {
-        obstacle.x -= speed*dt;
+        obstacle.x -= worldSpeed*dt;
         const hazard = obstacle.kind === 'bird'
           ? {x:obstacle.x+3,y:obstacle.y+4,width:25,height:11}
           : {x:obstacle.x+5,y:GROUND-26,width:17,height:26};
         if (intersects(player,hazard)) {
+          const left = Math.max(player.x, hazard.x);
+          const top = Math.max(player.y, hazard.y);
+          impact = {x:(left+Math.min(player.x+player.width,hazard.x+hazard.width))/2, y:(top+Math.min(player.y+player.height,hazard.y+hazard.height))/2};
           ducking = false;
           setState('gameover');
           return;
@@ -217,7 +602,10 @@
         score = 0;
         height = 0;
         velocity = 0;
+        dive = 0;
         obstacles = [];
+        particles = [];
+        impact = null;
         untilSpawn = 1.8;
         onScore(0,best);
       }
@@ -234,6 +622,7 @@
       if (state === 'running' && height === 0 && velocity === 0) {
         ducking = false;
         velocity = JUMP_VELOCITY;
+        splash(10, PLAYER_X + 14, SURFACE, 44);
       }
     }
     function pause() {
@@ -247,6 +636,8 @@
       if (destroyed) return;
       const width = Math.max(1,canvas.parentElement.getBoundingClientRect().width);
       const ratio = Math.min(window.devicePixelRatio || 1,3);
+      // Dark themes open the run under the aurora; light themes start at midday.
+      phaseStart = parseFloat(window.getComputedStyle(canvas).getPropertyValue('--game-phase')) || 0;
       // Crop distant scenery on narrow panels instead of shrinking the orca to a speck.
       // World coordinates, obstacle timing and collision geometry stay the same.
       viewportWidth = Math.min(WIDTH, Math.max(480, width));
@@ -270,7 +661,11 @@
       },
       togglePause: function () { if (state === 'paused') start(); else pause(); },
       getState: function () { return state; },
-      destroy: function () { destroyed = true; cancelFrame(); obstacles = []; }
+      // Read-only physics snapshot for tests; the artwork can change without touching them.
+      inspect: function () {
+        return {y: GROUND-height, crouched: ducking && height === 0, hazards: obstacles.map(obstacle => ({kind: obstacle.kind, x: obstacle.x}))};
+      },
+      destroy: function () { destroyed = true; cancelFrame(); obstacles = []; particles = []; }
     });
   };
 })();
