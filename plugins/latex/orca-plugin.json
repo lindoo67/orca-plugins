@@ -1,0 +1,37 @@
+{
+  "manifestVersion": 2,
+  "publisher": "stablyai",
+  "version": "1.0.0",
+  "execution": "data",
+  "engines": {
+    "orca": ">=1.4.244"
+  },
+  "capabilities": [],
+  "id": "orca-latex",
+  "name": "LaTeX Syntax",
+  "description": "Syntax highlighting for LaTeX documents and packages.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/latex",
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "latex",
+        "title": "LaTeX",
+        "scopeName": "text.tex.latex",
+        "path": "syntaxes/latex.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".tex",
+          ".ltx",
+          ".sty"
+        ]
+      },
+      {
+        "id": "tex",
+        "title": "TeX grammar dependency",
+        "scopeName": "text.tex",
+        "path": "syntaxes/tex.tmLanguage.json"
+      }
+    ]
+  }
+}

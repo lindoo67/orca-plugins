@@ -887,7 +887,7 @@
         "ref": "main",
         "path": "plugins/dracula-theme"
       },
-      "description": "A dark application theme with Dracula’s vivid pink, purple, and green palette, plus matching terminal colors.",
+      "description": "A dark application theme with Dracula\u2019s vivid pink, purple, and green palette, plus matching terminal colors.",
       "categories": [
         "themes",
         "terminal-themes",
@@ -972,6 +972,133 @@
               "height": 1000
             }
           }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-nix",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/nix"
+      },
+      "description": "Syntax highlighting and editor configuration for Nix files.",
+      "categories": [
+        "languages",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "f576f33aa855ab4edd50895b869c62116ab359e2",
+          "contentHash": "ebf902cc7bd9b492d21132b54b458bf8352943bb6e4eee47f91af17c58c8ce31",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Nix Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "Nix",
+              "detail": ".nix"
+            }
+          ],
+          "fileTypes": [
+            "nix"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-godot",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/godot"
+      },
+      "description": "Syntax highlighting for GDScript, Godot resources and shaders.",
+      "categories": [
+        "languages",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "f576f33aa855ab4edd50895b869c62116ab359e2",
+          "contentHash": "49c60e8e1fac27b7844f3e5f5b96f3e0309d49ebe8759077c762014ca1b7d66c",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Godot Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "GDScript",
+              "detail": ".gd"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "Godot Resource",
+              "detail": ".tscn, .tres, .escn, .godot, .import, .remap, .gdextension"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "Godot Shader",
+              "detail": ".gdshader, .gdshaderinc"
+            }
+          ],
+          "fileTypes": [
+            "gd",
+            "tscn",
+            "tres",
+            "escn",
+            "godot",
+            "import",
+            "remap",
+            "gdextension",
+            "gdshader",
+            "gdshaderinc"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-latex",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/latex"
+      },
+      "description": "Syntax highlighting for LaTeX documents and packages.",
+      "categories": [
+        "languages",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "f576f33aa855ab4edd50895b869c62116ab359e2",
+          "contentHash": "bb3e166037e355d40dd53059993e0d429dc7f2d6d8d8cd48ffd8b07058046a0e",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "LaTeX Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "LaTeX",
+              "detail": ".tex, .ltx, .sty"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "TeX grammar dependency"
+            }
+          ],
+          "fileTypes": [
+            "tex",
+            "ltx",
+            "sty"
+          ]
         }
       ]
     }
