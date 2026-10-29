@@ -3,7 +3,7 @@
   "id": "orca-solarized-light-theme",
   "publisher": "stablyai",
   "name": "Solarized Light for Orca",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "execution": "data",
   "description": "A warm cream application theme based on Ethan Schoonover's Solarized Light palette, with matching terminal colors.",
   "license": "MIT",
@@ -27,5 +27,9 @@
       }
     ]
   },
-  "capabilities": []
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "Solarized Light theme preview with a file tree, syntax-highlighted TypeScript, terminal output, and palette swatches"
+  }
 }

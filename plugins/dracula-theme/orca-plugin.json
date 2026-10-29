@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-dracula-theme",
+  "publisher": "stablyai",
+  "name": "Dracula for Orca",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "A dark application theme with Dracula\u2019s vivid pink, purple, and green palette, plus matching terminal colors.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/dracula-theme",
+  "engines": {
+    "orca": ">=1.4.244"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "dracula",
+        "title": "Dracula",
+        "path": "themes/dracula.json"
+      }
+    ],
+    "terminalThemes": [
+      {
+        "id": "dracula",
+        "title": "Dracula",
+        "path": "terminal/dracula.json"
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "Dracula theme preview with a file tree, syntax-highlighted TypeScript, terminal output, and palette swatches"
+  }
+}

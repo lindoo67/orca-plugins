@@ -3,7 +3,7 @@
   "id": "orca-github-light-theme",
   "publisher": "stablyai",
   "name": "GitHub Light for Orca",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "execution": "data",
   "description": "A crisp white application theme inspired by GitHub's default light palette, with matching terminal colors.",
   "license": "MIT",
@@ -27,5 +27,9 @@
       }
     ]
   },
-  "capabilities": []
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "GitHub Light theme preview with a file tree, syntax-highlighted TypeScript, terminal output, and palette swatches"
+  }
 }
