@@ -7,6 +7,8 @@
   const HORIZON = 146;
   const SURFACE = GROUND - 7;
   const PLAYER_X = 82;
+  const DIVE_DEPTH = 48;
+  const ICE_DEPTH = 15;
   const GRAVITY = 1450;
   const JUMP_VELOCITY = 505;
   // One full day → dusk → aurora night → dawn loop, measured in world distance (1200 points).
@@ -227,6 +229,9 @@
     }
     function speed() {
       return Math.min(430, 255 + distance * 0.009);
+    }
+    function playerY() {
+      return GROUND - height + dive * DIVE_DEPTH;
     }
 
     // ---- Colour -----------------------------------------------------------------------------
@@ -461,7 +466,7 @@
       const art = ICEBERGS[obstacle.variant % ICEBERGS.length];
       const left = toColumn(obstacle.x - 3);
       // The submerged base shows through the water as a dithered shelf.
-      for (let row = 0; row < 5; row++) {
+      for (let row = 0; row < ICE_DEPTH / PIXEL; row++) {
         for (let x = left - 1 + (row >> 1); x <= left + art.width - (row >> 1); x++) {
           if (threshold(x, GROUND_ROW + row) < 0.55 - row * 0.09) blend(x, GROUND_ROW + row, sky.iceDeep, 0.6);
         }
@@ -493,8 +498,8 @@
       const tail = swimming ? Math.round(Math.sin(clock * 9)) : height > 0 ? Math.round(Math.sin(clock * 16) * 0.8) : 0;
       const offset = column => Math.round((column - 21) * shear) + (column < 7 ? tail : 0);
       const left = toColumn(PLAYER_X) - 10;
-      // Ducking dives under the surface: the hitbox shrinks while the front water tints the body.
-      const top = toColumn(GROUND - height + dive * 23) + bob - 22;
+      // The folded fin and whole body sink below the surface, along with the hitbox.
+      const top = toColumn(playerY()) + bob - 22;
       if (height > 0) {
         const fade = Math.max(0, 1 - height / 180);
         const reach = Math.round(10 * (0.5 + fade / 2));
@@ -526,7 +531,7 @@
       untilWake -= dt;
       if (state === 'running' && height === 0 && untilWake <= 0) {
         untilWake = 0.045;
-        if (dive > 0.5) particles.push({ kind: 'bubble', x: PLAYER_X + 10 + sparkle() * 50, y: SURFACE + 8 + sparkle() * 10, vx: -worldSpeed * 0.8, vy: -30, life: 0.5, age: 0, size: 1 + sparkle() * 1.6 });
+        if (dive > 0.5) particles.push({ kind: 'bubble', x: PLAYER_X + 10 + sparkle() * 50, y: playerY() - 20 + sparkle() * 10, vx: -worldSpeed * 0.8, vy: -45, life: 0.8, age: 0, size: 1 + sparkle() * 1.6 });
         else particles.push({ kind: 'foam', x: PLAYER_X - 10 + sparkle() * 14, y: SURFACE + sparkle() * 2.5, vx: -worldSpeed, vy: 0, life: 0.55, age: 0, size: 2 + sparkle() * 3 });
       }
       for (const particle of particles) {
@@ -535,7 +540,7 @@
         particle.y += particle.vy * dt;
         if (particle.kind === 'drop') particle.vy += 900 * dt;
       }
-      particles = particles.filter(particle => particle.age < particle.life && particle.x > -20 && (particle.kind !== 'drop' || particle.y < SURFACE + 4));
+      particles = particles.filter(particle => particle.age < particle.life && particle.x > -20 && (particle.kind !== 'drop' || particle.y < SURFACE + 4) && (particle.kind !== 'bubble' || particle.y > SURFACE));
     }
     function drawParticles(sky) {
       for (const particle of particles) {
@@ -653,7 +658,11 @@
           splash(12, PLAYER_X + 8, SURFACE, 50);
         }
       }
-      dive += ((ducking && height === 0 ? 1 : 0) - dive) * Math.min(1, dt * 22);
+      const diveTarget = ducking && height === 0 ? 1 : 0;
+      const previousDive = dive;
+      dive += (diveTarget - dive) * Math.min(1, dt * 22);
+      if (Math.abs(diveTarget - dive) < 0.005) dive = diveTarget;
+      if ((previousDive < 0.5 && dive >= 0.5) || (previousDive >= 0.5 && dive < 0.5)) splash(6, PLAYER_X + 10, SURFACE, 46);
       untilSpawn -= dt;
       if (untilSpawn <= 0) {
         const bird = score > 180 && Math.random() < 0.3;
@@ -665,13 +674,13 @@
         untilSpawn = 1.35+Math.random()*0.75;
       }
       updateParticles(dt, worldSpeed);
-      const crouched = ducking && height === 0;
-      const player = {x:PLAYER_X+8,y:GROUND-height-(crouched?19:37),width:51,height:crouched?15:31};
+      const player = {x:PLAYER_X+8,y:playerY()-37,width:51,height:31};
       for (const obstacle of obstacles) {
         obstacle.x -= worldSpeed*dt;
         const hazard = obstacle.kind === 'bird'
           ? {x:obstacle.x+3,y:obstacle.y+4,width:25,height:11}
-          : {x:obstacle.x+5,y:GROUND-26,width:17,height:26};
+          // Ice extends into the visible submerged shelf: diving still requires avoiding it.
+          : {x:obstacle.x+5,y:GROUND-26,width:17,height:26+ICE_DEPTH};
         if (intersects(player,hazard)) {
           const left = Math.max(player.x, hazard.x);
           const top = Math.max(player.y, hazard.y);
@@ -758,6 +767,8 @@
       start, jump, pause, resize,
       releaseJump: function () { if (velocity > 190) velocity = 190; },
       setDucking: function (value) {
+        if (destroyed) return;
+        if (value && state !== 'running') start();
         ducking = state === 'running' && Boolean(value);
         if (ducking && height > 0) velocity = Math.min(velocity, -330);
         draw();
@@ -766,7 +777,7 @@
       getState: function () { return state; },
       // Read-only physics snapshot for tests; the artwork can change without touching them.
       inspect: function () {
-        return {y: GROUND-height, crouched: ducking && height === 0, hazards: obstacles.map(obstacle => ({kind: obstacle.kind, x: obstacle.x}))};
+        return {y: playerY(), crouched: ducking && height === 0, hazards: obstacles.map(obstacle => ({kind: obstacle.kind, x: obstacle.x}))};
       },
       destroy: function () { destroyed = true; cancelFrame(); obstacles = []; particles = []; }
     });

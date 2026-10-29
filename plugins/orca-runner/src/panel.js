@@ -20,22 +20,27 @@
     }
   })
   const jumpKeys = new Set(['Space', 'ArrowUp'])
+  // Some webviews and synthesized key events provide key without a physical code.
+  const keyCodes = { ' ': 'Space', p: 'KeyP', P: 'KeyP' }
+  const keyCode = event => event.code || keyCodes[event.key] || event.key
   document.addEventListener('keydown', event => {
     if (event.metaKey || event.ctrlKey || event.altKey || event.target.closest('button, input, textarea, select, [contenteditable="true"]')) return
-    if (jumpKeys.has(event.code)) {
+    const code = keyCode(event)
+    if (jumpKeys.has(code)) {
       event.preventDefault()
       if (!event.repeat) game.jump()
-    } else if (event.code === 'ArrowDown') {
+    } else if (code === 'ArrowDown') {
       event.preventDefault()
-      game.setDucking(true)
-    } else if (event.code === 'KeyP' || event.code === 'Escape') {
+      if (!event.repeat) game.setDucking(true)
+    } else if (code === 'KeyP' || code === 'Escape') {
       event.preventDefault()
       if (!event.repeat) game.togglePause()
     }
   })
   document.addEventListener('keyup', event => {
-    if (jumpKeys.has(event.code)) game.releaseJump()
-    if (event.code === 'ArrowDown') game.setDucking(false)
+    const code = keyCode(event)
+    if (jumpKeys.has(code)) game.releaseJump()
+    if (code === 'ArrowDown') game.setDucking(false)
   })
   // Tap or click the ocean to jump; holding gives more airtime.
   const release = () => game.releaseJump()

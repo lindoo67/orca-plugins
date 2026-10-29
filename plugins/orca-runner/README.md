@@ -23,12 +23,13 @@ or hiding the document pauses gameplay. Resume with Space, P or a tap.
 | Input | Action |
 | --- | --- |
 | Space / ↑ / tap the game | Jump (hold for more airtime); start or restart a run |
-| ↓ | Dive under seabirds; descend faster in the air |
+| ↓ (hold) | Swim underwater to avoid seabirds; descend faster in the air; start or resume a run |
 | P / Escape | Pause or resume |
 
 Click the game to focus keyboard input. Controls only handle keys inside the panel and leave
 Cmd/Ctrl shortcuts to Orca. Speed increases with distance; birds join after the opening stretch, and the sky turns
 from day to dusk to an aurora night as you swim.
+Release ↓ to surface again. Icebergs extend underwater, so jump over them.
 Like the offline dino page, the panel is just the game: score, best and prompts are drawn inside it.
 The page follows Orca's light/dark theme and the game fits narrow sidebars.
 
