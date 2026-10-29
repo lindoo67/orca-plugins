@@ -1063,7 +1063,16 @@
               "kind": "panels",
               "name": "Orca Runner"
             }
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "assets/orca-runner/cover.jpg",
+              "alt": "A black-and-white orca leaps over an icy ocean toward icebergs and a flying seabird beneath the Orca Runner title.",
+              "sha256": "63e238ac2e9ed3cfc765b8cedad930bbc992b986f52bad2cf10f10c3d0e0aba8",
+              "width": 1586,
+              "height": 992
+            }
+          }
         }
       ]
     }
