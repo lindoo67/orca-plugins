@@ -749,7 +749,7 @@
         "ref": "main",
         "path": "plugins/dracula-theme"
       },
-      "description": "A dark application theme with Dracula’s vivid pink, purple, and green palette, plus matching terminal colors.",
+      "description": "A dark application theme with Dracula\u2019s vivid pink, purple, and green palette, plus matching terminal colors.",
       "categories": [
         "themes",
         "terminal-themes",
@@ -867,7 +867,16 @@
           ],
           "fileTypes": [
             "nix"
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "assets/orca-nix/cover.jpg",
+              "alt": "Illustration of Nix configuration with syntax highlighting and a snowflake emblem",
+              "sha256": "21d13deaa12d594d70e9d2158a2105d593451d4a1716d7ad3a6f68fdfb95a78e",
+              "width": 1586,
+              "height": 992
+            }
+          }
         }
       ]
     },
@@ -920,7 +929,16 @@
             "gdextension",
             "gdshader",
             "gdshaderinc"
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "assets/orca-godot/cover.jpg",
+              "alt": "Illustration of GDScript syntax highlighting and a blue robot emblem",
+              "sha256": "fb129868e1098a8a1f485705c40bea727eabe544ddbabff2b136b297f030beed",
+              "width": 1586,
+              "height": 992
+            }
+          }
         }
       ]
     },
@@ -960,7 +978,16 @@
             "tex",
             "ltx",
             "sty"
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "assets/orca-latex/cover.jpg",
+              "alt": "Illustration of LaTeX syntax highlighting and a TeX emblem",
+              "sha256": "109d05e1d8c95db333b157b6f04d7f72854246cf2a2fcf48ff8b9bf179db6140",
+              "width": 1586,
+              "height": 992
+            }
+          }
         }
       ]
     },
@@ -997,7 +1024,16 @@
           ],
           "editorFileTypes": [
             "docx"
-          ]
+          ],
+          "images": {
+            "cover": {
+              "path": "assets/orca-docx/cover.jpg",
+              "alt": "Illustration of a document preview and blue document icon",
+              "sha256": "6c183bc8a56414e8bda11f9e3ea1393979165077776dfd3a279a00f80ffb50a1",
+              "width": 1586,
+              "height": 992
+            }
+          }
         }
       ]
     }
