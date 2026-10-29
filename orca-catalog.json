@@ -400,53 +400,6 @@
               }
             ]
           }
-        },
-        {
-          "version": "1.0.0",
-          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
-          "contentHash": "30d0e90c0528e96134581fcb944f8b94ecd3784273cfa76d5a7d3562baa33188",
-          "execution": "sandboxed-ui",
-          "minimumOrca": "1.4.244",
-          "name": "Excalidraw",
-          "contributes": [
-            {
-              "kind": "customEditors",
-              "name": "Excalidraw",
-              "detail": ".excalidraw, .excalidraw.json"
-            }
-          ],
-          "fileTypes": [
-            "excalidraw"
-          ],
-          "license": "MIT",
-          "images": {
-            "cover": {
-              "path": "plugins/excalidraw/images/cover.png",
-              "alt": "A hand-drawn architecture sketch of a web app, API gateway, services and database open in the Excalidraw editor",
-              "sha256": "85cc3391dbb7569b271d8367da9232b9806e0ea0bf183112e34fb304260f327d",
-              "width": 1600,
-              "height": 1000
-            },
-            "screenshots": [
-              {
-                "path": "plugins/excalidraw/images/editing.png",
-                "alt": "A box in the sketch selected, with Excalidraw's stroke, fill and font options beside it",
-                "sha256": "cf14ff5105a08d396765816de52be2eba5a0076af20e72f667a29ffcc2521152",
-                "width": 1600,
-                "height": 1000
-              },
-              {
-                "path": "plugins/excalidraw/images/dark.png",
-                "alt": "The same sketch in Excalidraw's dark theme",
-                "sha256": "5db71c99c28336bf8b942de84a8327bf81d23b33d4eff7788c6efed0ebc463c9",
-                "width": 1600,
-                "height": 1000
-              }
-            ]
-          },
-          "editorFileTypes": [
-            "excalidraw"
-          ]
         }
       ]
     },
@@ -517,61 +470,6 @@
               }
             ]
           }
-        },
-        {
-          "version": "1.0.0",
-          "commit": "d825d2f4bf9f2e1e4bb3399d570854a052760c5b",
-          "contentHash": "88e9b6d7d922eefd1665af3c04086a38b25044ca53468fe693380ab076a04919",
-          "execution": "sandboxed-ui",
-          "minimumOrca": "1.4.244",
-          "name": "Spreadsheet Viewer",
-          "contributes": [
-            {
-              "kind": "customEditors",
-              "name": "Spreadsheet",
-              "detail": ".xlsx, .xlsm, .xlsb, .xls, .ods"
-            }
-          ],
-          "fileTypes": [
-            "xlsx",
-            "xlsm",
-            "xlsb",
-            "xls",
-            "ods"
-          ],
-          "license": "MIT",
-          "images": {
-            "cover": {
-              "path": "plugins/spreadsheet/images/cover.png",
-              "alt": "A quarterly summary workbook in Spreadsheet Viewer: formatted currency, percentages and dates, a SUM formula above the grid, and sheet tabs",
-              "sha256": "bd07b5e0fa7c6646461713ad6fbfacf8b5dcd168f8414aaeaeb23b59f41552e8",
-              "width": 1600,
-              "height": 1000
-            },
-            "screenshots": [
-              {
-                "path": "plugins/spreadsheet/images/sheets.png",
-                "alt": "A 50,000-row data sheet with a block of cells selected and its count, sum and average in the status bar",
-                "sha256": "aaf8bc8a37bc461e9949bb2bd8429e62e882c3d1577981569323b75a05e1000d",
-                "width": 1600,
-                "height": 1000
-              },
-              {
-                "path": "plugins/spreadsheet/images/dark.png",
-                "alt": "The same summary workbook in Orca's dark theme, with merged title and notes cells and a #DIV/0! error in red",
-                "sha256": "f4040e07aa6a41d31b865fabb1fbae1d2623e9e8c9b1c6222f3a1018c76bc3b0",
-                "width": 1600,
-                "height": 1000
-              }
-            ]
-          },
-          "editorFileTypes": [
-            "xlsx",
-            "xlsm",
-            "xlsb",
-            "xls",
-            "ods"
-          ]
         }
       ]
     },
@@ -796,24 +694,6 @@
               "height": 1000
             }
           }
-        },
-        {
-          "version": "1.0.0",
-          "commit": "34c744fefe430ad993a2502f8591048772d6421b",
-          "contentHash": "fc774ff9fe4e59226323e6113940358a8e1d17576a2a832ba90645b2926528d0",
-          "execution": "data",
-          "minimumOrca": "1.4.244",
-          "name": "GitHub Light for Orca",
-          "contributes": [
-            {
-              "kind": "themes",
-              "name": "GitHub Light"
-            },
-            {
-              "kind": "terminalThemes",
-              "name": "GitHub Light"
-            }
-          ]
         }
       ]
     },
@@ -858,24 +738,6 @@
               "height": 1000
             }
           }
-        },
-        {
-          "version": "1.0.0",
-          "commit": "350b77fb1c40db5bd59cadfb371836eb282cc29b",
-          "contentHash": "63cb54106418d99ea7469b97644107574cb437e0718b2e341b195fa33d61707c",
-          "execution": "data",
-          "minimumOrca": "1.4.244",
-          "name": "Solarized Light for Orca",
-          "contributes": [
-            {
-              "kind": "themes",
-              "name": "Solarized Light"
-            },
-            {
-              "kind": "terminalThemes",
-              "name": "Solarized Light"
-            }
-          ]
         }
       ]
     },
