@@ -9,19 +9,26 @@
 </head>
 <body>
 <main>
-  <header class="masthead"><span class="brand"><span class="brand-mark" aria-hidden="true">◒</span> ORCA ARCADE</span><span class="edition">NO. 001</span></header>
-  <section class="intro" aria-labelledby="title"><div class="eyebrow"><span></span> A LITTLE OCEAN ESCAPE</div><h1 id="title">Orca Runner<span class="title-dot">.</span></h1><p>Big jumps. Cold water. Just one more try.</p></section>
-  <section class="game" aria-label="Orca Runner game">
-    <div class="game-top"><span class="status"><span id="status-dot"></span><span id="status">READY TO GO</span></span><div class="scores"><div><span>BEST</span><strong id="best">00000</strong></div><div><span>SCORE</span><strong id="score">00000</strong></div></div></div>
-    <div class="playfield" id="playfield"><canvas id="game" tabindex="0" aria-label="Game area. Space or up arrow to jump. Down arrow to duck. P to pause."></canvas><div id="overlay" class="overlay"><div class="overlay-label" id="overlay-label">THE OCEAN IS CALLING</div><h2 id="overlay-title">Ready, little orca?</h2><p id="overlay-hint">Jump the ice. Find your flow.</p></div></div>
-    <div class="game-bottom"><span id="run-message">Your next adventure starts here.</span><button id="pause" class="icon-button" type="button" disabled aria-label="Pause game" title="Pause (P)"><span id="pause-symbol" aria-hidden="true">Ⅱ</span></button></div>
+  <header class="masthead">
+    <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>ORCA ARCADE <span class="edition">· NO. 001</span></div>
+    <h1 id="title"><svg id="wordmark" class="wordmark" aria-hidden="true"></svg><span class="sr-only">Orca Runner</span></h1>
+    <p class="tagline">Big jumps. Cold water. Just one more try.</p>
+  </header>
+  <section class="cabinet" aria-label="Orca Runner game">
+    <div class="hud"><span class="status"><span id="status-dot"></span><span id="status">READY TO GO</span></span><div class="scores"><div class="best"><span>BEST</span><strong id="best">00000</strong></div><div><span>SCORE</span><strong id="score">00000</strong></div></div></div>
+    <div class="playfield" id="playfield"><canvas id="game" tabindex="0" aria-label="Game area. Space or up arrow to jump. Down arrow to duck. P to pause."></canvas><div id="overlay" class="overlay"><div class="overlay-card"><div class="overlay-label" id="overlay-label">THE OCEAN IS CALLING</div><h2 id="overlay-title">Ready, little orca?</h2><p id="overlay-hint">Jump the ice. Find your flow.</p></div></div></div>
+    <div class="deck">
+      <button id="start" class="key primary" type="button"><svg class="key-icon solid" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6a.6.6 0 0 0 .9.5l7.6-4.8a.6.6 0 0 0 0-1L5.9 2.7a.6.6 0 0 0-.9.5Z"/></svg><span id="start-text">Let's go</span><kbd id="action-hint">Space</kbd></button>
+      <div class="touch-controls" role="group" aria-label="Game controls">
+        <button type="button" id="jump" class="key primary" title="Jump — hold for airtime"><svg class="key-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 10.5 8 5.5l5 5"/></svg><span>Jump</span><kbd>Space</kbd></button>
+        <button type="button" id="duck" class="key" title="Dive — hold to duck under seabirds"><svg class="key-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5.5 8 10.5l5-5"/></svg><span>Dive</span><kbd>↓</kbd></button>
+      </div>
+      <button id="pause" class="key icon-key" type="button" disabled aria-label="Pause game" title="Pause (P)"><svg class="key-icon pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9M10.5 3.5v9"/></svg><svg class="key-icon solid resume-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6a.6.6 0 0 0 .9.5l7.6-4.8a.6.6 0 0 0 0-1L5.9 2.7a.6.6 0 0 0-.9.5Z"/></svg></button>
+    </div>
+    <p class="run-message" id="run-message">Your next adventure starts here.</p>
   </section>
-  <div class="command-deck">
-    <div class="action-row"><button id="start" class="primary" type="button"><span id="start-text">Let's go</span><span aria-hidden="true">↗</span></button><span class="action-hint" id="action-hint">or press <kbd>space</kbd></span></div>
-    <div class="touch-controls" role="group" aria-label="Game controls"><button type="button" id="jump"><span class="control-icon" aria-hidden="true">↑</span><span>Jump<small>Hold for airtime</small></span><kbd>SPACE</kbd></button><button type="button" id="duck"><span class="control-icon" aria-hidden="true">↓</span><span>Dive<small>Hold to duck</small></span><kbd>↓</kbd></button></div>
-  </div>
-  <p class="control-note">Tap the ocean to jump <span>·</span> <kbd>P</kbd> to pause</p>
-  <footer><span>MADE FOR A MOMENT OF PLAY</span><span>∞ attempts</span></footer>
+  <p class="control-note">Tap the ocean to jump <span>·</span> hold <kbd>↓</kbd> to dive <span>·</span> <kbd>P</kbd> pauses</p>
+  <footer><span>MADE FOR A MOMENT OF PLAY</span><span>∞ ATTEMPTS</span></footer>
   <p id="announcement" class="sr-only" aria-live="polite"></p>
 </main>
 <script>/* GAME_ENGINE */</script>

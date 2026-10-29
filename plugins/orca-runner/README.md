@@ -22,12 +22,13 @@ or hiding the document pauses gameplay. Resume with P or the resume button.
 | Input | Action |
 | --- | --- |
 | Space / ↑ / tap the ocean / Jump button | Jump; hold for more airtime |
-| ↓ / hold the Duck button | Duck under seabirds; descend faster in the air |
+| ↓ / hold the Dive button | Dive under seabirds; descend faster in the air |
 | P / Escape / pause button | Pause or resume |
 | Let's go / Try again | Start a fresh run |
 
 Click the game to focus keyboard input. Controls only handle keys inside the panel and leave
-Cmd/Ctrl shortcuts to Orca. Speed increases with distance; birds join after the opening stretch.
+Cmd/Ctrl shortcuts to Orca. Speed increases with distance; birds join after the opening stretch, and the sky turns
+from day to dusk to an aurora night as you swim.
 The layout follows Orca's light/dark theme and fits narrow sidebars.
 
 ## Development

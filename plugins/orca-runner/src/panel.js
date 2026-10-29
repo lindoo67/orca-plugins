@@ -3,24 +3,66 @@
   const $ = id => document.getElementById(id)
   const canvas = $('game')
   const copy = {
-    ready: ['READY TO GO', 'THE OCEAN IS CALLING', 'Ready, little orca?', 'Jump the ice. Find your flow.', "Let's go", 'Your next adventure starts here.'],
-    running: ['IN THE FLOW', '', '', '', 'Jump', 'Jump icebergs. Duck the seabirds.'],
+    ready: ['READY TO GO', 'THE OCEAN IS CALLING', 'Ready, little orca?', 'Jump the ice. Find your flow.', "Let's go", 'Hold jump for airtime. Dive under seabirds.'],
+    running: ['IN THE FLOW', '', '', '', 'Jump', 'Jump icebergs. Dive under the seabirds.'],
     paused: ['TAKING A BREATHER', 'NO RUSH', 'Catch your breath.', 'Your ocean will be right here.', 'Keep going', 'Paused. Press P or resume when ready.'],
     gameover: ['NICE SWIM', 'ONE MORE WAVE?', 'Back for another?', 'Every great run starts with a splash.', 'Try again', 'A splash is just a new beginning.']
   }
+  // Chunky 6×7 pixel letters echo the cover art's wordmark.
+  const glyphs = {
+    O: ['.####.', '##..##', '##..##', '##..##', '##..##', '##..##', '.####.'],
+    R: ['#####.', '##..##', '##..##', '#####.', '##.##.', '##..##', '##..##'],
+    C: ['.#####', '##....', '##....', '##....', '##....', '##....', '.#####'],
+    A: ['.####.', '##..##', '##..##', '######', '##..##', '##..##', '##..##'],
+    U: ['##..##', '##..##', '##..##', '##..##', '##..##', '##..##', '.####.'],
+    N: ['##..##', '###.##', '######', '##.###', '##..##', '##..##', '##..##'],
+    E: ['######', '##....', '##....', '#####.', '##....', '##....', '######']
+  }
+  function pixelPath(word, left) {
+    let path = ''
+    for (const [index, letter] of [...word].entries()) {
+      glyphs[letter].forEach((row, y) => [...row].forEach((cell, x) => {
+        if (cell === '#') path += `M${left + index * 7 + x} ${y}h1v1h-1z`
+      }))
+    }
+    return path
+  }
+  function drawWordmark() {
+    const svg = $('wordmark')
+    const ink = pixelPath('ORCA', 0)
+    const tint = pixelPath('RUNNER', 30)
+    svg.setAttribute('viewBox', '0 0 72 7.6')
+    svg.innerHTML = `<path class="shade" transform="translate(.45 .45)" d="${ink}${tint}"/><path class="ink" d="${ink}"/><path class="tint" d="${tint}"/>`
+  }
+  drawWordmark()
+
   const format = value => String(value).padStart(5, '0')
+  let bestBeforeRun = 0
+  let lastScore = 0
   const game = window.createOrcaRunner({
     canvas,
     onScore(score, best) {
       $('score').textContent = format(score)
       $('best').textContent = format(best)
+      // Blink the score at every hundred, like a little arcade fanfare.
+      if (score > 0 && Math.floor(score / 100) > Math.floor(lastScore / 100)) {
+        $('score').classList.remove('flash')
+        void $('score').offsetWidth
+        $('score').classList.add('flash')
+      }
+      lastScore = score
     },
     onStateChange(state) {
+      const previous = document.body.dataset.state
+      const best = Number($('best').textContent)
+      const newBest = state === 'gameover' && best > 0 && best > bestBeforeRun
+      if (state === 'running' && previous !== 'paused') bestBeforeRun = best
       const [status, label, title, hint, action, message] = copy[state]
       document.body.dataset.state = state
+      document.body.toggleAttribute('data-new-best', newBest)
       $('status').textContent = status
-      $('overlay-label').textContent = label
-      $('overlay-title').textContent = title
+      $('overlay-label').textContent = newBest ? `NEW BEST · ${format(best)}` : label
+      $('overlay-title').textContent = newBest ? 'What a swim!' : title
       $('overlay-hint').textContent = hint
       $('overlay').hidden = state === 'running'
       $('start-text').textContent = action
@@ -28,12 +70,16 @@
       $('pause').disabled = state === 'ready' || state === 'gameover'
       $('pause').setAttribute('aria-label', state === 'paused' ? 'Resume game' : 'Pause game')
       $('pause').title = state === 'paused' ? 'Resume (P)' : 'Pause (P)'
-      $('pause-symbol').textContent = state === 'paused' ? '▶' : 'Ⅱ'
-      $('action-hint').innerHTML = state === 'paused' ? 'or press <kbd>P</kbd>' : 'or press <kbd>space</kbd>'
-      if (state !== 'running') $('announcement').textContent = state === 'gameover' ? `Run over. Score ${$('score').textContent}. Select Try again to restart.` : message
+      $('action-hint').textContent = state === 'paused' ? 'P' : 'Space'
+      if (state !== 'running') {
+        pressed($('jump'), false)
+        pressed($('duck'), false)
+        $('announcement').textContent = state === 'gameover' ? `Run over. Score ${$('score').textContent}.${newBest ? ' New best!' : ''} Select Try again to restart.` : message
+      }
     }
   })
   function focusGame() { canvas.focus({ preventScroll: true }) }
+  function pressed(element, value) { element.classList.toggle('pressed', value) }
   $('start').addEventListener('click', () => {
     if (game.getState() === 'running') game.jump()
     else game.start()
@@ -46,29 +92,33 @@
     if (jumpKeys.has(event.code)) {
       event.preventDefault()
       if (!event.repeat) game.jump()
+      pressed($('jump'), game.getState() === 'running')
     } else if (event.code === 'ArrowDown') {
       event.preventDefault()
       game.setDucking(true)
+      pressed($('duck'), game.getState() === 'running')
     } else if (event.code === 'KeyP' || event.code === 'Escape') {
       event.preventDefault()
       if (!event.repeat) game.togglePause()
     }
   })
   document.addEventListener('keyup', event => {
-    if (jumpKeys.has(event.code)) game.releaseJump()
-    if (event.code === 'ArrowDown') game.setDucking(false)
+    if (jumpKeys.has(event.code)) { game.releaseJump(); pressed($('jump'), false) }
+    if (event.code === 'ArrowDown') { game.setDucking(false); pressed($('duck'), false) }
   })
   function bindHold(element, down, up) {
+    const release = () => { pressed(element, false); up() }
     element.addEventListener('pointerdown', event => {
       if (event.button !== 0) return
       event.preventDefault()
       element.setPointerCapture(event.pointerId)
       focusGame()
+      pressed(element, element !== canvas)
       down()
     })
-    element.addEventListener('pointerup', up)
-    element.addEventListener('pointercancel', up)
-    element.addEventListener('lostpointercapture', up)
+    element.addEventListener('pointerup', release)
+    element.addEventListener('pointercancel', release)
+    element.addEventListener('lostpointercapture', release)
   }
   bindHold(canvas, () => game.jump(), () => game.releaseJump())
   bindHold($('jump'), () => game.jump(), () => game.releaseJump())

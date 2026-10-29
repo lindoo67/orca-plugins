@@ -9,23 +9,11 @@ function harness(width = 720, random = () => 0.5) {
   let time = 0;
   let score = 0;
   let best = 0;
-  let playerY = 210;
-  let playerScaleY = 1;
   const frames = new Map();
-  let hazards = [];
   const states = [];
-  const context = new Proxy({
-    translate(_x,y) { playerY = y; },
-    scale(_x,y) { playerScaleY = y; },
-    clearRect() { hazards = []; },
-    moveTo(x,y) {
-      if (y === 210) hazards.push({kind:'ice',x});
-      if (y === 178) hazards.push({kind:'bird',x});
-    }
-  }, {
-    get(target,key) { return target[key] ?? (() => {}); },
-    set(target,key,value) { target[key] = value; return true; }
-  });
+  // Drawing is a no-op; gradients only need addColorStop.
+  const gradient = { addColorStop() {} };
+  const context = new Proxy({}, { get: () => () => gradient, set: () => true });
   const canvas = { style: {}, parentElement: { getBoundingClientRect: () => ({width}) }, getContext: () => context };
   const window = {
     devicePixelRatio: 2,
@@ -42,7 +30,7 @@ function harness(width = 720, random = () => 0.5) {
     callbacks.forEach(callback => callback(time));
   }
   function advance(ms) { for (let i = 0; i < ms; i += 16) step(); }
-  return {game,canvas,states,step,advance,get hazards() {return hazards;},get score() {return score;},get best() {return best;},get y() {return playerY;},get scaleY() {return playerScaleY;},get pending() {return frames.size;}};
+  return {game,canvas,states,step,advance,get hazards() {return game.inspect().hazards;},get score() {return score;},get best() {return best;},get y() {return game.inspect().y;},get crouched() {return game.inspect().crouched;},get pending() {return frames.size;}};
 }
 
 test('starts idle, pauses without scheduling work, and resumes without losing score', () => {
@@ -101,11 +89,12 @@ test('a delayed frame is bounded, narrow panels retain game geometry, and destro
   assert.equal(h.pending,0);
 });
 
-test('ducking compresses the grounded silhouette and pausing clears duck', () => {
+test('ducking lowers the grounded hitbox and pausing clears duck', () => {
   const h = harness();
   h.game.start(); h.game.setDucking(true);
-  assert.equal(h.scaleY,0.56);
+  assert.equal(h.crouched,true);
   h.game.pause();
+  assert.equal(h.crouched,false);
   h.game.togglePause();
   assert.equal(h.game.getState(),'running');
   h.game.jump(); h.advance(112);
