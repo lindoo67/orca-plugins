@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; base-uri 'none'; form-action 'none'">
+<title>Orca Runner</title>
+<style>/* PANEL_STYLES */</style>
+</head>
+<body>
+<main>
+  <header class="masthead"><span class="brand"><span class="brand-mark" aria-hidden="true">◒</span> ORCA ARCADE</span><span class="edition">NO. 001</span></header>
+  <section class="intro" aria-labelledby="title"><div class="eyebrow"><span></span> A LITTLE OCEAN ESCAPE</div><h1 id="title">Orca Runner<span class="title-dot">.</span></h1><p>Big jumps. Cold water. Just one more try.</p></section>
+  <section class="game" aria-label="Orca Runner game">
+    <div class="game-top"><span class="status"><span id="status-dot"></span><span id="status">READY TO GO</span></span><div class="scores"><div><span>BEST</span><strong id="best">00000</strong></div><div><span>SCORE</span><strong id="score">00000</strong></div></div></div>
+    <div class="playfield" id="playfield"><canvas id="game" tabindex="0" aria-label="Game area. Space or up arrow to jump. Down arrow to duck. P to pause."></canvas><div id="overlay" class="overlay"><div class="overlay-label" id="overlay-label">THE OCEAN IS CALLING</div><h2 id="overlay-title">Ready, little orca?</h2><p id="overlay-hint">Jump the ice. Find your flow.</p></div></div>
+    <div class="game-bottom"><span id="run-message">Your next adventure starts here.</span><button id="pause" class="icon-button" type="button" disabled aria-label="Pause game" title="Pause (P)"><span id="pause-symbol" aria-hidden="true">Ⅱ</span></button></div>
+  </section>
+  <div class="action-row"><button id="start" class="primary" type="button"><span id="start-text">Let's go</span><span aria-hidden="true">↗</span></button><span class="action-hint" id="action-hint">or press <kbd>space</kbd></span></div>
+  <div class="controls" role="group" aria-label="Game controls"><div><kbd>SPACE</kbd><span>jump</span></div><div><kbd>↓</kbd><span>duck</span></div><div><kbd>P</kbd><span>pause</span></div></div>
+  <div class="touch-controls"><button type="button" id="jump">Jump ↑</button><button type="button" id="duck">Hold to duck ↓</button></div>
+  <aside class="tip"><span aria-hidden="true">✳</span><p>A little tip: hold your jump for more airtime.<br>Things pick up as you go.</p></aside>
+  <footer><span>MADE FOR A MOMENT OF PLAY</span><span>∞ attempts</span></footer>
+  <p id="announcement" class="sr-only" aria-live="polite"></p>
+</main>
+<script>/* GAME_ENGINE */</script>
+<script>/* PANEL_CONTROLLER */</script>
+</body>
+</html>

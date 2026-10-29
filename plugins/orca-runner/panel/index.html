@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; base-uri 'none'; form-action 'none'">
+<title>Orca Runner</title>
+<style>:root{color-scheme:light;--page:var(--orca-background,#f9faf8);--ink:var(--orca-foreground,#203b3b);--muted:var(--orca-muted-foreground,#566b65);--accent:#167a71;--surface:#f0f5f2;--line:#dce5df;--game-ink:#253d3b;--game-water:#b4d6ce;--game-muted:#acbdb5;font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink)}main{width:min(100%,800px);margin:auto;padding:28px 24px 20px}.masthead{display:flex;align-items:center;justify-content:space-between;font:600 10px ui-monospace,SFMono-Regular,monospace;letter-spacing:1.5px}.brand{display:flex;align-items:center;gap:9px}.brand-mark{font-size:25px;line-height:1;transform:rotate(-20deg)}.edition{color:var(--muted);font-size:9px}.intro{margin:46px 0 28px}.eyebrow{display:flex;align-items:center;gap:6px;font:600 8px ui-monospace,monospace;letter-spacing:1.5px;color:var(--accent)}.eyebrow span{height:5px;width:5px;background:currentColor;border-radius:50%}h1{font-size:clamp(30px,6vw,48px);font-weight:650;line-height:1.1;letter-spacing:-1.8px;margin:14px 0 10px}.title-dot{color:var(--accent)}.intro p{font-size:12px;line-height:1.6;color:var(--muted);margin:0}.game{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}.game-top{display:flex;align-items:center;justify-content:space-between;padding:19px 18px 8px;gap:8px}.status{display:flex;align-items:center;gap:6px;font:500 8px ui-monospace,monospace;letter-spacing:1px;white-space:nowrap;color:var(--muted)}#status-dot{height:5px;width:5px;border-radius:50%;background:var(--muted)}[data-state=running] #status-dot{background:var(--accent)}.scores{display:flex;gap:18px}.scores div{display:flex;flex-direction:column;gap:5px;align-items:flex-end}.scores span{font:500 7px ui-monospace,monospace;letter-spacing:1px;color:var(--muted)}.scores strong{font:500 16px ui-monospace,monospace;letter-spacing:1px}.scores div:first-child strong{color:var(--muted)}.playfield{position:relative;width:100%;min-height:110px;touch-action:none}canvas{display:block;width:100%;outline:none;touch-action:none}canvas:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}.overlay{position:absolute;inset:8% 6% auto 29%;text-align:center;pointer-events:none}.overlay-label{font:500 clamp(6px,1.3vw,9px) ui-monospace,monospace;letter-spacing:1.3px;color:var(--accent)}h2{font-size:clamp(14px,2.6vw,23px);font-weight:600;letter-spacing:-.5px;margin:8px 0}.overlay p{font-size:clamp(9px,1.7vw,12px);color:var(--muted);margin:0}.game-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 16px;border-top:1px solid var(--line);font-size:10px;color:var(--muted)}button{font:inherit;cursor:pointer;touch-action:manipulation}button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.icon-button{width:28px;height:26px;border:1px solid var(--line);border-radius:5px;background:transparent;color:var(--ink);font-size:12px}.icon-button:disabled{opacity:.35;cursor:default}.action-row{display:flex;gap:16px;align-items:center;margin:20px 0}.primary{display:flex;justify-content:space-between;align-items:center;gap:28px;background:var(--ink);color:var(--page);border:0;border-radius:7px;padding:13px 18px;font-size:12px;font-weight:600;min-width:135px}.primary:hover{filter:brightness(1.2)}.action-hint{font-size:10px;color:var(--muted)}kbd{font:500 9px ui-monospace,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:4px 6px;white-space:nowrap}.action-hint kbd{margin-left:3px;font-size:9px}.controls{display:flex;gap:22px;padding:8px 0 24px}.controls div{display:flex;gap:7px;align-items:center;font-size:10px;color:var(--muted)}.tip{display:flex;gap:10px;padding:18px 0;border-top:1px solid var(--line);color:var(--muted)}.tip>span{font-size:20px;color:var(--accent)}.tip p{font-size:11px;line-height:1.8;margin:0}footer{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:18px;margin-top:14px;font:500 7px ui-monospace,monospace;letter-spacing:1px;color:var(--muted)}footer span:last-child{letter-spacing:0}.touch-controls{display:flex;gap:8px;margin:0 0 20px}.touch-controls button{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px 12px;flex:1;font-size:11px;touch-action:none;user-select:none}.touch-controls button:active{background:var(--line)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.dark{color-scheme:dark;--page:var(--orca-background,#161e1d);--ink:var(--orca-foreground,#e0ebe5);--muted:var(--orca-muted-foreground,#97aaa2);--accent:#83c8b9;--surface:#202d2a;--line:#35463f;--game-ink:#d2e4da;--game-water:#406b60;--game-muted:#5f7b6e}@media(prefers-color-scheme:dark){:root:not(.light):not(.dark){color-scheme:dark;--page:#161e1d;--ink:#e0ebe5;--muted:#97aaa2;--accent:#83c8b9;--surface:#202d2a;--line:#35463f;--game-ink:#d2e4da;--game-water:#406b60;--game-muted:#5f7b6e}}@media(min-width:600px){main{padding:36px 44px}.intro{margin-top:56px}.game-top{padding:24px 24px 8px}.scores strong{font-size:20px}.scores{gap:28px}.game-bottom{padding:12px 24px}.touch-controls{max-width:320px}.controls{gap:32px}}@media(max-width:340px){main{padding:20px 14px}.game-top{padding:14px 10px 8px}.scores{gap:10px}.status{font-size:7px;letter-spacing:0}.action-row{gap:10px}.controls{gap:14px}footer{font-size:6px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main>
+  <header class="masthead"><span class="brand"><span class="brand-mark" aria-hidden="true">◒</span> ORCA ARCADE</span><span class="edition">NO. 001</span></header>
+  <section class="intro" aria-labelledby="title"><div class="eyebrow"><span></span> A LITTLE OCEAN ESCAPE</div><h1 id="title">Orca Runner<span class="title-dot">.</span></h1><p>Big jumps. Cold water. Just one more try.</p></section>
+  <section class="game" aria-label="Orca Runner game">
+    <div class="game-top"><span class="status"><span id="status-dot"></span><span id="status">READY TO GO</span></span><div class="scores"><div><span>BEST</span><strong id="best">00000</strong></div><div><span>SCORE</span><strong id="score">00000</strong></div></div></div>
+    <div class="playfield" id="playfield"><canvas id="game" tabindex="0" aria-label="Game area. Space or up arrow to jump. Down arrow to duck. P to pause."></canvas><div id="overlay" class="overlay"><div class="overlay-label" id="overlay-label">THE OCEAN IS CALLING</div><h2 id="overlay-title">Ready, little orca?</h2><p id="overlay-hint">Jump the ice. Find your flow.</p></div></div>
+    <div class="game-bottom"><span id="run-message">Your next adventure starts here.</span><button id="pause" class="icon-button" type="button" disabled aria-label="Pause game" title="Pause (P)"><span id="pause-symbol" aria-hidden="true">Ⅱ</span></button></div>
+  </section>
+  <div class="action-row"><button id="start" class="primary" type="button"><span id="start-text">Let's go</span><span aria-hidden="true">↗</span></button><span class="action-hint" id="action-hint">or press <kbd>space</kbd></span></div>
+  <div class="controls" role="group" aria-label="Game controls"><div><kbd>SPACE</kbd><span>jump</span></div><div><kbd>↓</kbd><span>duck</span></div><div><kbd>P</kbd><span>pause</span></div></div>
+  <div class="touch-controls"><button type="button" id="jump">Jump ↑</button><button type="button" id="duck">Hold to duck ↓</button></div>
+  <aside class="tip"><span aria-hidden="true">✳</span><p>A little tip: hold your jump for more airtime.<br>Things pick up as you go.</p></aside>
+  <footer><span>MADE FOR A MOMENT OF PLAY</span><span>∞ attempts</span></footer>
+  <p id="announcement" class="sr-only" aria-live="polite"></p>
+</main>
+<script>/* Orca Runner — original canvas game. Copyright (c) 2026 Orca contributors. MIT. */
+(function () {
+  'use strict';
+  const WIDTH = 720;
+  const HEIGHT = 280;
+  const GROUND = 210;
+  const PLAYER_X = 82;
+  const GRAVITY = 1450;
+  const JUMP_VELOCITY = 505;
+
+  window.createOrcaRunner = function ({ canvas, onStateChange = function () {}, onScore = function () {} }) {
+    const context = canvas.getContext('2d');
+    if (!context) throw new Error('Orca Runner needs a 2D canvas.');
+    let state = 'ready';
+    let frame = null;
+    let lastTime = null;
+    let distance = 0;
+    let score = 0;
+    let best = 0;
+    let height = 0;
+    let velocity = 0;
+    let ducking = false;
+    let obstacles = [];
+    let untilSpawn = 1.8;
+    let destroyed = false;
+    let scale = 1;
+    let ink = '#23313b';
+    let orcaBody = '#203b3b';
+    let water = '#64b9c7';
+    let muted = '#889ba3';
+
+    function setState(next) {
+      if (state === next) return;
+      state = next;
+      onStateChange(state);
+    }
+    function cancelFrame() {
+      if (frame !== null) window.cancelAnimationFrame(frame);
+      frame = null;
+      lastTime = null;
+    }
+    function scheduleFrame() {
+      if (!destroyed && state === 'running' && frame === null) frame = window.requestAnimationFrame(tick);
+    }
+    function polygon(points, color) {
+      context.fillStyle = color;
+      context.beginPath();
+      context.moveTo(points[0][0], points[0][1]);
+      for (let index = 1; index < points.length; index++) context.lineTo(points[index][0], points[index][1]);
+      context.closePath();
+      context.fill();
+    }
+    function rect(x, y, w, h, color) {
+      context.fillStyle = color;
+      context.fillRect(x, y, w, h);
+    }
+    function drawOrca() {
+      context.save();
+      context.translate(PLAYER_X, GROUND - height);
+      if (ducking && height === 0) context.scale(1.05, 0.56);
+      const tailLift = state === 'running' ? Math.sin(distance / 35) * 3 : 0;
+      context.strokeStyle = muted;
+      context.lineWidth = 1.25;
+      // A broad head, dorsal fin, white saddle and two-lobed tail keep the silhouette unmistakable.
+      polygon([[3,-18],[0,-29],[10,-38],[37,-43],[56,-38],[66,-29],[68,-15],[57,-6],[22,-4],[9,-10]], orcaBody);
+      context.stroke();
+      polygon([[27,-40],[32,-59],[38,-54],[43,-40]], orcaBody);
+      context.stroke();
+      polygon([[8,-18],[-8,-18+tailLift],[-20,-31+tailLift],[-21,-18+tailLift],[-14,-10+tailLift],[-23,-1+tailLift],[-10,-1+tailLift],[3,-10]], orcaBody);
+      context.stroke();
+      polygon([[16,-12],[28,-12],[40,-18],[58,-18],[62,-12],[54,-7],[25,-5]], '#ffffff');
+      polygon([[43,-33],[50,-35],[57,-31],[55,-26],[48,-26],[43,-29]], '#ffffff');
+      rect(59,-29,3,3,'#ffffff');
+      rect(60,-29,2,2,orcaBody);
+      polygon([[31,-16],[39,-14],[40,-2],[35,0],[28,-9]], orcaBody);
+      context.restore();
+    }
+    function drawIce(obstacle) {
+      const x = obstacle.x;
+      const top = GROUND - obstacle.height;
+      polygon([[x,GROUND],[x+3,top+12],[x+12,top],[x+22,top+8],[x+obstacle.width,GROUND]], water);
+      polygon([[x+3,top+12],[x+12,top],[x+22,top+8],[x+16,top+17],[x+11,top+12]], '#ffffff');
+      rect(x+8,top+22,3,8,ink);
+      rect(x+11,top+28,5,2,ink);
+    }
+    function drawBird(obstacle) {
+      const flap = Math.sin(distance / 24) > 0 ? -9 : 7;
+      const x = obstacle.x;
+      const y = obstacle.y;
+      polygon([[x,y+8],[x+10,y+3],[x+22,y+5],[x+29,y+10],[x+19,y+15],[x+7,y+13]], ink);
+      polygon([[x+12,y+8],[x+7,y+flap],[x+18,y+flap+2],[x+22,y+9]], ink);
+      polygon([[x+27,y+8],[x+34,y+11],[x+27,y+12]], water);
+    }
+    function draw() {
+      if (destroyed) return;
+      const styles = window.getComputedStyle(canvas);
+      ink = styles.getPropertyValue('--game-ink').trim() || '#23313b';
+      orcaBody = styles.getPropertyValue('--game-orca-body').trim() || '#203b3b';
+      water = styles.getPropertyValue('--game-water').trim() || '#64b9c7';
+      muted = styles.getPropertyValue('--game-muted').trim() || '#889ba3';
+      context.setTransform(scale, 0, 0, scale, 0, 0);
+      context.clearRect(0, 0, WIDTH, HEIGHT);
+      // Scenery scrolls more slowly than hazards, leaving the play area readable.
+      for (let i = 0; i < 5; i++) {
+        const x = ((i * 179 + 60 - distance * 0.12) % 900 + 900) % 900 - 70;
+        rect(x, 55+(i%3)*19, 29, 2, muted);
+        rect(x+8, 50+(i%3)*19, 14, 2, muted);
+      }
+      rect(0, GROUND, WIDTH, 2, water);
+      for (let i = 0; i < 21; i++) {
+        const x = ((i*43-distance*0.65)%903+903)%903-80;
+        rect(x, GROUND+13+(i%3)*8, 11+(i%3)*7, 2, water);
+      }
+      for (const obstacle of obstacles) {
+        if (obstacle.kind === 'bird') drawBird(obstacle);
+        else drawIce(obstacle);
+      }
+      drawOrca();
+      if (state === 'gameover') {
+        rect(PLAYER_X+20, GROUND-30-height, 3, 3, water);
+        rect(PLAYER_X+27, GROUND-35-height, 3, 3, water);
+      }
+    }
+    function intersects(a, b) {
+      return a.x < b.x+b.width && a.x+a.width > b.x && a.y < b.y+b.height && a.y+a.height > b.y;
+    }
+    function update(dt) {
+      const speed = Math.min(430, 255+distance*0.009);
+      distance += speed*dt;
+      const nextScore = Math.floor(distance/10);
+      if (nextScore !== score) {
+        score = nextScore;
+        best = Math.max(best, score);
+        onScore(score,best);
+      }
+      if (height > 0 || velocity > 0) {
+        velocity -= GRAVITY*dt;
+        height = Math.max(0,height+velocity*dt);
+        if (height === 0 && velocity < 0) velocity = 0;
+      }
+      untilSpawn -= dt;
+      if (untilSpawn <= 0) {
+        const bird = score > 180 && Math.random() < 0.3;
+        obstacles.push(bird
+          ? {kind:'bird',x:WIDTH+35,y:170,width:30,height:17}
+          : {kind:'ice',x:WIDTH+35,y:GROUND-34,width:27,height:34});
+        // Space hazards by time, so acceleration cannot create impossible clusters.
+        untilSpawn = 1.35+Math.random()*0.75;
+      }
+      const crouched = ducking && height === 0;
+      const player = {x:PLAYER_X+8,y:GROUND-height-(crouched?19:37),width:51,height:crouched?15:31};
+      for (const obstacle of obstacles) {
+        obstacle.x -= speed*dt;
+        const hazard = obstacle.kind === 'bird'
+          ? {x:obstacle.x+3,y:obstacle.y+4,width:25,height:11}
+          : {x:obstacle.x+5,y:GROUND-26,width:17,height:26};
+        if (intersects(player,hazard)) {
+          ducking = false;
+          setState('gameover');
+          return;
+        }
+      }
+      obstacles = obstacles.filter(obstacle => obstacle.x+obstacle.width > -25);
+    }
+    function tick(time) {
+      frame = null;
+      if (destroyed || state !== 'running') return;
+      const dt = lastTime === null ? 0 : Math.max(0,Math.min((time-lastTime)/1000,0.032));
+      lastTime = time;
+      update(dt);
+      draw();
+      if (state === 'running') scheduleFrame();
+      else lastTime = null;
+    }
+    function start() {
+      if (destroyed || state === 'running') return;
+      if (state !== 'paused') {
+        distance = 0;
+        score = 0;
+        height = 0;
+        velocity = 0;
+        obstacles = [];
+        untilSpawn = 1.8;
+        onScore(0,best);
+      }
+      ducking = false;
+      lastTime = null;
+      setState('running');
+      draw();
+      scheduleFrame();
+    }
+    function jump() {
+      if (destroyed) return;
+      if (state === 'paused') { start(); return; }
+      if (state === 'ready' || state === 'gameover') start();
+      if (state === 'running' && height === 0 && velocity === 0) {
+        ducking = false;
+        velocity = JUMP_VELOCITY;
+      }
+    }
+    function pause() {
+      if (destroyed || state !== 'running') return;
+      ducking = false;
+      cancelFrame();
+      setState('paused');
+      draw();
+    }
+    function resize() {
+      if (destroyed) return;
+      const width = Math.max(1,canvas.parentElement.getBoundingClientRect().width);
+      const ratio = Math.min(window.devicePixelRatio || 1,3);
+      canvas.width = Math.round(width*ratio);
+      canvas.height = Math.round(width*HEIGHT/WIDTH*ratio);
+      canvas.style.width = '100%';
+      canvas.style.height = 'auto';
+      scale = canvas.width/WIDTH;
+      draw();
+    }
+    resize();
+    onStateChange(state);
+    onScore(score,best);
+    return Object.freeze({
+      start, jump, pause, resize,
+      releaseJump: function () { if (velocity > 190) velocity = 190; },
+      setDucking: function (value) {
+        ducking = state === 'running' && Boolean(value);
+        if (ducking && height > 0) velocity = Math.min(velocity, -330);
+        draw();
+      },
+      togglePause: function () { if (state === 'paused') start(); else pause(); },
+      getState: function () { return state; },
+      destroy: function () { destroyed = true; cancelFrame(); obstacles = []; }
+    });
+  };
+})();
+</script>
+<script>(() => {
+  'use strict'
+  const $ = id => document.getElementById(id)
+  const canvas = $('game')
+  const copy = {
+    ready: ['READY TO GO', 'THE OCEAN IS CALLING', 'Ready, little orca?', 'Jump the ice. Find your flow.', "Let's go", 'Your next adventure starts here.'],
+    running: ['IN THE FLOW', '', '', '', 'Jump', 'Jump icebergs. Duck the seabirds.'],
+    paused: ['TAKING A BREATHER', 'NO RUSH', 'Catch your breath.', 'Your ocean will be right here.', 'Keep going', 'Paused. Press P or resume when ready.'],
+    gameover: ['NICE SWIM', 'ONE MORE WAVE?', 'Back for another?', 'Every great run starts with a splash.', 'Try again', 'A splash is just a new beginning.']
+  }
+  const format = value => String(value).padStart(5, '0')
+  const game = window.createOrcaRunner({
+    canvas,
+    onScore(score, best) {
+      $('score').textContent = format(score)
+      $('best').textContent = format(best)
+    },
+    onStateChange(state) {
+      const [status, label, title, hint, action, message] = copy[state]
+      document.body.dataset.state = state
+      $('status').textContent = status
+      $('overlay-label').textContent = label
+      $('overlay-title').textContent = title
+      $('overlay-hint').textContent = hint
+      $('overlay').hidden = state === 'running'
+      $('start-text').textContent = action
+      $('run-message').textContent = message
+      $('pause').disabled = state === 'ready' || state === 'gameover'
+      $('pause').setAttribute('aria-label', state === 'paused' ? 'Resume game' : 'Pause game')
+      $('pause').title = state === 'paused' ? 'Resume (P)' : 'Pause (P)'
+      $('pause-symbol').textContent = state === 'paused' ? '▶' : 'Ⅱ'
+      $('action-hint').innerHTML = state === 'paused' ? 'or press <kbd>P</kbd>' : 'or press <kbd>space</kbd>'
+      if (state !== 'running') $('announcement').textContent = state === 'gameover' ? `Run over. Score ${$('score').textContent}. Select Try again to restart.` : message
+    }
+  })
+  function focusGame() { canvas.focus({ preventScroll: true }) }
+  $('start').addEventListener('click', () => {
+    if (game.getState() === 'running') game.jump()
+    else game.start()
+    focusGame()
+  })
+  $('pause').addEventListener('click', () => { game.togglePause(); focusGame() })
+  const jumpKeys = new Set(['Space', 'ArrowUp'])
+  document.addEventListener('keydown', event => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.target.closest('button, input, textarea, select, [contenteditable="true"]')) return
+    if (jumpKeys.has(event.code)) {
+      event.preventDefault()
+      if (!event.repeat) game.jump()
+    } else if (event.code === 'ArrowDown') {
+      event.preventDefault()
+      game.setDucking(true)
+    } else if (event.code === 'KeyP' || event.code === 'Escape') {
+      event.preventDefault()
+      if (!event.repeat) game.togglePause()
+    }
+  })
+  document.addEventListener('keyup', event => {
+    if (jumpKeys.has(event.code)) game.releaseJump()
+    if (event.code === 'ArrowDown') game.setDucking(false)
+  })
+  function bindHold(element, down, up) {
+    element.addEventListener('pointerdown', event => {
+      if (event.button !== 0) return
+      event.preventDefault()
+      element.setPointerCapture(event.pointerId)
+      focusGame()
+      down()
+    })
+    element.addEventListener('pointerup', up)
+    element.addEventListener('pointercancel', up)
+    element.addEventListener('lostpointercapture', up)
+  }
+  bindHold(canvas, () => game.jump(), () => game.releaseJump())
+  bindHold($('jump'), () => game.jump(), () => game.releaseJump())
+  bindHold($('duck'), () => game.setDucking(true), () => game.setDucking(false))
+  // Preserve normal keyboard activation for the touch buttons.
+  $('jump').addEventListener('click', event => { if (event.detail === 0) { game.jump(); game.releaseJump(); focusGame() } })
+  $('duck').addEventListener('keydown', event => { if (event.code === 'Space' || event.code === 'Enter') { event.preventDefault(); game.setDucking(true) } })
+  $('duck').addEventListener('keyup', () => game.setDucking(false))
+  $('duck').addEventListener('blur', () => game.setDucking(false))
+  function pauseAway() { game.setDucking(false); game.releaseJump(); game.pause() }
+  window.addEventListener('blur', pauseAway)
+  document.addEventListener('visibilitychange', () => { if (document.hidden) pauseAway() })
+  let resizeFrame = null
+  let observedWidth = $('playfield').getBoundingClientRect().width
+  const resize = new ResizeObserver(entries => {
+    const width = entries[0].contentRect.width
+    if (Math.abs(width - observedWidth) < 0.5) return
+    observedWidth = width
+    if (resizeFrame !== null) cancelAnimationFrame(resizeFrame)
+    resizeFrame = requestAnimationFrame(() => { resizeFrame = null; game.resize() })
+  })
+  resize.observe($('playfield'))
+  const theme = new MutationObserver(() => game.resize())
+  theme.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style'] })
+  window.addEventListener('pagehide', () => { resize.disconnect(); theme.disconnect(); if (resizeFrame !== null) cancelAnimationFrame(resizeFrame); game.destroy() }, { once: true })
+})()
+</script>
+</body>
+</html>
