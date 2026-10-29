@@ -963,6 +963,43 @@
           ]
         }
       ]
+    },
+    {
+      "id": "stablyai.orca-docx",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/docx"
+      },
+      "description": "Preview Word (.docx) documents as read-only pages in Orca, with headers, footers, images and zoom controls.",
+      "categories": [
+        "editors",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "819a8c4070bb86370d616a7ca976015146820c24",
+          "contentHash": "36e8b84bc0c32754f40f98b9f1260f9a21cbab03f46db1a0da44818de94e2fb3",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "Word Document Viewer",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "Word Preview",
+              "detail": ".docx"
+            }
+          ],
+          "fileTypes": [
+            "docx"
+          ],
+          "editorFileTypes": [
+            "docx"
+          ]
+        }
+      ]
     }
   ]
 }

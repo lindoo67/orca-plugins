@@ -31,6 +31,7 @@ Plugins.
 | Gleam Language | `plugins/gleam` | Highlighting for `.gleam` files |
 | Prisma Syntax | `plugins/prisma` | Prisma-aware highlighting for `.prisma` files |
 | Excalidraw | `plugins/excalidraw` | An editor for `.excalidraw` diagrams |
+| Word Document Viewer | `plugins/docx` | Read-only `.docx` pages with headers, footers, images and zoom |
 | Multipass VM Recipes | `plugins/multipass-recipes` | Disposable Multipass VM workspaces |
 
 Community plugins live in their authors' own repositories. The catalog can list them, but their
