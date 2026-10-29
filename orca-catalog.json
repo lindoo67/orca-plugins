@@ -771,6 +771,33 @@
       ],
       "releases": [
         {
+          "version": "1.0.1",
+          "commit": "f73fe790d73f905a9cd367223045182eeb99c7cf",
+          "contentHash": "9ce771ccadc50817662e74ca323da15c7d51371b8b672098bda850146cd23918",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "GitHub Light for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "GitHub Light"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "GitHub Light"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/github-light-theme/images/cover.png",
+              "alt": "GitHub Light theme preview with a file tree, syntax-highlighted TypeScript, terminal output, and palette swatches",
+              "sha256": "877ebfa585c421372b9663304690757fc8ca36d2a426d9894c4db5453dc5650b",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        },
+        {
           "version": "1.0.0",
           "commit": "34c744fefe430ad993a2502f8591048772d6421b",
           "contentHash": "fc774ff9fe4e59226323e6113940358a8e1d17576a2a832ba90645b2926528d0",
@@ -806,6 +833,33 @@
       ],
       "releases": [
         {
+          "version": "1.0.1",
+          "commit": "f73fe790d73f905a9cd367223045182eeb99c7cf",
+          "contentHash": "c21a5fcb3f540b2f9f360b66c2582916888057fa1f1422c34561f9b73ce6387c",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Solarized Light for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Solarized Light"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Solarized Light"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/solarized-light-theme/images/cover.png",
+              "alt": "Solarized Light theme preview with a file tree, syntax-highlighted TypeScript, terminal output, and palette swatches",
+              "sha256": "9cfd4347e7308e917b36b757bd795b6f0f1b958961a37d29a43a612832578ba9",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        },
+        {
           "version": "1.0.0",
           "commit": "350b77fb1c40db5bd59cadfb371836eb282cc29b",
           "contentHash": "63cb54106418d99ea7469b97644107574cb437e0718b2e341b195fa33d61707c",
@@ -833,13 +887,41 @@
         "ref": "main",
         "path": "plugins/dracula-theme"
       },
-      "description": "A dark application theme with Dracula\u2019s vivid pink, purple, and green palette, plus matching terminal colors.",
+      "description": "A dark application theme with Dracula’s vivid pink, purple, and green palette, plus matching terminal colors.",
       "categories": [
         "themes",
         "terminal-themes",
         "official"
       ],
-      "releases": []
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "f73fe790d73f905a9cd367223045182eeb99c7cf",
+          "contentHash": "9ee218251d3c69e094f1a6a9960b16de97d2d1122c6cd529ceccfc1560fb08be",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Dracula for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Dracula"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Dracula"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/dracula-theme/images/cover.png",
+              "alt": "Dracula theme preview with a file tree, syntax-highlighted TypeScript, terminal output, and palette swatches",
+              "sha256": "b8d9657683f7cb16f09c6a932d569f893e37659ee3ef7b707155e50044916706",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        }
+      ]
     },
     {
       "id": "stablyai.orca-gruvbox-theme",
@@ -855,7 +937,43 @@
         "terminal-themes",
         "official"
       ],
-      "releases": []
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "f73fe790d73f905a9cd367223045182eeb99c7cf",
+          "contentHash": "068cb5714b24608d2ab01c7ce458d2e7fb0e264cb8928173540c1c8ea5c01b18",
+          "execution": "data",
+          "minimumOrca": "1.4.244",
+          "name": "Gruvbox for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Gruvbox Dark"
+            },
+            {
+              "kind": "themes",
+              "name": "Gruvbox Light"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Gruvbox Dark"
+            },
+            {
+              "kind": "terminalThemes",
+              "name": "Gruvbox Light"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/gruvbox-theme/images/cover.png",
+              "alt": "Gruvbox theme preview with a file tree, syntax-highlighted TypeScript, terminal output, and palette swatches",
+              "sha256": "2a9e6630b2382cafc2f0b3250897097371bce604043a53b6463097775bf22398",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        }
+      ]
     }
   ]
 }
