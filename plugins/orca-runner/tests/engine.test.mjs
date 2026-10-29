@@ -92,7 +92,7 @@ test('jump cannot be retriggered in the air and releasing jump shortens its heig
 test('a delayed frame is bounded, narrow panels retain game geometry, and destroy cancels work', () => {
   const h = harness(280);
   assert.equal(h.canvas.width,560);
-  assert.equal(h.canvas.height,218);
+  assert.equal(h.canvas.height,327);
   h.game.start(); h.step(); h.step(30000);
   assert.ok(h.score < 2,'background time does not advance the world by 30 seconds');
   h.game.destroy();

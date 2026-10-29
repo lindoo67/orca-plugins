@@ -24,10 +24,13 @@
     let untilSpawn = 1.8;
     let destroyed = false;
     let scale = 1;
+    let viewportWidth = WIDTH;
     let ink = '#23313b';
     let orcaBody = '#203b3b';
     let water = '#64b9c7';
-    let muted = '#889ba3';
+    let sky = '#edf8fc';
+    let ice = '#ffffff';
+    let iceShade = '#79c5e4';
 
     function setState(next) {
       if (state === next) return;
@@ -59,37 +62,57 @@
       context.translate(PLAYER_X, GROUND - height);
       if (ducking && height === 0) context.scale(1.05, 0.56);
       const tailLift = state === 'running' ? Math.sin(distance / 35) * 3 : 0;
-      context.strokeStyle = muted;
-      context.lineWidth = 1.25;
-      // A broad head, dorsal fin, white saddle and two-lobed tail keep the silhouette unmistakable.
-      polygon([[3,-18],[0,-29],[10,-38],[37,-43],[56,-38],[66,-29],[68,-15],[57,-6],[22,-4],[9,-10]], orcaBody);
-      context.stroke();
-      polygon([[27,-40],[32,-59],[38,-54],[43,-40]], orcaBody);
-      context.stroke();
+      // Smooth, compact silhouette with the eye patch, white belly and swept dorsal fin.
+      context.fillStyle = orcaBody;
+      context.beginPath();
+      context.moveTo(0,-20);
+      context.bezierCurveTo(9,-43,44,-49,61,-35);
+      context.bezierCurveTo(72,-28,73,-16,61,-10);
+      context.bezierCurveTo(43,1,12,-2,0,-20);
+      context.fill();
+      context.beginPath();
+      context.moveTo(24,-39);
+      context.quadraticCurveTo(27,-54,22,-60);
+      context.quadraticCurveTo(41,-57,42,-41);
+      context.fill();
       polygon([[8,-18],[-8,-18+tailLift],[-20,-31+tailLift],[-21,-18+tailLift],[-14,-10+tailLift],[-23,-1+tailLift],[-10,-1+tailLift],[3,-10]], orcaBody);
-      context.stroke();
-      polygon([[16,-12],[28,-12],[40,-18],[58,-18],[62,-12],[54,-7],[25,-5]], '#ffffff');
-      polygon([[43,-33],[50,-35],[57,-31],[55,-26],[48,-26],[43,-29]], '#ffffff');
-      rect(59,-29,3,3,'#ffffff');
-      rect(60,-29,2,2,orcaBody);
-      polygon([[31,-16],[39,-14],[40,-2],[35,0],[28,-9]], orcaBody);
+      context.fillStyle = '#ffffff';
+      context.beginPath();
+      context.moveTo(12,-12);
+      context.bezierCurveTo(33,-5,39,-21,68,-21);
+      context.bezierCurveTo(69,-6,34,4,12,-12);
+      context.fill();
+      context.beginPath();
+      context.ellipse(49,-31,9,4,-0.2,0,Math.PI*2);
+      context.fill();
+      context.beginPath();
+      context.arc(63,-27,2,0,Math.PI*2);
+      context.fill();
+      rect(63,-28,1,2,orcaBody);
+      polygon([[29,-17],[43,-15],[35,-1],[28,2],[27,-7]], orcaBody);
+      if (height === 0) {
+        rect(-22,-1,12,2,'#ffffff');
+        rect(-32,-6,5,2,'#ffffff');
+      }
       context.restore();
     }
     function drawIce(obstacle) {
       const x = obstacle.x;
       const top = GROUND - obstacle.height;
-      polygon([[x,GROUND],[x+3,top+12],[x+12,top],[x+22,top+8],[x+obstacle.width,GROUND]], water);
-      polygon([[x+3,top+12],[x+12,top],[x+22,top+8],[x+16,top+17],[x+11,top+12]], '#ffffff');
-      rect(x+8,top+22,3,8,ink);
-      rect(x+11,top+28,5,2,ink);
+      polygon([[x,GROUND],[x+3,top+12],[x+12,top],[x+22,top+8],[x+obstacle.width,GROUND]], ice);
+      polygon([[x+12,top],[x+22,top+8],[x+obstacle.width,GROUND],[x+16,GROUND]], iceShade);
+      polygon([[x+3,top+12],[x+12,top],[x+8,GROUND],[x,GROUND]], '#b9e5f3');
+      polygon([[x+12,top+6],[x+16,top+18],[x+13,top+15],[x+17,GROUND-4],[x+10,GROUND-9]], '#d9f2fa');
+      rect(x-4,GROUND,obstacle.width+8,2,'#ffffff');
     }
     function drawBird(obstacle) {
       const flap = Math.sin(distance / 24) > 0 ? -9 : 7;
       const x = obstacle.x;
       const y = obstacle.y;
       polygon([[x,y+8],[x+10,y+3],[x+22,y+5],[x+29,y+10],[x+19,y+15],[x+7,y+13]], ink);
-      polygon([[x+12,y+8],[x+7,y+flap],[x+18,y+flap+2],[x+22,y+9]], ink);
-      polygon([[x+27,y+8],[x+34,y+11],[x+27,y+12]], water);
+      polygon([[x+7,y+8],[x+12,y+4],[x+24,y+6],[x+28,y+11],[x+16,y+12]], '#ffffff');
+      polygon([[x+12,y+8],[x+7,y+flap],[x+18,y+flap+2],[x+22,y+9]], '#36536c');
+      polygon([[x+27,y+8],[x+34,y+11],[x+27,y+12]], '#ef986e');
     }
     function draw() {
       if (destroyed) return;
@@ -97,19 +120,34 @@
       ink = styles.getPropertyValue('--game-ink').trim() || '#23313b';
       orcaBody = styles.getPropertyValue('--game-orca-body').trim() || '#203b3b';
       water = styles.getPropertyValue('--game-water').trim() || '#64b9c7';
-      muted = styles.getPropertyValue('--game-muted').trim() || '#889ba3';
+      sky = styles.getPropertyValue('--game-sky').trim() || '#edf8fc';
+      ice = styles.getPropertyValue('--game-ice').trim() || '#ffffff';
+      iceShade = styles.getPropertyValue('--game-ice-shade').trim() || '#79c5e4';
       context.setTransform(scale, 0, 0, scale, 0, 0);
       context.clearRect(0, 0, WIDTH, HEIGHT);
+      rect(0,0,WIDTH,HEIGHT,sky);
+      context.fillStyle = ice;
+      context.beginPath();
+      context.arc(viewportWidth-70,47,23,0,Math.PI*2);
+      context.fill();
+      // Quiet distant peaks and two water layers add depth without hiding hazards.
+      for (let i = 0; i < 7; i++) {
+        const x = ((i*137-distance*0.06)%960+960)%960-150;
+        polygon([[x,GROUND-24],[x+53,121+(i%3)*12],[x+133,GROUND-24]], '#b9dce9');
+        polygon([[x+53,121+(i%3)*12],[x+68,164],[x+49,152],[x+30,171]], ice);
+      }
+      rect(0,GROUND-24,WIDTH,94,water);
+      rect(0,GROUND+25,WIDTH,45,iceShade);
       // Scenery scrolls more slowly than hazards, leaving the play area readable.
       for (let i = 0; i < 5; i++) {
         const x = ((i * 179 + 60 - distance * 0.12) % 900 + 900) % 900 - 70;
-        rect(x, 55+(i%3)*19, 29, 2, muted);
-        rect(x+8, 50+(i%3)*19, 14, 2, muted);
+        rect(x, 55+(i%3)*19, 39, 3, ice);
+        rect(x+8, 50+(i%3)*19, 18, 5, ice);
       }
-      rect(0, GROUND, WIDTH, 2, water);
+      rect(0, GROUND, WIDTH, 2, ice);
       for (let i = 0; i < 21; i++) {
         const x = ((i*43-distance*0.65)%903+903)%903-80;
-        rect(x, GROUND+13+(i%3)*8, 11+(i%3)*7, 2, water);
+        rect(x, GROUND+13+(i%3)*15, 11+(i%3)*7, 2, '#b9e5f3');
       }
       for (const obstacle of obstacles) {
         if (obstacle.kind === 'bird') drawBird(obstacle);
@@ -209,11 +247,14 @@
       if (destroyed) return;
       const width = Math.max(1,canvas.parentElement.getBoundingClientRect().width);
       const ratio = Math.min(window.devicePixelRatio || 1,3);
+      // Crop distant scenery on narrow panels instead of shrinking the orca to a speck.
+      // World coordinates, obstacle timing and collision geometry stay the same.
+      viewportWidth = Math.min(WIDTH, Math.max(480, width));
       canvas.width = Math.round(width*ratio);
-      canvas.height = Math.round(width*HEIGHT/WIDTH*ratio);
+      canvas.height = Math.round(width*HEIGHT/viewportWidth*ratio);
       canvas.style.width = '100%';
       canvas.style.height = 'auto';
-      scale = canvas.width/WIDTH;
+      scale = canvas.width/viewportWidth;
       draw();
     }
     resize();
