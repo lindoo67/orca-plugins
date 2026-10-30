@@ -3,27 +3,28 @@
   "id": "scratchpad",
   "publisher": "stablyai",
   "name": "Scratchpad",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "execution": "sandboxed-ui",
-  "description": "A paper-style checklist editor for .scratchpad files. Capture ideas, check off tasks, and save your notes with Orca.",
+  "description": "A global scratchpad in your sidebar. Capture ideas and check off little things.",
   "license": "MIT",
   "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/scratchpad",
   "engines": {
-    "orca": ">=1.4.245"
+    "orca": ">=1.4.246"
   },
   "pluginApi": 1,
   "contributes": {
-    "customEditors": [
+    "panels": [
       {
         "id": "scratchpad",
         "title": "Scratchpad",
-        "extensions": [
-          ".scratchpad"
-        ],
-        "entry": "panel/index.html",
-        "priority": "default"
+        "icon": "file-text",
+        "entry": "panel/index.html"
       }
     ]
   },
-  "capabilities": []
+  "capabilities": [
+    {
+      "kind": "storage:own"
+    }
+  ]
 }
