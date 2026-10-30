@@ -1,0 +1,67 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-haskell",
+  "publisher": "stablyai",
+  "name": "Haskell Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting for Haskell, Literate Haskell and Cabal files.",
+  "license": "MIT AND BSD-3-Clause",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/haskell",
+  "engines": {
+    "orca": ">=1.4.246"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "haskell",
+        "title": "Haskell",
+        "scopeName": "source.haskell",
+        "path": "syntaxes/haskell.tmLanguage.json",
+        "configuration": "syntaxes/haskell-configuration.json",
+        "extensions": [
+          ".hs",
+          ".hsig",
+          ".hs-boot"
+        ]
+      },
+      {
+        "id": "literate-haskell",
+        "title": "Literate Haskell",
+        "scopeName": "text.tex.latex.haskell",
+        "path": "syntaxes/literate-haskell.tmLanguage.json",
+        "configuration": "syntaxes/literate-haskell-configuration.json",
+        "extensions": [
+          ".lhs"
+        ]
+      },
+      {
+        "id": "cabal",
+        "title": "Cabal",
+        "scopeName": "source.cabal",
+        "path": "syntaxes/cabal.tmLanguage.json",
+        "configuration": "syntaxes/cabal-configuration.json",
+        "extensions": [
+          ".cabal"
+        ]
+      },
+      {
+        "id": "cabal-project",
+        "title": "Cabal Project",
+        "scopeName": "cabal.source.project",
+        "path": "syntaxes/cabal-project.tmLanguage.json",
+        "configuration": "syntaxes/cabal-configuration.json",
+        "filenames": [
+          "cabal.project",
+          "cabal.project.local",
+          "cabal.project.freeze"
+        ]
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "A Haskell module with a language pragma, type signatures, a data type and a do block highlighted"
+  }
+}

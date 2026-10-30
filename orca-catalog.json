@@ -657,6 +657,325 @@
       ]
     },
     {
+      "id": "stablyai.orca-matlab",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/matlab"
+      },
+      "description": "Syntax highlighting, comment toggling and bracket matching for MATLAB .m files.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "6640821a718a74c1db40da1232c06926180791cc",
+          "contentHash": "5435b5c5105d98bbb3ffa9e294881062dcff025394f75d830bba53afc1ab16f4",
+          "execution": "data",
+          "minimumOrca": "1.4.246",
+          "name": "MATLAB Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "MATLAB",
+              "detail": ".m"
+            }
+          ],
+          "fileTypes": [
+            "m"
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/matlab/images/cover.png",
+              "alt": "A MATLAB function with an arguments block, loops, comments and a format string highlighted",
+              "sha256": "57ca0b906449b569e8bbd7d46de8819b39f28ee453cf6449ea8cc73ff8976c30",
+              "width": 1600,
+              "height": 1000
+            }
+          },
+          "license": "MIT AND BSD-2-Clause"
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-ocaml",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/ocaml"
+      },
+      "description": "Syntax highlighting for OCaml implementations, interfaces and MLX files.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "a8369ce3fc117276cfbbe5aeaac19a1c9b3d2e09",
+          "contentHash": "92e3395aa7e3b1f37f46cda8d52c08cd662ccfaaf54c34ddd22971ec38a06361",
+          "execution": "data",
+          "minimumOrca": "1.4.246",
+          "name": "OCaml Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "OCaml",
+              "detail": ".ml"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "OCaml Interface",
+              "detail": ".mli"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "MLX",
+              "detail": ".mlx"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "ocamldoc grammar dependency"
+            }
+          ],
+          "fileTypes": [
+            "ml",
+            "mli",
+            "mlx"
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/ocaml/images/cover.png",
+              "alt": "An OCaml module with a variant type, pattern matching and a printf call highlighted",
+              "sha256": "c86ab142104a529b3790fedf7f96f257a35d62288e7f40d2993eb9d34da89200",
+              "width": 1600,
+              "height": 1000
+            }
+          },
+          "license": "MIT AND ISC"
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-julia",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/julia"
+      },
+      "description": "Full Julia highlighting for .jl files: macros, string interpolation, types and docstrings.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "fa053c1f77e6c4ed639353e2a0996f34782d86ae",
+          "contentHash": "1c0af934c8bd2a272cbc973f214a6253eceb455e440197d9785de0cba143ea73",
+          "execution": "data",
+          "minimumOrca": "1.4.246",
+          "name": "Julia Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "Julia",
+              "detail": ".jl"
+            }
+          ],
+          "fileTypes": [
+            "jl"
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/julia/images/cover.png",
+              "alt": "A Julia function with a docstring, parametric types and a struct highlighted",
+              "sha256": "f0a05865a39625bf590c5989ef5f929059abfb411927a1f013cb7901d1fb55c9",
+              "width": 1600,
+              "height": 1000
+            }
+          },
+          "license": "MIT"
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-haskell",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/haskell"
+      },
+      "description": "Syntax highlighting for Haskell, Literate Haskell and Cabal files.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "5449989479f8ee08df4881d2d9baac2e4b2ebc4c",
+          "contentHash": "3bf972a5c5498103d5a31a674e29f6aed3af6d086720940c2dd6b5bea9f8129f",
+          "execution": "data",
+          "minimumOrca": "1.4.246",
+          "name": "Haskell Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "Haskell",
+              "detail": ".hs, .hsig, .hs-boot"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "Literate Haskell",
+              "detail": ".lhs"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "Cabal",
+              "detail": ".cabal"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "Cabal Project",
+              "detail": "cabal.project, cabal.project.local, cabal.project.freeze"
+            }
+          ],
+          "fileTypes": [
+            "hs",
+            "hsig",
+            "hs-boot",
+            "lhs",
+            "cabal"
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/haskell/images/cover.png",
+              "alt": "A Haskell module with a language pragma, type signatures, a data type and a do block highlighted",
+              "sha256": "333304f97a4e7f9a5d2ee19b2bdb5183a8059a2119ecb85134ecd0ebe980b51d",
+              "width": 1600,
+              "height": 1000
+            }
+          },
+          "license": "MIT AND BSD-3-Clause"
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-erlang",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/erlang"
+      },
+      "description": "Syntax highlighting, comment toggling and bracket matching for Erlang source, headers and escripts.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "4e7f8efa180aa25d0c9b669799aede903ae50a23",
+          "contentHash": "d17a2e13053744c91d8511551b7ad9cf2aa10231ecf1f0cb2bb66871b41ceddd",
+          "execution": "data",
+          "minimumOrca": "1.4.246",
+          "name": "Erlang Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "Erlang",
+              "detail": ".erl, .hrl, .escript, .app.src, rebar.config"
+            }
+          ],
+          "fileTypes": [
+            "erl",
+            "hrl",
+            "escript"
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/erlang/images/cover.png",
+              "alt": "An Erlang counter module with attributes, a record, atoms and receive blocks highlighted",
+              "sha256": "b51a83c323b4bb44c229c05bfad76505fb9adba3ae01c298f0da48b8b15563c5",
+              "width": 1600,
+              "height": 1000
+            }
+          },
+          "license": "MIT AND Apache-2.0"
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-jsp",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/jsp"
+      },
+      "description": "JavaServer Pages highlighting: scriptlets, expressions, directives, JSTL tags and EL inside HTML.",
+      "categories": [
+        "syntax",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "9f8178a8ee15e07956e368193e22541218020eeb",
+          "contentHash": "118fd65015ad022e6b8230ff1e4abcebf8937337909c048c7d907ceadeabb53b",
+          "execution": "data",
+          "minimumOrca": "1.4.246",
+          "name": "JSP Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "JSP",
+              "detail": ".jsp, .jspf, .tag"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "HTML grammar dependency"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "Java grammar dependency"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "CSS grammar dependency"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "JavaScript grammar dependency"
+            }
+          ],
+          "fileTypes": [
+            "jsp",
+            "jspf",
+            "tag"
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/jsp/images/cover.png",
+              "alt": "A JSP page with directives, a scriptlet, EL expressions, a JSTL loop, CSS and JavaScript highlighted",
+              "sha256": "922e60b11b4a73c56eebf28ece76e39f5cca8f23291351baa2cb7b80863635a8",
+              "width": 1600,
+              "height": 1000
+            }
+          },
+          "license": "MIT"
+        }
+      ]
+    },
+    {
       "id": "stablyai.orca-dusk-ember",
       "source": {
         "kind": "git",
@@ -851,7 +1170,7 @@
         "ref": "main",
         "path": "plugins/dracula-theme"
       },
-      "description": "A dark application theme with Dracula\u2019s vivid pink, purple, and green palette, plus matching terminal colors.",
+      "description": "A dark application theme with Dracula’s vivid pink, purple, and green palette, plus matching terminal colors.",
       "categories": [
         "themes",
         "terminal-themes",

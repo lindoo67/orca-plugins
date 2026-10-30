@@ -1,0 +1,48 @@
+HTML, Java, CSS and JavaScript TextMate grammars (the JSP grammar embeds these)
+
+Source: https://github.com/microsoft/vscode/blob/45324363153075dab0482312ae24d8c068d81e4f/extensions/html/syntaxes/html.tmLanguage.json (derived from textmate/html.tmbundle; see THIRD-PARTY NOTICES below)
+Source: https://github.com/microsoft/vscode/blob/3c86ede5f554f6e196c832394e126b291a1de606/extensions/java/syntaxes/java.tmLanguage.json (derived from atom/language-java, MIT, Copyright (c) 2014 GitHub Inc.)
+Source: https://github.com/microsoft/vscode/blob/af600487b1e94374d9f48f57cbf2cad24656b07f/extensions/css/syntaxes/css.tmLanguage.json (derived from microsoft/vscode-css, MIT)
+Source: https://github.com/microsoft/vscode/blob/210541906e5a96ab39f9c753f921b1bd35f4138b/extensions/javascript/syntaxes/JavaScript.tmLanguage.json (derived from microsoft/TypeScript-TmLanguage, MIT)
+Source: Copied from the JSON published in tm-grammars 1.32.22 (https://github.com/shikijs/textmate-grammars-themes, MIT).
+Modifications by Orca: JSON formatting; the $schema key is removed. In the HTML grammar, quoted attribute values and <script>/<style> bodies also include the JSP grammar's expression, EL and scriptlet rules, its `injections` (which flag stray `<` characters) are removed, and tags it does not recognise (JSP custom tags) are no longer marked invalid, because Orca does not read grammar injections.
+
+MIT License
+
+Copyright (c) 2015 - present Microsoft Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--- THIRD-PARTY NOTICES ---
+
+textmate/html.tmbundle (TextMate Bundle License)
+
+Copyright (c) textmate-html.tmbundle project authors
+
+If not otherwise specified (see below), files in this repository fall under the following license:
+
+Permission to copy, use, modify, sell and distribute this
+software is granted. This software is provided "as is" without
+express or implied warranty, and with no claim as to its
+suitability for any purpose.
+
+An exception is made for files in readable text which contain their own license information,
+or files where an accompanying file exists (in the same directory) with a "-license" suffix added
+to the base-name name of the original file, and an extension of txt, html, or similar. For example
+"tidy" is accompanied by "tidy-license.txt".
