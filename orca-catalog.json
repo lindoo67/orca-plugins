@@ -776,7 +776,7 @@
         "ref": "main",
         "path": "plugins/dracula-theme"
       },
-      "description": "A dark application theme with Dracula\u2019s vivid pink, purple, and green palette, plus matching terminal colors.",
+      "description": "A dark application theme with Dracula’s vivid pink, purple, and green palette, plus matching terminal colors.",
       "categories": [
         "themes",
         "terminal-themes",
@@ -1184,7 +1184,25 @@
       "categories": [
         "productivity"
       ],
-      "releases": []
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "5f5bf95fdc9cf8a415d9832be6e14473a3ac1648",
+          "contentHash": "8c90a38527b61b7d6f9057ae8e6dda8d4f75c7574f595ba30afc004de48b425e",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "Scratchpad",
+          "contributes": [
+            {
+              "kind": "panels",
+              "name": "Scratchpad"
+            }
+          ],
+          "capabilities": [
+            "storage:own"
+          ]
+        }
+      ]
     }
   ]
 }
