@@ -1,0 +1,48 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-systemd",
+  "publisher": "stablyai",
+  "name": "systemd Unit Files",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting for systemd unit files and Podman Quadlet files.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/systemd",
+  "engines": {
+    "orca": ">=1.4.245"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "systemd",
+        "title": "systemd unit",
+        "scopeName": "source.systemd",
+        "path": "syntaxes/systemd.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".service",
+          ".socket",
+          ".timer",
+          ".target",
+          ".path",
+          ".mount",
+          ".automount",
+          ".swap",
+          ".slice",
+          ".scope",
+          ".device",
+          ".snapshot",
+          ".link",
+          ".netdev",
+          ".network",
+          ".nspawn",
+          ".dnssd",
+          ".container",
+          ".volume",
+          ".kube"
+        ]
+      }
+    ]
+  },
+  "capabilities": []
+}

@@ -1,0 +1,36 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-http",
+  "publisher": "stablyai",
+  "name": "HTTP Request Files",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting for .http and .rest request files, including JSON bodies.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/http",
+  "engines": {
+    "orca": ">=1.4.245"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "http",
+        "title": "HTTP",
+        "scopeName": "source.http",
+        "path": "syntaxes/http.tmLanguage.json",
+        "configuration": "syntaxes/http-configuration.json",
+        "extensions": [
+          ".http",
+          ".rest"
+        ]
+      },
+      {
+        "id": "http-json-body",
+        "title": "JSON body grammar dependency",
+        "scopeName": "source.json",
+        "path": "syntaxes/json.tmLanguage.json"
+      }
+    ]
+  },
+  "capabilities": []
+}
