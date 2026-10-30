@@ -1217,47 +1217,6 @@
           }
         }
       ]
-    },
-    {
-      "id": "stablyai.scratchpad",
-      "source": {
-        "kind": "git",
-        "url": "https://github.com/stablyai/orca-plugins.git",
-        "ref": "main",
-        "path": "plugins/scratchpad"
-      },
-      "description": "A global scratchpad in your sidebar. Requires a newer version of Orca; check back after updating.",
-      "categories": [
-        "productivity"
-      ],
-      "releases": [
-        {
-          "version": "3.0.0",
-          "commit": "233d6860a276ea0f5783ec8a649b63894db2fa55",
-          "contentHash": "f8c1cbc1a8a6c69bfdb064e7e490505f78ff6f6d74fc8666cd4dc5c0722ea8b3",
-          "execution": "sandboxed-ui",
-          "minimumOrca": "1.4.246",
-          "name": "Scratchpad",
-          "contributes": [
-            {
-              "kind": "panels",
-              "name": "Scratchpad"
-            }
-          ],
-          "capabilities": [
-            "storage:own"
-          ],
-          "images": {
-            "cover": {
-              "path": "assets/scratchpad/cover.jpg",
-              "alt": "An illustration of colorful sticky notes, with a handwritten checklist on the center note.",
-              "sha256": "645ec1af072d02c6c98b42cd4fd354c31868bbed6267af922d6700bf98c79104",
-              "width": 1586,
-              "height": 992
-            }
-          }
-        }
-      ]
     }
   ]
 }
