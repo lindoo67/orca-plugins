@@ -3,7 +3,7 @@
   "id": "scratchpad",
   "publisher": "stablyai",
   "name": "Scratchpad",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "execution": "sandboxed-ui",
   "description": "A small, persistent global scratchpad in your sidebar. Capture ideas and check off little things.",
   "license": "MIT",
