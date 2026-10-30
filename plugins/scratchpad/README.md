@@ -17,3 +17,7 @@ list. Closing while the status says Saving or Not saved can lose pending edits.
 Requires Orca's `storage.compareAndSet` panel API. Older hosts show an update
 message and keep editing disabled. No browser storage, filesystem access, network,
 or worker is used. The sole capability, `storage:own`, stores this plugin's notes.
+
+Development: run `node plugins/scratchpad/build/build.mjs` after editing panel
+scripts or the HTML template. The shipped HTML inlines scripts because Orca's
+sandbox CSP blocks external script files.
