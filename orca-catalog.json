@@ -1209,6 +1209,27 @@
       ],
       "releases": [
         {
+          "version": "2.0.0",
+          "commit": "e217ea6fc4fe4e88c68016804a180041d5cebb7f",
+          "contentHash": "48886e50adce173b35f2b097eef07c431c4fc8564e4e8c91f522cab83d9f9f01",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "Scratchpad",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "Scratchpad",
+              "detail": ".scratchpad"
+            }
+          ],
+          "fileTypes": [
+            "scratchpad"
+          ],
+          "editorFileTypes": [
+            "scratchpad"
+          ]
+        },
+        {
           "version": "1.0.1",
           "commit": "0ae3278b05d3b1717c1bca764353cc1dc262fa5f",
           "contentHash": "de16851f62bd8f2740bea185a564dee970d4b06898ed13339421281469119594",
