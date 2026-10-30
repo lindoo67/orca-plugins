@@ -1,0 +1,59 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-ocaml",
+  "publisher": "stablyai",
+  "name": "OCaml Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting for OCaml implementations, interfaces and MLX files.",
+  "license": "MIT AND ISC",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/ocaml",
+  "engines": {
+    "orca": ">=1.4.246"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "ocaml",
+        "title": "OCaml",
+        "scopeName": "source.ocaml",
+        "path": "syntaxes/ocaml.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".ml"
+        ]
+      },
+      {
+        "id": "ocaml-interface",
+        "title": "OCaml Interface",
+        "scopeName": "source.ocaml.interface",
+        "path": "syntaxes/ocaml.interface.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".mli"
+        ]
+      },
+      {
+        "id": "mlx",
+        "title": "MLX",
+        "scopeName": "source.ocaml.mlx",
+        "path": "syntaxes/mlx.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".mlx"
+        ]
+      },
+      {
+        "id": "ocamldoc",
+        "title": "ocamldoc grammar dependency",
+        "scopeName": "source.ocaml.ocamldoc",
+        "path": "syntaxes/ocamldoc.tmLanguage.json"
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "An OCaml module with a variant type, pattern matching and a printf call highlighted"
+  }
+}
