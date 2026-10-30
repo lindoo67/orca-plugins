@@ -1301,7 +1301,73 @@
         "diagrams",
         "editors"
       ],
-      "releases": []
+      "releases": [
+        {
+          "version": "0.1.1",
+          "commit": "f2e1a56fa4af754dcf5662e662eb5b2f2978ba28",
+          "contentHash": "ad22b8d218eb5b24a27106ca8aa54683cf077dad3d427fc7fac55828b90d4614",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "Draw.io",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "Draw.io",
+              "detail": ".drawio, .drawio.xml"
+            },
+            {
+              "kind": "newFiles",
+              "name": "新建 Draw.io 图表",
+              "detail": ".drawio"
+            }
+          ],
+          "fileTypes": [
+            "drawio"
+          ],
+          "editorFileTypes": [
+            "drawio"
+          ],
+          "images": {
+            "icon": {
+              "path": "plugins/drawio/images/icon.png",
+              "alt": "Draw.io",
+              "sha256": "94a492ab617e6def75ff6805a3292a561933ce5bde5b9094634046b062ea9f9f",
+              "width": 256,
+              "height": 256
+            },
+            "cover": {
+              "path": "plugins/drawio/images/cover.webp",
+              "alt": "深蓝色背景中的橙色与青色流程图卡片，标题 Draw.io by LinDoo",
+              "sha256": "06f5cfeb0207be8868b7078195c5ae9a9dae6708b85ea55078522218cbd7a843",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/drawio/images/editing-light.png",
+                "alt": "浅色主题的 draw.io 编辑器，展示中文离线图表工作流和常用图形库",
+                "sha256": "581d3a3ecf4cb4ce59fe10caf61462fdb30de90565367cc20bda56eca1c5ba2e",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/drawio/images/editing-dark.png",
+                "alt": "深色主题的 draw.io 编辑器，展示相同的流程图和页面设置",
+                "sha256": "e818284b200dd33808e86d3b6be24ae8e4377c723e4f26d93d811c59625eae38",
+                "width": 1600,
+                "height": 1000
+              },
+              {
+                "path": "plugins/drawio/images/editing-selection.png",
+                "alt": "选中流程图节点后的 draw.io 编辑器，右侧展示节点样式选项",
+                "sha256": "4fd771496f56b9101e29068493a1befde1418850f04dc2ecf446caf9b54ebb58",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
     }
   ]
 }
