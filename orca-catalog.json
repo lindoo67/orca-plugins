@@ -1186,6 +1186,23 @@
       ],
       "releases": [
         {
+          "version": "1.0.1",
+          "commit": "0ae3278b05d3b1717c1bca764353cc1dc262fa5f",
+          "contentHash": "de16851f62bd8f2740bea185a564dee970d4b06898ed13339421281469119594",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "Scratchpad",
+          "contributes": [
+            {
+              "kind": "panels",
+              "name": "Scratchpad"
+            }
+          ],
+          "capabilities": [
+            "storage:own"
+          ]
+        },
+        {
           "version": "1.0.0",
           "commit": "5f5bf95fdc9cf8a415d9832be6e14473a3ac1648",
           "contentHash": "8c90a38527b61b7d6f9057ae8e6dda8d4f75c7574f595ba30afc004de48b425e",
