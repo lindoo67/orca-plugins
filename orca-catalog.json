@@ -1418,6 +1418,306 @@
       ]
     },
     {
+      "id": "stablyai.orca-vhdl",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/vhdl"
+      },
+      "description": "Syntax highlighting for VHDL design and testbench files.",
+      "categories": [
+        "languages",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "e30cb09d2c3c5d67a252c4d8f3fae596c31b935a",
+          "contentHash": "efdbdde20ac75d264129c6ddb3f55bf11810951075846ebf1af5bc5fb8bfbe96",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "VHDL Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "VHDL",
+              "detail": ".vhd, .vhdl, .vho, .vht"
+            }
+          ],
+          "fileTypes": [
+            "vhd",
+            "vhdl",
+            "vho",
+            "vht"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "assets/orca-vhdl/cover.png",
+              "alt": "A VHDL counter entity and architecture with highlighted keywords, types and literals",
+              "sha256": "73502357dc51570be15677d6533367df8ad730b37e889abc99584423f27514f1",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-vcl",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/vcl"
+      },
+      "description": "Syntax highlighting for Varnish and Fastly VCL files.",
+      "categories": [
+        "languages",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "9620dab52be630d65c32ea753b4f906e84f2cf97",
+          "contentHash": "5cc33563a993f60f33530fa37e04b389aeb4b1c33e656f742022a9c41fd2d03c",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "VCL Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "VCL",
+              "detail": ".vcl"
+            }
+          ],
+          "fileTypes": [
+            "vcl"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "assets/orca-vcl/cover.png",
+              "alt": "Fastly VCL subroutines with highlighted keywords, variables, functions and strings",
+              "sha256": "81889263317b9285c2607f7ccc108cb2199180929d2090f6f33e72b5380d4d73",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-qml",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/qml"
+      },
+      "description": "Syntax highlighting for Qt QML files and qmldir module files.",
+      "categories": [
+        "languages",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "a46f49c8ae0b6c12b52b336d2126c7539c5ec477",
+          "contentHash": "822eea60d2353f700229cd58d97a5e7d474bc673b8e30bb4251f75e1885b810b",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "QML Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "QML",
+              "detail": ".qml"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "QML Module Definition",
+              "detail": "qmldir"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "JavaScript grammar dependency"
+            }
+          ],
+          "fileTypes": [
+            "qml"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "assets/orca-qml/cover.png",
+              "alt": "A Qt Quick window in QML with highlighted types, properties and JavaScript bindings",
+              "sha256": "9acfcd03e2f83793a9ab377901bf5c0db34a815ef2bd5a45d60801e5ac85ee0e",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-taxi",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/taxi"
+      },
+      "description": "Syntax highlighting for Taxi timesheet (.tks) files.",
+      "categories": [
+        "languages",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "9c8378448c84c41094afdadd1e7c1c6f77227e41",
+          "contentHash": "f91cce41a48d5246544e40e4227b008e0836961b2be68c26ca033c63bd1abd41",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "Taxi Timesheets Syntax",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "Taxi",
+              "detail": ".tks"
+            }
+          ],
+          "fileTypes": [
+            "tks"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "assets/orca-taxi/cover.png",
+              "alt": "A Taxi timesheet with highlighted project aliases, durations and descriptions",
+              "sha256": "152389782bc1b80638f518084620d75303c79f82f6c396ad9429bc21be5cae9b",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-http",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/http"
+      },
+      "description": "Syntax highlighting for .http and .rest request files, including JSON bodies.",
+      "categories": [
+        "languages",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "473ecbe6766c976102c7c670ac5e1ce4406ff5c9",
+          "contentHash": "45af3b0c32d42eb77a36d5ef960d1c56035cd4a9637871bc105664b2af5576d0",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "HTTP Request Files",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "HTTP",
+              "detail": ".http, .rest"
+            },
+            {
+              "kind": "syntaxes",
+              "name": "JSON body grammar dependency"
+            }
+          ],
+          "fileTypes": [
+            "http",
+            "rest"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "assets/orca-http/cover.png",
+              "alt": "A .http file with highlighted variables, request lines, headers and a JSON body",
+              "sha256": "f9cb212c983d4ebc5a3a62e8290b11c1f105048616c2ed8258e0b749f060bc90",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-systemd",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/systemd"
+      },
+      "description": "Syntax highlighting for systemd unit files and Podman Quadlet files.",
+      "categories": [
+        "languages",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "6d9bdfa97689829ce205f5edee415c2406b3856e",
+          "contentHash": "72d4b3906ebbe190cecfe75e9a636376ab160886639545ee07c759927dffa766",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "systemd Unit Files",
+          "contributes": [
+            {
+              "kind": "syntaxes",
+              "name": "systemd unit",
+              "detail": ".service, .socket, .timer, .target, .path, .mount, .automount, .swap, .slice, .scope, .device, .snapshot, .link, .netdev, .network, .nspawn, .dnssd, .container, .volume, .kube"
+            }
+          ],
+          "fileTypes": [
+            "service",
+            "socket",
+            "timer",
+            "target",
+            "path",
+            "mount",
+            "automount",
+            "swap",
+            "slice",
+            "scope",
+            "device",
+            "snapshot",
+            "link",
+            "netdev",
+            "network",
+            "nspawn",
+            "dnssd",
+            "container",
+            "volume",
+            "kube"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "assets/orca-systemd/cover.png",
+              "alt": "A systemd service unit with highlighted sections, directives, values and specifiers",
+              "sha256": "3d993d065b6258ff7efe54aeec2b7853c7a4e70c054c16a3f0e1446bd38d7cec",
+              "width": 1600,
+              "height": 1000
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "stablyai.orca-docx",
       "source": {
         "kind": "git",

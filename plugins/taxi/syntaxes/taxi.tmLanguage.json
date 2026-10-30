@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Taxi",
+  "patterns": [
+    {
+      "include": "#entry"
+    },
+    {
+      "include": "#done"
+    }
+  ],
+  "repository": {
+    "entry": {
+      "patterns": [
+        {
+          "name": "entry.taxi",
+          "match": "^([^\\s]+)(?:\\s+)([0-9.:?-]+)(?:\\s+)(.*)",
+          "captures": {
+            "1": { "name": "keyword.taxi" },
+            "2": { "name": "constant.numeric.taxi" },
+            "3": { "name": "string.taxi" }
+          }
+        }
+      ]
+    },
+    "done": {
+      "patterns": [
+        {
+          "name": "comment.taxi",
+          "match": "[#=]\\s(.*)"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.taxi"
+}

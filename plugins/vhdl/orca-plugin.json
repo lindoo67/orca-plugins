@@ -1,0 +1,32 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-vhdl",
+  "publisher": "stablyai",
+  "name": "VHDL Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting for VHDL design and testbench files.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/vhdl",
+  "engines": {
+    "orca": ">=1.4.245"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "vhdl",
+        "title": "VHDL",
+        "scopeName": "source.vhdl",
+        "path": "syntaxes/vhdl.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".vhd",
+          ".vhdl",
+          ".vho",
+          ".vht"
+        ]
+      }
+    ]
+  },
+  "capabilities": []
+}

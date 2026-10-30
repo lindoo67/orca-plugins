@@ -1,0 +1,29 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-taxi",
+  "publisher": "stablyai",
+  "name": "Taxi Timesheets Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting for Taxi timesheet (.tks) files.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/taxi",
+  "engines": {
+    "orca": ">=1.4.245"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "taxi",
+        "title": "Taxi",
+        "scopeName": "source.taxi",
+        "path": "syntaxes/taxi.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".tks"
+        ]
+      }
+    ]
+  },
+  "capabilities": []
+}
