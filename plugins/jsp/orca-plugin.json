@@ -1,0 +1,59 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-jsp",
+  "publisher": "stablyai",
+  "name": "JSP Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "JavaServer Pages highlighting: scriptlets, expressions, directives, JSTL tags and EL inside HTML.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/jsp",
+  "engines": {
+    "orca": ">=1.4.246"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "jsp",
+        "title": "JSP",
+        "scopeName": "text.html.jsp",
+        "path": "syntaxes/jsp.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".jsp",
+          ".jspf",
+          ".tag"
+        ]
+      },
+      {
+        "id": "html",
+        "title": "HTML grammar dependency",
+        "scopeName": "text.html.basic",
+        "path": "syntaxes/html.tmLanguage.json"
+      },
+      {
+        "id": "java",
+        "title": "Java grammar dependency",
+        "scopeName": "source.java",
+        "path": "syntaxes/java.tmLanguage.json"
+      },
+      {
+        "id": "css",
+        "title": "CSS grammar dependency",
+        "scopeName": "source.css",
+        "path": "syntaxes/css.tmLanguage.json"
+      },
+      {
+        "id": "javascript",
+        "title": "JavaScript grammar dependency",
+        "scopeName": "source.js",
+        "path": "syntaxes/javascript.tmLanguage.json"
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "A JSP page with directives, a scriptlet, EL expressions, a JSTL loop, CSS and JavaScript highlighted"
+  }
+}
