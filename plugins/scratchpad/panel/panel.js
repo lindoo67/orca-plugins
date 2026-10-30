@@ -108,8 +108,7 @@
       const retry = document.querySelector('#retry');
       const items = document.querySelector('#items');
       let ready = false;
-      const store = new ScratchpadDocument(window.orca, {
-        readOnly(value) { items.disabled = value; openList.querySelectorAll('.line').forEach(line => { line.contentEditable = value ? 'false' : 'plaintext-only'; }); doneList.querySelectorAll('.line').forEach(line => { line.contentEditable = value ? 'false' : 'plaintext-only'; }); },
+      const store = new ScratchpadStore(window.orca?.host, {
         status(message, failed) { status.textContent = message; retry.hidden = !failed; },
         render(rows) {
           ready = false;
@@ -119,7 +118,7 @@
             row.dataset.id = item.id;
             (item.done ? doneList : openList).append(row);
           }
-          updateDone(); ready = true;
+          updateDone(); ready = true; items.disabled = false;
         }
       });
       function save() {
