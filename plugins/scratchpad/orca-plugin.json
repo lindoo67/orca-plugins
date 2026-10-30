@@ -1,0 +1,30 @@
+{
+  "manifestVersion": 2,
+  "id": "scratchpad",
+  "publisher": "stablyai",
+  "name": "Scratchpad",
+  "version": "1.0.0",
+  "execution": "sandboxed-ui",
+  "description": "A small, persistent global scratchpad in your sidebar. Capture ideas and check off little things.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/scratchpad",
+  "engines": {
+    "orca": ">=1.4.245"
+  },
+  "pluginApi": 1,
+  "contributes": {
+    "panels": [
+      {
+        "id": "scratchpad",
+        "title": "Scratchpad",
+        "icon": "file-text",
+        "entry": "panel/index.html"
+      }
+    ]
+  },
+  "capabilities": [
+    {
+      "kind": "storage:own"
+    }
+  ]
+}
