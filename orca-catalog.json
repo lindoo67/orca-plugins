@@ -1080,8 +1080,8 @@
       "releases": [
         {
           "version": "1.2.3",
-          "commit": "c24eeaaf31a154204fe0afd679ff5bfc51ce6140",
-          "contentHash": "95e8193956136f32e13d864fc6764868749355c399167c50baa967dbf3087543",
+          "commit": "b9ab2b3916901be2fb1dcccb2392b2cdb231077d",
+          "contentHash": "965bb5692c7b7e5bd78124bcc13fa331f0af4d7df1b1c0536526e4285aa31318",
           "execution": "sandboxed-ui",
           "minimumOrca": "1.4.245",
           "name": "Orca Run",
