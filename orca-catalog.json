@@ -31,6 +31,7 @@
               "name": "Orca Midnight"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/midnight-theme/images/cover.png",
@@ -86,6 +87,7 @@
               "name": "Nord"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/nord-theme/images/cover.png",
@@ -145,6 +147,7 @@
               "name": "Orca OLED"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/oled-theme/images/cover.png",
@@ -375,6 +378,7 @@
           "editorFileTypes": [
             "excalidraw"
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/excalidraw/images/cover.png",
@@ -445,6 +449,7 @@
             "xls",
             "ods"
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/spreadsheet/images/cover.png",
@@ -625,6 +630,7 @@
               "name": "Ember"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/dusk-ember/images/cover.png",
@@ -685,6 +691,7 @@
               "name": "GitHub Light"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/github-light-theme/images/cover.png",
@@ -712,6 +719,7 @@
               "name": "GitHub Light"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/github-light-theme/images/cover.png",
@@ -756,6 +764,7 @@
               "name": "Solarized Light"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/solarized-light-theme/images/cover.png",
@@ -800,6 +809,7 @@
               "name": "Dracula"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/dracula-theme/images/cover.png",
@@ -852,6 +862,7 @@
               "name": "Gruvbox Light"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "plugins/gruvbox-theme/images/cover.png",
@@ -895,6 +906,7 @@
           "fileTypes": [
             "nix"
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-nix/cover.jpg",
@@ -957,6 +969,7 @@
             "gdshader",
             "gdshaderinc"
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-godot/cover.jpg",
@@ -1006,6 +1019,7 @@
             "ltx",
             "sty"
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-latex/cover.jpg",
@@ -1052,6 +1066,7 @@
           "editorFileTypes": [
             "docx"
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-docx/cover.jpg",
@@ -1091,6 +1106,7 @@
               "name": "Orca Run"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-runner/orca-run-cover.png",
@@ -1114,6 +1130,7 @@
               "name": "Orca Run"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-runner/orca-run-cover.png",
@@ -1137,6 +1154,7 @@
               "name": "Orca Run"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-runner/orca-run-cover.png",
@@ -1160,6 +1178,7 @@
               "name": "Orca Run"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-runner/orca-run-cover.png",
@@ -1183,6 +1202,7 @@
               "name": "Orca Runner"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-runner/cover.png",
@@ -1206,6 +1226,7 @@
               "name": "Orca Runner"
             }
           ],
+          "license": "MIT",
           "images": {
             "cover": {
               "path": "assets/orca-runner/cover.png",

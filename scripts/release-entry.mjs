@@ -77,6 +77,11 @@ for (const sourcePath of dirs) {
   // Why not HEAD: the catalog commit cannot name itself, and the plugin's bytes are the same at
   // the last commit that touched its directory.
   printed.commit = git('log', '-1', '--format=%H', 'HEAD', '--', sourcePath)
+  // Why copied: the validator prints no license, and the directory pages show the release's.
+  const { license } = JSON.parse(readFileSync(path.join(CATALOG_ROOT, sourcePath, 'orca-plugin.json'), 'utf8'))
+  if (typeof license === 'string' && license) {
+    printed.license = license
+  }
   const releases = entry.releases ?? []
   const newest = releases[0]
   if (newest?.version === printed.version) {

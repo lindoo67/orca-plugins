@@ -44,15 +44,15 @@ ORCA_DIR=/path/to/orca node scripts/release-entry.mjs --write
 
 For every directory in `plugins/`, this runs Orca's validator and writes the release it prints
 (version, commit, `contentHash`, execution profile, minimum Orca, contributions, capabilities,
-file types) into `orca-catalog.json`. A new version goes **first** in `releases`; an unchanged
-version is updated in place. Don't edit these fields by hand: CI recomputes them and fails when
+file types) and the manifest's `license` into `orca-catalog.json`. A new version goes **first** in
+`releases`; an unchanged version is updated in place. Don't edit these fields by hand: CI recomputes them and fails when
 they are stale. Commit `orca-catalog.json`.
 
 When a release raises `engines.orca`, keep the previous release listed beneath it. Older Orca
 installs the first release it supports, so removing the old one leaves those users with nothing
 to install.
 
-You may add display-only fields to a release: `changelog`, `updatedAt`, `license`, `homepage`,
+You may add display-only fields to a release: `changelog`, `updatedAt`, `homepage`,
 `themePreview`, `images`. The script keeps them.
 
 ## 3. Add a cover image (recommended)
