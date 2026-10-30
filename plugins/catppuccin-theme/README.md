@@ -1,6 +1,6 @@
 # Catppuccin for Orca
 
-Soothing pastel themes for Orca, from [Catppuccin](https://github.com/catppuccin/catppuccin): **Mocha** for dark mode and **Latte** for light mode. Each comes as an app theme, covering the interface and code colors, and a terminal theme.
+Soothing pastel themes for Orca, from [Catppuccin](https://github.com/catppuccin/catppuccin): **Mocha** for dark mode and **Latte** for light mode. Each is an app theme covering the interface and code colors. For the terminal, use the Catppuccin terminal themes built into Orca.
 
 ![Catppuccin Mocha: a TypeScript file in the editor and a terminal with git history and the 16 terminal colors](../../assets/orca-catppuccin-theme/mocha.png)
 
@@ -11,14 +11,14 @@ Soothing pastel themes for Orca, from [Catppuccin](https://github.com/catppuccin
 After installing it from **Settings → Plugins**:
 
 1. In **Settings → Appearance**, choose **Catppuccin Mocha** as the dark theme and **Catppuccin Latte** as the light theme.
-2. In **Settings → Terminal**, choose the terminal themes of the same names.
+2. In **Settings → Terminal**, choose Orca's built-in **Catppuccin Mocha** and **Catppuccin Latte** terminal themes.
 
 ## What's included
 
 | Theme | Kind | Based on |
 | --- | --- | --- |
-| Catppuccin Mocha | App theme (dark) and terminal theme | Catppuccin Mocha |
-| Catppuccin Latte | App theme (light) and terminal theme | Catppuccin Latte |
+| Catppuccin Mocha | App theme (dark) | Catppuccin Mocha |
+| Catppuccin Latte | App theme (light) | Catppuccin Latte |
 
 Interface colors follow Catppuccin's style guide: base for the editor, mantle for sidebars, crust for the deepest panels, and mauve for the accent. Code uses Catppuccin's syntax colors: mauve keywords, green strings, peach numbers, yellow types and overlay comments in italics.
 
@@ -29,7 +29,7 @@ Interface colors follow Catppuccin's style guide: base for the editor, mantle fo
 
 ## Rebuilding
 
-The theme files are generated from Catppuccin's `palette.json` by [`catppuccin-build.py`](https://github.com/brennanb2025/orca-plugins/blob/main/tools/catppuccin-build.py), which also runs the contrast checks.
+The app theme files are generated from Catppuccin's `palette.json` by [`catppuccin-build.py`](https://github.com/brennanb2025/orca-plugins/blob/main/tools/catppuccin-build.py), which also runs the contrast checks.
 
 ## License
 
