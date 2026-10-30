@@ -1,0 +1,45 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-qml",
+  "publisher": "stablyai",
+  "name": "QML Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting for Qt QML files and qmldir module files.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/qml",
+  "engines": {
+    "orca": ">=1.4.245"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "qml",
+        "title": "QML",
+        "scopeName": "source.qml",
+        "path": "syntaxes/qml.tmLanguage.json",
+        "configuration": "syntaxes/qml-configuration.json",
+        "extensions": [
+          ".qml"
+        ]
+      },
+      {
+        "id": "qmldir",
+        "title": "QML Module Definition",
+        "scopeName": "source.qmldir",
+        "path": "syntaxes/qmldir.tmLanguage.json",
+        "configuration": "syntaxes/qmldir-configuration.json",
+        "filenames": [
+          "qmldir"
+        ]
+      },
+      {
+        "id": "qml-javascript",
+        "title": "JavaScript grammar dependency",
+        "scopeName": "source.js",
+        "path": "syntaxes/javascript.tmLanguage.json"
+      }
+    ]
+  },
+  "capabilities": []
+}
