@@ -1,0 +1,29 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-vcl",
+  "publisher": "stablyai",
+  "name": "VCL Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting for Varnish and Fastly VCL files.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/vcl",
+  "engines": {
+    "orca": ">=1.4.245"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "vcl",
+        "title": "VCL",
+        "scopeName": "source.vcl",
+        "path": "syntaxes/vcl.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".vcl"
+        ]
+      }
+    ]
+  },
+  "capabilities": []
+}
