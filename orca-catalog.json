@@ -1247,10 +1247,9 @@
         "ref": "main",
         "path": "plugins/catppuccin-theme"
       },
-      "description": "Soothing pastel themes for Orca: Mocha for dark mode and Latte for light mode, with matching code and terminal colors.",
+      "description": "Soothing pastel app themes for Orca: Mocha for dark mode and Latte for light mode, covering the interface and code colors.",
       "categories": [
         "themes",
-        "terminal-themes",
         "official"
       ],
       "releases": [
