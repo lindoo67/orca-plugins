@@ -335,6 +335,39 @@
       ],
       "releases": [
         {
+          "version": "2.0.1",
+          "commit": "a955773da8145cc085fe93ddd9cc5214f1a57e0b",
+          "contentHash": "e3b992a6c498c0b55e7c86f44bcca77eb5a9cc39b3d9d9c54a3fc169ec5e7685",
+          "execution": "declarative",
+          "minimumOrca": "1.4.245",
+          "name": "Multipass VM Recipes",
+          "contributes": [
+            {
+              "kind": "vmRecipes",
+              "name": "recipes/ubuntu-lts.json"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/multipass-recipes/images/cover.png",
+              "alt": "The Multipass Ubuntu LTS recipe with its create, suspend, resume and destroy commands",
+              "sha256": "9490fccc49dba758e9e0fc190922919601c67688da8265cf9f5384dce5680cd1",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/multipass-recipes/images/session.png",
+                "alt": "A terminal on a Multipass machine created by the recipe",
+                "sha256": "055488d690f6626493a2adb9deef8a0a687671300f43d4be4ffdbdb7f10edacf",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          },
+          "license": "MIT"
+        },
+        {
           "version": "2.0.0",
           "commit": "07590d2c7bdc8c6c9299123106b9e0525656a411",
           "contentHash": "82a7e8cc8d3a5e6b80bc919858b6165dfef582db2e39f644780e7e6c10cd0efb",
