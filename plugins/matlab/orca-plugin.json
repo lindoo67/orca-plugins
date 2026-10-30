@@ -1,0 +1,33 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-matlab",
+  "publisher": "stablyai",
+  "name": "MATLAB Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting, comment toggling and bracket matching for MATLAB .m files.",
+  "license": "MIT AND BSD-2-Clause",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/matlab",
+  "engines": {
+    "orca": ">=1.4.246"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "matlab",
+        "title": "MATLAB",
+        "scopeName": "source.matlab",
+        "path": "syntaxes/matlab.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".m"
+        ]
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "A MATLAB function with an arguments block, loops, comments and a format string highlighted"
+  }
+}
