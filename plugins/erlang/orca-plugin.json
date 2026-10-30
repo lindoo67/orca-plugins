@@ -1,0 +1,39 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-erlang",
+  "publisher": "stablyai",
+  "name": "Erlang Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Syntax highlighting, comment toggling and bracket matching for Erlang source, headers and escripts.",
+  "license": "MIT AND Apache-2.0",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/erlang",
+  "engines": {
+    "orca": ">=1.4.246"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "erlang",
+        "title": "Erlang",
+        "scopeName": "source.erlang",
+        "path": "syntaxes/erlang.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".erl",
+          ".hrl",
+          ".escript",
+          ".app.src"
+        ],
+        "filenames": [
+          "rebar.config"
+        ]
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "An Erlang counter module with attributes, a record, atoms and receive blocks highlighted"
+  }
+}
