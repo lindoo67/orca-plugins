@@ -3,7 +3,7 @@
   "id": "orca-multipass-recipes",
   "publisher": "stablyai",
   "name": "Multipass VM Recipes",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "execution": "declarative",
   "description": "A reviewed starter lifecycle for disposable Multipass workspaces.",
   "license": "MIT",
