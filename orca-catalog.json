@@ -1255,8 +1255,8 @@
       "releases": [
         {
           "version": "1.0.0",
-          "commit": "af1b8721272ecc107361aac95c92f66b2a633a9d",
-          "contentHash": "5096d3deae4e0e6ed9b5fdba6b15c92802a3fcff35b19f108115ae87b7503e8c",
+          "commit": "7e14bf48e4474151532eca535352225cbc08345d",
+          "contentHash": "c9e450a6628b40e963402cad3c3caa88b4bc3e75fa0723173cdf28aeb0d4b987",
           "execution": "data",
           "minimumOrca": "1.4.245",
           "name": "Catppuccin for Orca",
@@ -1267,14 +1267,6 @@
             },
             {
               "kind": "themes",
-              "name": "Catppuccin Latte"
-            },
-            {
-              "kind": "terminalThemes",
-              "name": "Catppuccin Mocha"
-            },
-            {
-              "kind": "terminalThemes",
               "name": "Catppuccin Latte"
             }
           ],
