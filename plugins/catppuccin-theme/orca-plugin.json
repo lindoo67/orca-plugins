@@ -1,0 +1,29 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-catppuccin-theme",
+  "publisher": "stablyai",
+  "name": "Catppuccin for Orca",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Soothing pastel app themes: Mocha for dark mode and Latte for light mode, covering the interface and code colors.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/catppuccin-theme",
+  "engines": {
+    "orca": ">=1.4.245"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "catppuccin-mocha",
+        "title": "Catppuccin Mocha",
+        "path": "themes/mocha.json"
+      },
+      {
+        "id": "catppuccin-latte",
+        "title": "Catppuccin Latte",
+        "path": "themes/latte.json"
+      }
+    ]
+  },
+  "capabilities": []
+}

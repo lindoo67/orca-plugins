@@ -1,0 +1,32 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-sqlite-browser",
+  "publisher": "stablyai",
+  "name": "SQLite Browser",
+  "version": "1.0.0",
+  "execution": "sandboxed-ui",
+  "description": "Browse SQLite databases in Orca's editor: every table and view, its schema, and millions of rows, read-only.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/sqlite-browser",
+  "engines": {
+    "orca": ">=1.4.245"
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "id": "sqlite",
+        "title": "SQLite",
+        "extensions": [
+          ".db",
+          ".sqlite",
+          ".sqlite3",
+          ".db3"
+        ],
+        "entry": "editor/index.html",
+        "priority": "default",
+        "contentKind": "bytes"
+      }
+    ]
+  },
+  "capabilities": []
+}

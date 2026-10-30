@@ -1238,6 +1238,192 @@
           }
         }
       ]
+    },
+    {
+      "id": "stablyai.orca-catppuccin-theme",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/catppuccin-theme"
+      },
+      "description": "Soothing pastel app themes for Orca: Mocha for dark mode and Latte for light mode, covering the interface and code colors.",
+      "categories": [
+        "themes",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "7e14bf48e4474151532eca535352225cbc08345d",
+          "contentHash": "c9e450a6628b40e963402cad3c3caa88b4bc3e75fa0723173cdf28aeb0d4b987",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "Catppuccin for Orca",
+          "contributes": [
+            {
+              "kind": "themes",
+              "name": "Catppuccin Mocha"
+            },
+            {
+              "kind": "themes",
+              "name": "Catppuccin Latte"
+            }
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "assets/orca-catppuccin-theme/mocha.png",
+              "alt": "Catppuccin Mocha in Orca: a TypeScript file above a terminal showing a git log and the 16 terminal colors",
+              "sha256": "da1b05bfe6873a455069ed08f55f36189fde2270221c6063ce556e2425fd35ef",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "assets/orca-catppuccin-theme/latte.png",
+                "alt": "Catppuccin Latte in Orca: the same TypeScript file and terminal in light mode",
+                "sha256": "b507f15dd3ae86ca619dbaddb3af2e594da53249d99bd7ce240159dd79cccbc7",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          },
+          "themePreview": [
+            {
+              "label": "Catppuccin Mocha",
+              "base": "dark",
+              "background": "#1e1e2e",
+              "foreground": "#cdd6f4",
+              "accent": "#cba6f7",
+              "surface": "#181825"
+            },
+            {
+              "label": "Catppuccin Latte",
+              "base": "light",
+              "background": "#eff1f5",
+              "foreground": "#4c4f69",
+              "accent": "#8839ef",
+              "surface": "#e6e9ef"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-material-icons",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/material-icons"
+      },
+      "description": "Colorful Material file icons for about 470 file types and names, with a variant for light themes.",
+      "categories": [
+        "icons",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "af1b8721272ecc107361aac95c92f66b2a633a9d",
+          "contentHash": "f3afa1838004f036d3b5031664b4f0127142ebdc1a0232705f76bb5dc7e547ff",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "Material Icon Theme for Orca",
+          "contributes": [
+            {
+              "kind": "iconThemes",
+              "name": "Material Icons"
+            },
+            {
+              "kind": "iconThemes",
+              "name": "Material Icons (Light)"
+            }
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "assets/orca-material-icons/dark.png",
+              "alt": "Material Icons in Orca's file explorer and editor tabs, dark mode",
+              "sha256": "0d372d31c4545f22403861ebbb9589cba9327db3cdc4f991d63800eeac9a3c85",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "assets/orca-material-icons/light.png",
+                "alt": "Material Icons (Light) in Orca's file explorer and editor tabs, light mode",
+                "sha256": "86642fbb7e7237556b6c724f8c8a642e7a4f0e28862e6ab58257cda4008ff18a",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "stablyai.orca-sqlite-browser",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/stablyai/orca-plugins.git",
+        "ref": "main",
+        "path": "plugins/sqlite-browser"
+      },
+      "description": "Open SQLite databases in an editor tab: browse every table, view, index and trigger, and scroll or filter millions of rows. Read-only.",
+      "categories": [
+        "editors",
+        "official"
+      ],
+      "releases": [
+        {
+          "version": "1.0.0",
+          "commit": "af1b8721272ecc107361aac95c92f66b2a633a9d",
+          "contentHash": "15716790a1964aed3c6dc7e4e23b7489810f1627676f88144b8273d4075f64d4",
+          "execution": "sandboxed-ui",
+          "minimumOrca": "1.4.245",
+          "name": "SQLite Browser",
+          "contributes": [
+            {
+              "kind": "customEditors",
+              "name": "SQLite",
+              "detail": ".db, .sqlite, .sqlite3, .db3"
+            }
+          ],
+          "fileTypes": [
+            "db",
+            "sqlite",
+            "sqlite3",
+            "db3"
+          ],
+          "editorFileTypes": [
+            "db",
+            "sqlite",
+            "sqlite3",
+            "db3"
+          ],
+          "license": "MIT",
+          "images": {
+            "cover": {
+              "path": "assets/orca-sqlite-browser/tracks.png",
+              "alt": "A SQLite database open in Orca: tables in a sidebar, the tracks table and the selected cell's value",
+              "sha256": "d67d50ea182604fed2673c5faf856ae8c30a143bc5659ba74f061644bf65d4cf",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "assets/orca-sqlite-browser/filter.png",
+                "alt": "The same table filtered to rows matching neon, in light mode",
+                "sha256": "c724bb03167fb308b71e40e24da08d0451d368a6f73679f67fc16a1614aa798d",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          }
+        }
+      ]
     }
   ]
 }
