@@ -1,0 +1,33 @@
+{
+  "manifestVersion": 2,
+  "id": "orca-julia",
+  "publisher": "stablyai",
+  "name": "Julia Syntax",
+  "version": "1.0.0",
+  "execution": "data",
+  "description": "Full Julia highlighting for .jl files: macros, string interpolation, types and docstrings.",
+  "license": "MIT",
+  "repository": "https://github.com/stablyai/orca-plugins/tree/main/plugins/julia",
+  "engines": {
+    "orca": ">=1.4.246"
+  },
+  "contributes": {
+    "syntaxes": [
+      {
+        "id": "julia",
+        "title": "Julia",
+        "scopeName": "source.julia",
+        "path": "syntaxes/julia.tmLanguage.json",
+        "configuration": "syntaxes/language-configuration.json",
+        "extensions": [
+          ".jl"
+        ]
+      }
+    ]
+  },
+  "capabilities": [],
+  "cover": {
+    "path": "images/cover.png",
+    "alt": "A Julia function with a docstring, parametric types and a struct highlighted"
+  }
+}
