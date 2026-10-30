@@ -191,6 +191,39 @@
       ],
       "releases": [
         {
+          "version": "2.0.1",
+          "commit": "83daff3cf0621ef15062d7df35eef5ff275bffee",
+          "contentHash": "4b41d7700c6f80cee59667d4c0183640e359254604d93cd90a9d710f7bccab22",
+          "execution": "data",
+          "minimumOrca": "1.4.245",
+          "name": "Orca Minimal Icons",
+          "contributes": [
+            {
+              "kind": "iconThemes",
+              "name": "Minimal"
+            }
+          ],
+          "images": {
+            "cover": {
+              "path": "plugins/minimal-icons/images/cover.png",
+              "alt": "The Minimal icons in the file explorer and the eight icons the theme provides",
+              "sha256": "60565d006e8dd868eae755fa131195ec62cab829135ad0d8c866b3ec61f1b311",
+              "width": 1600,
+              "height": 1000
+            },
+            "screenshots": [
+              {
+                "path": "plugins/minimal-icons/images/explorer.png",
+                "alt": "Minimal icons in the explorer and editor tabs",
+                "sha256": "a485fd14f4e0950e90a5ac31faf9793442723553679fc7acccc78d78f66d2fcf",
+                "width": 1600,
+                "height": 1000
+              }
+            ]
+          },
+          "license": "MIT"
+        },
+        {
           "version": "2.0.0",
           "commit": "07590d2c7bdc8c6c9299123106b9e0525656a411",
           "contentHash": "7b128923d45b550ae7024594f2947ed09ea0710aa15b5b479ae3abc15cc9576a",
