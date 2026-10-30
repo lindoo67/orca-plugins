@@ -30,6 +30,12 @@ Plugins.
 | Solarized Terminal | `plugins/solarized-terminal` | Solarized Dark terminal colors |
 | Gleam Language | `plugins/gleam` | Highlighting for `.gleam` files |
 | Prisma Syntax | `plugins/prisma` | Prisma-aware highlighting for `.prisma` files |
+| VHDL Syntax | `plugins/vhdl` | Highlighting for `.vhd`, `.vhdl`, `.vho` and `.vht` files |
+| VCL Syntax | `plugins/vcl` | Highlighting for Varnish and Fastly `.vcl` files |
+| QML Syntax | `plugins/qml` | Highlighting for Qt `.qml` and `qmldir` files |
+| Taxi Timesheets Syntax | `plugins/taxi` | Highlighting for Taxi `.tks` timesheets |
+| HTTP Request Files | `plugins/http` | Highlighting for `.http` and `.rest` request files |
+| systemd Unit Files | `plugins/systemd` | Highlighting for systemd units and Podman Quadlet files |
 | Excalidraw | `plugins/excalidraw` | An editor for `.excalidraw` diagrams |
 | Word Document Viewer | `plugins/docx` | Read-only `.docx` pages with headers, footers, images and zoom |
 | Multipass VM Recipes | `plugins/multipass-recipes` | Disposable Multipass VM workspaces |
