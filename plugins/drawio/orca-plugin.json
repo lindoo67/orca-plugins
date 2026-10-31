@@ -3,7 +3,7 @@
   "id": "drawio",
   "publisher": "lindoo",
   "name": "Draw.io",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "execution": "sandboxed-ui",
   "description": "在 Orca 中离线创建和编辑 draw.io 流程图、架构图及多页图表。",
   "license": "Apache-2.0",

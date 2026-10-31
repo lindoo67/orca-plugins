@@ -25,9 +25,22 @@ try {
   assert.equal(await frame.evaluate(()=>edits.length),0,'opening must not dirty the document')
   assert.ok(await frame.locator('.geSidebarContainer').first().evaluate(el=>el.clientWidth)>100,'sidebar visible')
   assert.ok(await frame.locator('.geSidebar a').count()>10,'shape palette populated')
+  assert.deepEqual(await frame.evaluate(()=>['mermaid','plantUml','importVisio','generate'].filter(name=>{
+    const action=drawioUi.actions.get(name);return action?.isEnabled() || action?.isVisible?.()
+  })),[],'unsupported actions must be hidden and disabled')
   await frame.locator('.geSidebar a.geItem').first().click()
   await frame.evaluate(()=>flush())
   assert.equal(await frame.evaluate(()=>drawioUi.editor.graph.getModel().getChildCount(drawioUi.editor.graph.getDefaultParent())),1,'palette click inserts a shape')
+  // Background synchronization must not terminate an active label edit.
+  assert.equal(await frame.evaluate(async()=>{
+    const g=drawioUi.editor.graph;
+    const cell=g.insertVertex(g.getDefaultParent(),'active-edit','typing',20,20,100,40);
+    g.startEditingAtCell(cell);
+    await new Promise(resolve=>setTimeout(resolve,350));
+    return g.isEditing();
+  }),true)
+  await frame.evaluate(()=>flush())
+  assert.equal(await frame.evaluate(()=>drawioUi.editor.graph.isEditing()),false,'explicit flush commits active editing')
   await frame.evaluate(template=>{current={version:5,readOnly:false,content:{kind:'text',text:template}};receive(current);edits.length=0},template)
   await frame.evaluate(async()=>{
     const g=drawioUi.editor.graph;
@@ -54,6 +67,14 @@ try {
   await frame.evaluate(async()=>{const g=drawioUi.editor.graph;g.insertVertex(g.getDefaultParent(),'new','multi',20,20,90,40);await flush()})
   assert.match(await frame.evaluate(()=>current.content.text),/id="two"/)
   assert.match(await frame.evaluate(()=>current.content.text),/custom="preserve"/)
+  // Highly compressible pages must be rejected before they can exhaust the frame.
+  await frame.evaluate(()=>{
+    const bomb=Graph.compress('x'.repeat(17*1024*1024));
+    receive({version:21,readOnly:false,content:{kind:'text',text:'<mxfile><diagram>'+bomb+'</diagram></mxfile>'}});
+  })
+  assert.equal(await frame.locator('#message').isVisible(),true)
+  assert.match(await frame.locator('#message').textContent(),/16 MB/)
+  await frame.evaluate(template=>{current={version:22,readOnly:false,content:{kind:'text',text:template}};receive(current)},template)
   // Rejection must remain visible to editor.flush, and allow a later retry.
   await frame.evaluate(()=>{window.rejectEdit=true;const g=drawioUi.editor.graph;g.insertVertex(g.getDefaultParent(),'retry','retry',10,10,50,40)})
   assert.equal(await frame.evaluate(async()=>{try{await flush();return false}catch{return true}}),true)
@@ -78,5 +99,5 @@ try {
   assert.deepEqual(await frame.evaluate(()=>violations),[],'core editor must not violate host CSP')
   assert.deepEqual(errors,[])
   assert.deepEqual(requests,[],'editor must not issue network requests')
-  console.log('PASS: offline CSP, palette, clean open, edits/flush, undo/redo, settings, compressed multi-page, metadata, conflicts/retry, read-only, invalid XML, theme')
+  console.log('PASS: offline CSP, palette/actions, autosync editing, edits/flush, undo/redo, settings, bounded compressed pages, metadata, conflicts/retry, read-only, invalid XML, theme')
 } finally {await browser.close()}

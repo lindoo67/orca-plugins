@@ -27,6 +27,61 @@ mxUtils.get = (url,done,fail) => { try { const r=request(url); done?.(r); return
 Editor.enableServiceWorker = false;
 Editor.defaultCompressed = false;
 EditorUi.enableLogging = false;
+const MAX_DOCUMENT_BYTES = 16 * 1024 * 1024;
+const MAX_COMPRESSED_BYTES = 8 * 1024 * 1024;
+const MAX_DOCUMENT_ELEMENTS = 100000;
+const MAX_PAGES = 100;
+const utf8 = new TextEncoder();
+const byteLength = text => utf8.encode(text).byteLength;
+// The upstream helper inflates into an unbounded string. Stream chunks instead so a
+// small compressed page cannot allocate an arbitrarily large renderer payload.
+Graph.decompress = function(data, inflate, checked) {
+  if (data == null || data.length === 0 || typeof pako === 'undefined') return data;
+  if (data.length > Math.ceil(MAX_COMPRESSED_BYTES * 4 / 3) + 4) throw Error('压缩图表超过 8 MB 限制');
+  const encoded = atob(data);
+  if (encoded.length > MAX_COMPRESSED_BYTES) throw Error('压缩图表超过 8 MB 限制');
+  const chunks = [];
+  let size = 0;
+  const decoder = new pako.Inflate({raw: !inflate});
+  decoder.onData = chunk => {
+    size += chunk.length;
+    if (size > MAX_DOCUMENT_BYTES) throw Error('图表展开后超过 16 MB 限制');
+    chunks.push(chunk);
+  };
+  decoder.push(Graph.stringToArrayBuffer(encoded), true);
+  if (decoder.err) throw Error(decoder.msg || '无法解压图表');
+  let escaped = '';
+  for (const chunk of chunks) escaped += Graph.arrayBufferToString(chunk);
+  const result = decodeURIComponent(escaped);
+  if (byteLength(result) > MAX_DOCUMENT_BYTES) throw Error('图表展开后超过 16 MB 限制');
+  return checked ? result : Graph.zapGremlins(result);
+};
+const validateModel = (text, totals) => {
+  if (byteLength(text) > MAX_DOCUMENT_BYTES) throw Error('图表页面超过 16 MB 限制');
+  const xml = mxUtils.parseXml(text);
+  if (xml.getElementsByTagName('parsererror').length) throw Error('图表页面 XML 无效');
+  totals.elements += xml.getElementsByTagName('*').length;
+  if (totals.elements > MAX_DOCUMENT_ELEMENTS) throw Error('图表超过 100,000 个 XML 元素限制');
+};
+const validateDocument = text => {
+  if (byteLength(text) > MAX_DOCUMENT_BYTES) throw Error('图表文件超过 16 MB 限制');
+  const xml = mxUtils.parseXml(text);
+  if (xml.getElementsByTagName('parsererror').length || !['mxfile','mxGraphModel'].includes(xml.documentElement.nodeName)) throw Error('不是有效的 draw.io XML');
+  const totals = {elements: xml.getElementsByTagName('*').length};
+  if (totals.elements > MAX_DOCUMENT_ELEMENTS) throw Error('图表超过 100,000 个 XML 元素限制');
+  if (xml.documentElement.nodeName === 'mxfile') {
+    const pages = xml.getElementsByTagName('diagram');
+    if (pages.length > MAX_PAGES) throw Error('图表超过 100 页限制');
+    for (const page of pages) {
+      const child = page.firstElementChild;
+      validateModel(child ? mxUtils.getXml(child) : Graph.decompress(mxUtils.getNodeValue(page)), totals);
+    }
+  }
+  return xml;
+};
+window.isMermaidEnabled = false;
+EditorUi.isMermaidSupported = () => false;
+EditorUi.isNativePlantUmlSupported = () => false;
 document.body.classList.add('geEditor','geClassic');
 const ui = new EditorUi(new Editor());
 window.drawioUi = ui;
@@ -38,9 +93,9 @@ const message = document.getElementById('message');
 let version = null, readOnly = true, loading = false, baseline = null, lastPosted = null, timer, pending = Promise.resolve();
 const serialize = () => ui.getFileData(true);
 const showError = error => { message.textContent='无法显示 draw.io 文件：'+error.message+'\n请切换到 Source 检查文件内容。'; message.hidden=false; };
-const flush = () => {
+const flush = (commitEditing = true) => {
   clearTimeout(timer);
-  ui.editor.graph.stopEditing(false);
+  if (commitEditing) ui.editor.graph.stopEditing(false);
   pending = pending.then(async () => {
     if (readOnly || loading || baseline == null || version == null) return;
     const text = serialize();
@@ -63,7 +118,7 @@ const flush = () => {
   pending = result.catch(error => { ui.editor.setStatus('保存失败：'+error.message); });
   return result;
 };
-const changed = () => { if (!loading && !readOnly) { clearTimeout(timer); timer=setTimeout(()=>flush().catch(()=>{}),200); } };
+const changed = () => { if (!loading && !readOnly) { clearTimeout(timer); timer=setTimeout(()=>flush(false).catch(()=>{}),200); } };
 ui.editor.addListener('change',changed);
 ui.editor.graph.model.addListener(mxEvent.CHANGE,changed);
 for (const event of ['gridSizeChanged','shadowVisibleChanged']) ui.editor.graph.addListener(event,changed);
@@ -75,6 +130,17 @@ ui.menubar = ui.menus.createMenubar(ui.menubar.container);
 for (const name of ['save','saveAs','new','open','export','print']) {
   const action=ui.actions.get(name);
   if (action) { action.funct=()=>flush(); action.setEnabled(name==='save'); }
+}
+// Parsers and network-backed integrations are intentionally absent from this build.
+for (const name of ['mermaid','plantUml','importVisio','generate']) {
+  const action=ui.actions.get(name);
+  if (action) {
+    action.funct=()=>{};
+    action.setEnabled(false);
+    action.setVisible(false);
+    action.isEnabled=()=>false;
+    action.isVisible=()=>false;
+  }
 }
 const theme = () => ui.setDarkMode(document.documentElement.classList.contains('dark'));
 theme();
@@ -99,8 +165,7 @@ window.orca.document.onDidChange(doc => {
   try {
     const text=doc.content.text.trim();
     if (text) {
-      const xml=mxUtils.parseXml(text);
-      if (xml.getElementsByTagName('parsererror').length || !['mxfile','mxGraphModel'].includes(xml.documentElement.nodeName)) throw Error('不是有效的 draw.io XML');
+      validateDocument(text);
     }
     const file = new LocalFile(ui,text || '<mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/></root></mxGraphModel>','diagram.drawio',true,null,null,!readOnly);
     file.isAutosave=()=>false;
