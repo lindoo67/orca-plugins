@@ -43,7 +43,7 @@ Plugins.
 Community plugins live in their authors' own repositories. The catalog can list them, but their
 code is not copied here.
 
-- To add or update a plugin, see [CONTRIBUTING.md](CONTRIBUTING.md).
+- To publish a community plugin or update an official one, see [CONTRIBUTING.md](CONTRIBUTING.md).
 - To learn how plugins are reviewed and taken down, see [REVIEW_POLICY.md](REVIEW_POLICY.md).
 
 Every pull request is checked by `.github/workflows/validate-catalog.yml`, which runs Orca's own

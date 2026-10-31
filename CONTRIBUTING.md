@@ -1,4 +1,26 @@
-# Adding or updating a plugin
+# Contributing
+
+**Don't open pull requests that add community plugins to this repository.** It holds only the
+official plugins that Stably maintains. Pull requests adding third-party plugins will be closed.
+
+## Publishing a community plugin
+
+Community plugins live in your own repository and are listed automatically:
+
+1. Put the plugin in your own public GitHub repository.
+2. Add the `orca-plugin` topic to the repository.
+3. Push a version tag such as `v1.0.0` (`vX.Y.Z`).
+
+The plugin then appears at [onorca.dev/plugins](https://www.onorca.dev/plugins). Check its listing
+status at `https://www.onorca.dev/plugins/<owner>/<repo>`.
+
+- [How to add a plugin](https://www.onorca.dev/plugins/add)
+- [Plugin authoring guide](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-authoring.md)
+- [Plugin listing policy](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-listing-policy.md)
+
+To report a problem with a plugin listed here, use this repository's issue templates.
+
+## For Stably maintainers: adding or updating an official plugin
 
 This repository holds Orca's official plugin catalog and the official plugins themselves.
 `orca-catalog.json` pins every release to an exact commit and a hash of the plugin's files. Orca
@@ -6,8 +28,7 @@ refuses to install bytes that differ from what is listed.
 
 - **Official plugins** (published by `stablyai`) live in `plugins/<name>/`, one directory each.
   Orca installs only that directory, so changing one plugin never changes another's hash.
-- **Community plugins** stay in their authors' own repositories. List them in the community
-  directory; don't copy their code here.
+- **Community plugins** stay in their authors' own repositories; don't copy their code here.
 
 The field reference is in Orca's
 [catalog reference](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-catalog.md)
@@ -18,7 +39,7 @@ You need a checkout of [Orca](https://github.com/stablyai/orca) with dependencie
 (`pnpm install`, then `pnpm run build:packages`). Below, `ORCA_DIR` is its path. CI uses the Orca
 commit in `ORCA_REF` of `.github/workflows/validate-catalog.yml`.
 
-## 1. Change the plugin and commit it
+### 1. Change the plugin and commit it
 
 Use manifest format 2 (`"manifestVersion": 2`) and choose the lowest `execution` profile that
 fits: `data` for themes, syntaxes and translations; `declarative` for commands, shortcuts and
@@ -36,7 +57,7 @@ a released version is never rebuilt with different bytes.
 Commit the plugin change on its own. The release pins the last commit that changed the plugin's
 directory, and a commit cannot name itself.
 
-## 2. Write the release entry
+### 2. Write the release entry
 
 ```sh
 ORCA_DIR=/path/to/orca node scripts/release-entry.mjs --write
@@ -55,7 +76,7 @@ to install.
 You may add display-only fields to a release: `changelog`, `updatedAt`, `homepage`,
 `themePreview`, `images`. The script keeps them.
 
-## 3. Add a cover image (recommended)
+### 3. Add a cover image (recommended)
 
 Put images under `assets/<plugin id>/` and reference them from the release's `images`, with
 `path`, `alt` text, `sha256`, `width` and `height`. Limits:
@@ -69,7 +90,7 @@ Put images under `assets/<plugin id>/` and reference them from the release's `im
 Images must be static, show the real plugin, and not imitate Orca's trust badges. CI fails on any
 file under `assets/` that no release references.
 
-## 4. Check locally
+### 4. Check locally
 
 Orca builds released before catalog format 2 read only `orca-marketplace.json`. Don't edit it.
 Plugins in `plugins/` are left out of it, because those builds cannot install a subdirectory;
@@ -83,7 +104,7 @@ ORCA_DIR=/path/to/orca node scripts/check-catalog.mjs
 If `check-catalog.mjs` says `orca-marketplace.json` is out of date, regenerate it with
 `--write-legacy` rather than editing it.
 
-## 5. Open a pull request
+### 5. Open a pull request
 
 CI checks that every release in `plugins/` is current, validates the catalog with Orca's own
 validator and fetches every listed commit to recompute its `contentHash`. It also checks images
